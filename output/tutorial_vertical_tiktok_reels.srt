@@ -1,71 +1,71 @@
 1
-00:00:00,900 --> 00:00:04,791
+00:00:00,900 --> 00:00:04,733
 Accede a tus sistemas institucionales en tres pasos.
 
 2
-00:00:07,780 --> 00:00:13,115
+00:00:07,684 --> 00:00:12,738
 Paso uno: abre tu navegador e ingresa a mail.policia.bo.
 
 3
-00:00:13,900 --> 00:00:16,294
+00:00:13,492 --> 00:00:15,704
 Escribe tu correo institucional completo
 
 4
-00:00:16,344 --> 00:00:18,475
+00:00:15,754 --> 00:00:17,893
 y tu contraseña inicial.
 
 5
-00:00:21,552 --> 00:00:24,933
+00:00:20,928 --> 00:00:24,047
 En tu primer ingreso, crea una nueva contraseña:
 
 6
-00:00:24,983 --> 00:00:30,012
+00:00:24,097 --> 00:00:28,810
 más de quince caracteres, con mayúsculas, minúsculas, números y símbolos,
 
 7
-00:00:30,062 --> 00:00:32,750
+00:00:28,860 --> 00:00:31,446
 sin tu nombre ni datos de tu correo.
 
 8
-00:00:35,328 --> 00:00:38,482
+00:00:33,984 --> 00:00:37,042
 Paso dos, opcional: para mayor comodidad,
 
 9
-00:00:38,532 --> 00:00:41,017
+00:00:37,092 --> 00:00:39,485
 usa la aplicación Carbonio Mail.
 
 10
-00:00:41,608 --> 00:00:44,587
+00:00:40,048 --> 00:00:43,059
 Primero valida tu cuenta en el navegador.
 
 11
-00:00:45,176 --> 00:00:48,583
+00:00:43,592 --> 00:00:46,687
 Luego escribe el dominio mail.policia.bo,
 
 12
-00:00:48,633 --> 00:00:51,245
+00:00:46,737 --> 00:00:49,286
 tu correo y tu nueva contraseña.
 
 13
-00:00:54,640 --> 00:00:59,085
+00:00:52,648 --> 00:00:56,541
 Paso tres: ingresa a kerberos-produccion.policia.bo
 
 14
-00:00:59,135 --> 00:01:01,393
+00:00:56,591 --> 00:00:58,790
 con tu correo institucional.
 
 15
-00:01:02,176 --> 00:01:04,823
+00:00:59,536 --> 00:01:01,918
 Su contraseña es diferente a la del correo:
 
 16
-00:01:04,873 --> 00:01:07,381
+00:01:01,968 --> 00:01:04,214
 la proporciona el personal encargado del sistema
 
 17
-00:01:07,431 --> 00:01:10,056
+00:01:04,264 --> 00:01:06,838
 o llega a tu correo institucional.
 
 18
-00:01:13,340 --> 00:01:16,142
+00:01:10,100 --> 00:01:12,845
 Protege siempre tus credenciales.
