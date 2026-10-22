@@ -1,0 +1,119 @@
+1
+00:00:01,600 --> 00:00:05,887
+MINERVA, el Sistema de Evaluación Psicológica de la Policía Boliviana.
+
+2
+00:00:06,460 --> 00:00:10,179
+Te mostramos cómo ingresar y rendir tu examen, paso a paso.
+
+3
+00:00:12,744 --> 00:00:16,867
+Paso uno: en la pantalla de inicio, tocá el portal Policía.
+
+4
+00:00:19,636 --> 00:00:21,909
+Escribí tu número de carnet y tu escalafón,
+
+5
+00:00:21,959 --> 00:00:24,021
+tal como figuran en tu credencial,
+
+6
+00:00:24,592 --> 00:00:26,573
+y tocá Ingresar al Sistema.
+
+7
+00:00:29,548 --> 00:00:33,168
+En la sala, tu sesión aparece en la pestaña En Inscripción.
+
+8
+00:00:33,736 --> 00:00:35,849
+Tocá Descargar Consentimiento.
+
+9
+00:00:38,612 --> 00:00:40,419
+Verificá tus datos.
+
+10
+00:00:40,677 --> 00:00:44,641
+Si tu grado o tu departamento no son correctos, corregilos aquí.
+
+11
+00:00:45,224 --> 00:00:49,052
+Luego confirmá con: Mis datos son correctos, Descargar.
+
+12
+00:00:51,728 --> 00:00:54,230
+Se descarga tu Consentimiento Informado oficial,
+
+13
+00:00:54,280 --> 00:00:56,627
+con tus datos y el espacio para tu firma.
+
+14
+00:00:59,412 --> 00:01:00,876
+Cuando el examen se habilita,
+
+15
+00:01:00,926 --> 00:01:03,273
+la sesión pasa a Disponibles ahora.
+
+16
+00:01:03,940 --> 00:01:05,768
+Tocá Entrar al Examen.
+
+17
+00:01:08,552 --> 00:01:10,923
+En el lobby revisá la duración, tus intentos
+
+18
+00:01:10,973 --> 00:01:13,232
+y leé los términos y condiciones.
+
+19
+00:01:13,896 --> 00:01:15,983
+Tocá la casilla He leído y acepto:
+
+20
+00:01:16,033 --> 00:01:18,194
+así se habilita Iniciar Examen.
+
+21
+00:01:21,156 --> 00:01:23,465
+Respondé una pregunta a la vez.
+
+22
+00:01:23,724 --> 00:01:26,322
+Arriba ves el tiempo restante y tu avance.
+
+23
+00:01:27,004 --> 00:01:29,717
+Elegí tu respuesta y avanzá con la flecha.
+
+24
+00:01:32,480 --> 00:01:36,384
+Al tocar Enviar, si te faltan preguntas, el sistema te avisa.
+
+25
+00:01:37,056 --> 00:01:38,422
+Podés responder las que faltan
+
+26
+00:01:38,472 --> 00:01:40,480
+o confirmar con Enviar Examen.
+
+27
+00:01:43,352 --> 00:01:45,683
+Tu examen se envía de forma segura,
+
+28
+00:01:46,568 --> 00:01:50,757
+y verás el resumen: intento, preguntas, duración y fecha.
+
+29
+00:01:53,632 --> 00:01:56,918
+¡Listo! Tu examen quedó registrado.
+
+30
+00:01:57,172 --> 00:01:59,541
+Consultá tu resultado en el sistema.
