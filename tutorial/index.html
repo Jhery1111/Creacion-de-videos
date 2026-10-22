@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Guía de acceso a los sistemas institucionales</title>
+<link rel="stylesheet" href="assets/fonts.css">
+<style>
+  :root {
+    --olive: #465638;
+    --olive-2: #71815E;
+    --olive-dark: #303C2E;
+    --white: #FFFFFF;
+    --ivory: #F2F0E8;
+    --gray-dark: #30352D;
+    --ink: #30352D;
+    --muted: #5d6455;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+  body { font-family: 'Inter', sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; }
+  #stage { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--ivory); }
+  .scene { position: absolute; inset: 0; display: none; overflow: hidden; }
+  .abs { position: absolute; }
+  .cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
+  .mont { font-family: 'Montserrat', sans-serif; }
+
+  /* fondos */
+  .bg-ivory { background:
+      radial-gradient(1200px 700px at 70% 30%, rgba(255,255,255,.75), rgba(255,255,255,0) 70%),
+      linear-gradient(rgba(70,86,56,.045) 1px, transparent 1px) 0 0/48px 48px,
+      linear-gradient(90deg, rgba(70,86,56,.045) 1px, transparent 1px) 0 0/48px 48px,
+      var(--ivory); }
+  .bg-white { background:
+      linear-gradient(rgba(70,86,56,.04) 1px, transparent 1px) 0 0/48px 48px,
+      linear-gradient(90deg, rgba(70,86,56,.04) 1px, transparent 1px) 0 0/48px 48px,
+      #FFFFFF; }
+  .bg-olive { background: radial-gradient(1400px 900px at 50% 45%, #4f6040 0%, var(--olive) 35%, var(--olive-dark) 100%); }
+  .grid-olive { position:absolute; inset:-60px; background:
+      linear-gradient(rgba(242,240,232,.06) 1px, transparent 1px) 0 0/60px 60px,
+      linear-gradient(90deg, rgba(242,240,232,.06) 1px, transparent 1px) 0 0/60px 60px; }
+
+  /* encabezado de paso */
+  .hdr { position: absolute; left: 56px; top: 36px; display: flex; align-items: center; gap: 22px;
+         padding: 14px 30px 14px 14px; border-radius: 18px; background: rgba(242,240,232,.94);
+         box-shadow: 0 10px 30px rgba(48,60,46,.14); border: 1px solid rgba(70,86,56,.16); z-index: 20; }
+  .hdr .num { width: 86px; height: 86px; border-radius: 16px; background: var(--olive); color: #fff;
+              display: flex; align-items: center; justify-content: center; font: 800 46px 'Montserrat'; }
+  .hdr .kick { font: 700 17px 'Montserrat'; letter-spacing: .16em; color: var(--olive-2); text-transform: uppercase; }
+  .hdr .ttl { font: 800 38px 'Montserrat'; color: var(--olive); letter-spacing: .01em; margin-top: 2px; }
+  .hdr.dark { background: rgba(48,60,46,.55); border-color: rgba(242,240,232,.18); }
+  .hdr.dark .num { background: var(--ivory); color: var(--olive); }
+  .hdr.dark .kick { color: #c9d1b8; }
+  .hdr.dark .ttl { color: #fff; }
+  .brand { position: absolute; right: 56px; top: 44px; width: 150px; height: 74px; z-index: 20;
+           background: var(--olive); -webkit-mask: url(assets/logo200_white.png) center/contain no-repeat; }
+  .brand.light { background: var(--ivory); }
+
+  /* subtitulos */
+  #subs { position: absolute; left: 0; right: 0; bottom: 34px; display: flex; justify-content: center; z-index: 60; pointer-events: none; }
+  #subs .box { max-width: 1480px; padding: 14px 34px 16px; border-radius: 12px; background: rgba(48,53,45,.90);
+               color: #fff; font: 600 34px/1.32 'Inter'; text-align: center; box-shadow: 0 8px 30px rgba(0,0,0,.25);
+               border-bottom: 4px solid var(--olive-2); }
+
+  /* transicion */
+  .wipe { position: absolute; top: 0; bottom: 0; width: 1920px; z-index: 50; }
+  .wipe.a { background: var(--olive-dark); }
+  .wipe.b { background: var(--olive); display:flex; align-items:center; justify-content:center; }
+  .wipe.b .mark { width: 260px; height: 140px; background: rgba(242,240,232,.9);
+                  -webkit-mask: url(assets/logo200_white.png) center/contain no-repeat; }
+  #fade { position: absolute; inset: 0; background: #000; z-index: 70; pointer-events: none; }
+
+  /* navegador */
+  .browser { position: absolute; left: 260px; top: 150px; width: 1400px; height: 761px; border-radius: 14px; overflow: hidden;
+             background: #fff; box-shadow: 0 30px 80px rgba(48,60,46,.28), 0 0 0 1px rgba(48,60,46,.12); transform-origin: 50% 50%; }
+  .browser .tabs { height: 40px; background: #DADCD3; display: flex; align-items: flex-end; padding-left: 92px; position: relative; }
+  .browser .dots { position: absolute; left: 20px; top: 14px; display: flex; gap: 9px; }
+  .browser .dots i { width: 13px; height: 13px; border-radius: 50%; background: #b9bcb1; display: block; }
+  .browser .tab { width: 260px; height: 32px; background: #F7F7F3; border-radius: 10px 10px 0 0; padding: 0 16px;
+                  font: 500 14px 'Inter'; color: #3c4237; display: flex; align-items: center; gap: 10px; white-space: nowrap; overflow: hidden; }
+  .browser .tab .fav { width: 16px; height: 16px; border-radius: 4px; background: #c9ccc3; flex: none; }
+  .browser .bar { height: 52px; background: #F7F7F3; display: flex; align-items: center; padding: 0 16px; gap: 14px; border-bottom: 1px solid #e2e3dc; position: relative; }
+  .browser .nav { display: flex; gap: 14px; color: #6b7064; }
+  .browser .nav svg { width: 20px; height: 20px; }
+  .browser .addr { position: absolute; left: 120px; right: 80px; top: 8px; height: 36px; border-radius: 18px; background: #ECEDE6;
+                   display: flex; align-items: center; padding-left: 16px; gap: 12px; font: 500 19px 'Inter'; color: #2b2f28; }
+  .browser .addr svg { width: 16px; height: 16px; color: #6b7064; flex: none; }
+  .browser .addr .url { white-space: pre; }
+  .browser .load { position: absolute; left: 0; bottom: -1px; height: 3px; background: var(--olive); width: 0; }
+  .browser .view { position: absolute; left: 0; top: 92px; width: 1400px; height: 669px; overflow: hidden; background: #FAFAF7; }
+  .browser .view img { position: absolute; left: 0; top: 0; width: 1400px; }
+  .newtab { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 18px; color: #b3b6ac; font: 500 20px 'Inter'; }
+  .newtab .sb { width: 560px; height: 52px; border-radius: 26px; background: #F0F1EB; border: 1px solid #e1e2db; }
+
+  /* cursor */
+  .cursor { position: absolute; width: 0; height: 0; z-index: 40; }
+  .cursor svg { position: absolute; left: -3px; top: -2px; width: 30px; height: 40px; transform-origin: 3px 2px; filter: drop-shadow(0 3px 4px rgba(0,0,0,.35)); }
+  .cursor .ring { position: absolute; left: -30px; top: -30px; width: 60px; height: 60px; border-radius: 50%;
+                  border: 4px solid var(--olive); opacity: 0; }
+  .touch { position: absolute; width: 0; height: 0; z-index: 40; }
+  .touch .dot { position: absolute; left: -22px; top: -22px; width: 44px; height: 44px; border-radius: 50%;
+                background: rgba(70,86,56,.35); border: 3px solid rgba(255,255,255,.9); box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+  .touch .ring { position: absolute; left: -34px; top: -34px; width: 68px; height: 68px; border-radius: 50%; border: 4px solid var(--olive); opacity: 0; }
+
+  /* resaltados */
+  .hl { position: absolute; border: 4px solid var(--olive); border-radius: 10px; box-shadow: 0 0 0 7px rgba(70,86,56,.20); opacity: 0; z-index: 30; }
+  .badge { position: absolute; width: 46px; height: 46px; border-radius: 50%; background: var(--olive); color: #fff;
+           font: 800 24px 'Montserrat'; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 4px #fff, 0 6px 14px rgba(0,0,0,.25); z-index: 31; opacity: 0; }
+  .callout { position: absolute; display: flex; align-items: center; z-index: 31; opacity: 0; }
+  .callout .ln { height: 4px; background: var(--olive); width: 70px; position: relative; }
+  .callout .ln:before { content:''; position:absolute; left:-8px; top:-6px; border: 8px solid transparent; border-right: 10px solid var(--olive); border-left: 0; }
+  .callout .lb { background: var(--olive); color: #fff; font: 700 21px 'Montserrat'; padding: 10px 18px; border-radius: 10px; white-space: nowrap; box-shadow: 0 8px 20px rgba(48,60,46,.25); }
+  .callout.left { flex-direction: row-reverse; }
+  .callout.left .ln:before { left: auto; right: -8px; border-left: 10px solid var(--olive); border-right: 0; }
+  .tag { position: absolute; padding: 7px 16px; border-radius: 999px; border: 2px solid var(--olive-2); color: var(--olive);
+         background: rgba(242,240,232,.95); font: 700 15px 'Montserrat'; letter-spacing: .06em; text-transform: uppercase; z-index: 32; white-space: nowrap; }
+  .keycap { position: absolute; padding: 6px 14px; border-radius: 8px; background: #fff; border: 2px solid #c9ccc3; border-bottom-width: 5px;
+            font: 700 16px 'Inter'; color: #30352D; opacity: 0; z-index: 33; white-space: nowrap; }
+
+  /* campos simulados sobre capturas */
+  .fld { position: absolute; overflow: hidden; z-index: 25; opacity: 0; }
+  .fld .lbl { position: absolute; left: 0; top: 0; white-space: nowrap; }
+  .fld .val { position: absolute; left: 0; white-space: pre; }
+  .caret { display: inline-block; width: 2px; background: currentColor; margin-left: 1px; vertical-align: -2px; }
+
+  /* tarjetas */
+  .card { position: absolute; border-radius: 18px; background: #fff; box-shadow: 0 18px 50px rgba(48,60,46,.16); border: 1px solid rgba(70,86,56,.14); }
+  .ico { display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--olive); color: #fff; flex: none; }
+  .ico svg { width: 55%; height: 55%; }
+
+  /* telefono */
+  .phone { position: absolute; width: 380px; height: 780px; border-radius: 56px; background: #1b1e19; padding: 12px;
+           box-shadow: 0 40px 90px rgba(48,60,46,.35), inset 0 0 0 2px #3a3f36; }
+  .phone .scr { position: relative; width: 356px; height: 756px; border-radius: 44px; overflow: hidden; background: #fff; }
+  .phone .notch { position: absolute; left: 50%; top: 10px; width: 110px; height: 30px; margin-left: -55px; border-radius: 16px; background: #1b1e19; z-index: 10; }
+  .phone .sbar { position: absolute; left: 0; right: 0; top: 0; height: 48px; padding: 15px 30px 0; display: flex; justify-content: space-between;
+                 font: 600 15px 'Inter'; color: #30352D; z-index: 9; }
+  .screen { position: absolute; inset: 0; padding: 60px 22px 22px; opacity: 0; }
+  .p-input { height: 54px; border-radius: 12px; border: 2px solid #cfd2c8; background: #fff; display: flex; align-items: center; padding: 0 16px;
+             font: 500 18px 'Inter'; color: #2b2f28; white-space: pre; overflow: hidden; }
+  .p-label { font: 600 14px 'Inter'; color: #5d6455; margin: 0 0 8px 4px; }
+  .p-btn { height: 54px; border-radius: 12px; background: #30352D; color: #fff; display: flex; align-items: center; justify-content: center; font: 700 18px 'Inter'; }
+  .sk { height: 12px; border-radius: 6px; background: #e3e5de; }
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<script src="build/timeline.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

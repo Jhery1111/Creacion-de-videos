@@ -1,0 +1,348 @@
+{
+ "1": [
+  {
+   "file": "s01_u0.mp3",
+   "dur": 2.352,
+   "segments": [
+    {
+     "text": "Bienvenido a esta guía.",
+     "start": 0.0,
+     "end": 1.468
+    }
+   ],
+   "aligned": true
+  },
+  {
+   "file": "s01_u1.mp3",
+   "dur": 10.968,
+   "segments": [
+    {
+     "text": "Aprenderás paso a paso cómo ingresar a tu correo institucional de la Policía Boliviana,",
+     "start": 0.0,
+     "end": 4.749
+    },
+    {
+     "text": "actualizar tu contraseña, configurar Carbonio Mail y acceder al sistema Kerberos.",
+     "start": 5.04,
+     "end": 10.08
+    }
+   ],
+   "aligned": true
+  }
+ ],
+ "2": [
+  {
+   "file": "s02_u0.mp3",
+   "dur": 9.048,
+   "segments": [
+    {
+     "text": "Primero, abre tu navegador e ingresa la dirección mail.policia.bo",
+     "start": 0.0,
+     "end": 4.787
+    },
+    {
+     "text": "para acceder al correo institucional de la Policía Boliviana.",
+     "start": 4.799,
+     "end": 8.168
+    }
+   ],
+   "aligned": true
+  }
+ ],
+ "3": [
+  {
+   "file": "s03_u0.mp3",
+   "dur": 4.224,
+   "segments": [
+    {
+     "text": "En el primer campo escribe tu correo institucional completo.",
+     "start": 0.0,
+     "end": 3.33
+    }
+   ],
+   "aligned": true
+  },
+  {
+   "file": "s03_u1.mp3",
+   "dur": 3.912,
+   "segments": [
+    {
+     "text": "En el segundo campo introduce tu contraseña inicial.",
+     "start": 0.0,
+     "end": 3.039
+    }
+   ],
+   "aligned": true
+  },
+  {
+   "file": "s03_u2.mp3",
+   "dur": 4.656,
+   "segments": [
+    {
+     "text": "Una vez completados ambos espacios, presiona Iniciar sesión.",
+     "start": 0.0,
+     "end": 3.773
+    }
+   ],
+   "aligned": true
+  }
+ ],
+ "4": [
+  {
+   "file": "s04_u0.mp3",
+   "dur": 5.76,
+   "segments": [
+    {
+     "text": "En tu primer ingreso, el sistema te solicitará establecer una nueva contraseña.",
+     "start": 0.0,
+     "end": 4.875
+    }
+   ],
+   "aligned": true
+  },
+  {
+   "file": "s04_u1.mp3",
+   "dur": 5.712,
+   "segments": [
+    {
+     "text": "Escríbela en el primer espacio y repítela exactamente en el segundo para confirmarla.",
+     "start": 0.0,
+     "end": 4.825
+    }
+   ],
+   "aligned": true
+  }
+ ],
+ "5": [
+  {
+   "file": "s05_u0.mp3",
+   "dur": 8.208,
+   "segments": [
+    {
+     "text": "Tu nueva contraseña debe tener más de quince caracteres",
+     "start": 0.0,
+     "end": 3.191
+    },
+    {
+     "text": "y combinar letras mayúsculas, minúsculas, números y símbolos.",
+     "start": 3.204,
+     "end": 7.319
+    }
+   ],
+   "aligned": true
+  },
+  {
+   "file": "s05_u1.mp3",
+   "dur": 7.224,
+   "segments": [
+    {
+     "text": "Además, no debe contener tu nombre, apellidos",
+     "start": 0.0,
+     "end": 3.33
+    },
+    {
+     "text": "ni información relacionada con tu correo institucional.",
+     "start": 3.343,
+     "end": 6.332
+    }
+   ],
+   "aligned": true
+  }
+ ],
+ "6": [
+  {
+   "file": "s06_u0.mp3",
+   "dur": 9.384,
+   "segments": [
+    {
+     "text": "Una vez actualizada tu contraseña, podrás ingresar a tu correo institucional",
+     "start": 0.0,
+     "end": 4.508
+    },
+    {
+     "text": "directamente desde el navegador o utilizar la aplicación Carbonio Mail.",
+     "start": 4.521,
+     "end": 8.497
+    }
+   ],
+   "aligned": true
+  }
+ ],
+ "7": [
+  {
+   "file": "s07_u0.mp3",
+   "dur": 7.896,
+   "segments": [
+    {
+     "text": "Para utilizar Carbonio Mail en tu celular,",
+     "start": 0.0,
+     "end": 2.418
+    },
+    {
+     "text": "primero debes haber actualizado correctamente tu contraseña desde el navegador.",
+     "start": 2.71,
+     "end": 7.016
+    }
+   ],
+   "aligned": true
+  }
+ ],
+ "8": [
+  {
+   "file": "s08_u0.mp3",
+   "dur": 6.84,
+   "segments": [
+    {
+     "text": "Al abrir Carbonio Mail, introduce el dominio mail.policia.bo y presiona continuar.",
+     "start": 0.0,
+     "end": 5.964
+    }
+   ],
+   "aligned": true
+  },
+  {
+   "file": "s08_u1.mp3",
+   "dur": 7.416,
+   "segments": [
+    {
+     "text": "Después, escribe tu correo institucional completo",
+     "start": 0.0,
+     "end": 3.343
+    },
+    {
+     "text": "y la nueva contraseña que configuraste desde el navegador.",
+     "start": 3.355,
+     "end": 6.534
+    }
+   ],
+   "aligned": true
+  },
+  {
+   "file": "s08_u2.mp3",
+   "dur": 2.976,
+   "segments": [
+    {
+     "text": "Finalmente, inicia sesión.",
+     "start": 0.0,
+     "end": 2.089
+    }
+   ],
+   "aligned": true
+  }
+ ],
+ "9": [
+  {
+   "file": "s09_u0.mp3",
+   "dur": 7.56,
+   "segments": [
+    {
+     "text": "Para ingresar al sistema Kerberos, abre tu navegador",
+     "start": 0.0,
+     "end": 3.166
+    },
+    {
+     "text": "y escribe kerberos-produccion.policia.bo.",
+     "start": 3.178,
+     "end": 6.686
+    }
+   ],
+   "aligned": true
+  },
+  {
+   "file": "s09_u1.mp3",
+   "dur": 3.936,
+   "segments": [
+    {
+     "text": "Encontrarás una nueva pantalla de inicio de sesión.",
+     "start": 0.0,
+     "end": 3.051
+    }
+   ],
+   "aligned": true
+  }
+ ],
+ "10": [
+  {
+   "file": "s10_u0.mp3",
+   "dur": 6.864,
+   "segments": [
+    {
+     "text": "Para acceder a Kerberos debes escribir tu correo institucional",
+     "start": 0.0,
+     "end": 3.482
+    },
+    {
+     "text": "y la contraseña específica de este sistema.",
+     "start": 3.495,
+     "end": 5.977
+    }
+   ],
+   "aligned": true
+  },
+  {
+   "file": "s10_u1.mp3",
+   "dur": 3.84,
+   "segments": [
+    {
+     "text": "Recuerda que no es la misma contraseña de tu correo.",
+     "start": 0.0,
+     "end": 2.963
+    }
+   ],
+   "aligned": true
+  },
+  {
+   "file": "s10_u2.mp3",
+   "dur": 6.576,
+   "segments": [
+    {
+     "text": "La contraseña de Kerberos será proporcionada por Alduin",
+     "start": 0.0,
+     "end": 3.064
+    },
+    {
+     "text": "o llegará directamente a tu correo institucional.",
+     "start": 3.077,
+     "end": 5.686
+    }
+   ],
+   "aligned": true
+  }
+ ],
+ "11": [
+  {
+   "file": "s11_u0.mp3",
+   "dur": 10.464,
+   "segments": [
+    {
+     "text": "Recuerda: primero debes configurar tu correo institucional,",
+     "start": 0.0,
+     "end": 3.558
+    },
+    {
+     "text": "luego podrás utilizar Carbonio Mail",
+     "start": 3.9,
+     "end": 5.964
+    },
+    {
+     "text": "y finalmente ingresar a Kerberos con su contraseña independiente.",
+     "start": 5.977,
+     "end": 9.574
+    }
+   ],
+   "aligned": true
+  },
+  {
+   "file": "s11_u1.mp3",
+   "dur": 3.6,
+   "segments": [
+    {
+     "text": "Mantén siempre tus credenciales protegidas.",
+     "start": 0.0,
+     "end": 2.722
+    }
+   ],
+   "aligned": true
+  }
+ ]
+}
