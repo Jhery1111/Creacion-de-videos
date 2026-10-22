@@ -3,5 +3,5 @@ build/chunks*/
 build/preview/
 build/mix*.wav
 build/video_noaudio*.mp4
-build/render.log
+build/render*.log
 __pycache__/
