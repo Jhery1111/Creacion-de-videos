@@ -2,22 +2,22 @@
  "fps": 30,
  "width": 1080,
  "height": 1920,
- "duration": 80.716,
+ "duration": 77.404,
  "scenes": [
   {
    "id": 1,
    "start": 0.0,
-   "dur": 7.18,
+   "dur": 7.084,
    "utts": [
     {
      "file": "v01_u0.mp3",
      "start": 0.9,
-     "dur": 4.08,
+     "dur": 3.984,
      "segments": [
       {
        "text": "Accede a tus sistemas institucionales en tres pasos.",
        "start": 0.9,
-       "end": 4.091
+       "end": 4.033
       }
      ]
     }
@@ -25,35 +25,35 @@
   },
   {
    "id": 2,
-   "start": 7.18,
-   "dur": 13.872,
+   "start": 7.084,
+   "dur": 13.344,
    "utts": [
     {
      "file": "v02_u0.mp3",
      "start": 0.6,
-     "dur": 5.52,
+     "dur": 5.208,
      "segments": [
       {
        "text": "Paso uno: abre tu navegador e ingresa a mail.policia.bo.",
        "start": 0.6,
-       "end": 5.235
+       "end": 4.954
       }
      ]
     },
     {
      "file": "v02_u1.mp3",
-     "start": 6.72,
-     "dur": 4.752,
+     "start": 6.408,
+     "dur": 4.536,
      "segments": [
       {
        "text": "Escribe tu correo institucional completo",
-       "start": 6.72,
-       "end": 9.151
+       "start": 6.408,
+       "end": 8.658
       },
       {
        "text": "y tu contraseña inicial.",
-       "start": 9.164,
-       "end": 10.595
+       "start": 8.67,
+       "end": 10.109
       }
      ]
     }
@@ -61,28 +61,28 @@
   },
   {
    "id": 3,
-   "start": 21.052,
-   "dur": 13.676,
+   "start": 20.428,
+   "dur": 12.956,
    "utts": [
     {
      "file": "v03_u0.mp3",
      "start": 0.5,
-     "dur": 11.376,
+     "dur": 10.656,
      "segments": [
       {
        "text": "En tu primer ingreso, crea una nueva contraseña:",
        "start": 0.5,
-       "end": 3.615
+       "end": 3.343
       },
       {
        "text": "más de quince caracteres, con mayúsculas, minúsculas, números y símbolos,",
-       "start": 3.931,
-       "end": 8.757
+       "start": 3.669,
+       "end": 8.118
       },
       {
        "text": "sin tu nombre ni datos de tu correo.",
-       "start": 9.01,
-       "end": 10.998
+       "start": 8.432,
+       "end": 10.318
       }
      ]
     }
@@ -90,52 +90,52 @@
   },
   {
    "id": 4,
-   "start": 34.728,
-   "dur": 19.312,
+   "start": 33.384,
+   "dur": 18.664,
    "utts": [
     {
      "file": "v04_u0.mp3",
      "start": 0.6,
-     "dur": 5.88,
+     "dur": 5.664,
      "segments": [
       {
        "text": "Paso dos, opcional: para mayor comodidad,",
        "start": 0.6,
-       "end": 3.538
+       "end": 3.37
       },
       {
        "text": "usa la aplicación Carbonio Mail.",
-       "start": 3.804,
-       "end": 5.589
+       "start": 3.708,
+       "end": 5.401
       }
      ]
     },
     {
      "file": "v04_u1.mp3",
-     "start": 6.88,
-     "dur": 3.168,
+     "start": 6.664,
+     "dur": 3.144,
      "segments": [
       {
        "text": "Primero valida tu cuenta en el navegador.",
-       "start": 6.88,
-       "end": 9.159
+       "start": 6.664,
+       "end": 8.975
       }
      ]
     },
     {
      "file": "v04_u2.mp3",
-     "start": 10.448,
-     "dur": 6.264,
+     "start": 10.208,
+     "dur": 5.856,
      "segments": [
       {
        "text": "Luego escribe el dominio mail.policia.bo,",
-       "start": 10.448,
-       "end": 13.664
+       "start": 10.208,
+       "end": 13.111
       },
       {
        "text": "tu correo y tu nueva contraseña.",
-       "start": 13.905,
-       "end": 15.817
+       "start": 13.353,
+       "end": 15.202
       }
      ]
     }
@@ -143,45 +143,45 @@
   },
   {
    "id": 5,
-   "start": 54.04,
-   "dur": 18.8,
+   "start": 52.048,
+   "dur": 17.552,
    "utts": [
     {
      "file": "v05_u0.mp3",
      "start": 0.6,
-     "dur": 6.936,
+     "dur": 6.288,
      "segments": [
       {
        "text": "Paso tres: ingresa a kerberos-produccion.policia.bo",
        "start": 0.6,
-       "end": 5.083
+       "end": 4.531
       },
       {
        "text": "con tu correo institucional.",
-       "start": 5.095,
-       "end": 6.653
+       "start": 4.543,
+       "end": 6.042
       }
      ]
     },
     {
      "file": "v05_u1.mp3",
-     "start": 8.136,
-     "dur": 8.064,
+     "start": 7.488,
+     "dur": 7.464,
      "segments": [
       {
        "text": "Su contraseña es diferente a la del correo:",
-       "start": 8.136,
-       "end": 10.504
+       "start": 7.488,
+       "end": 9.629
       },
       {
        "text": "la proporciona el personal encargado del sistema",
-       "start": 10.833,
-       "end": 13.378
+       "start": 9.92,
+       "end": 12.204
       },
       {
        "text": "o llega a tu correo institucional.",
-       "start": 13.391,
-       "end": 15.316
+       "start": 12.216,
+       "end": 14.09
       }
      ]
     }
@@ -189,18 +189,18 @@
   },
   {
    "id": 6,
-   "start": 72.84,
-   "dur": 7.876,
+   "start": 69.6,
+   "dur": 7.804,
    "utts": [
     {
      "file": "v06_u0.mp3",
      "start": 0.5,
-     "dur": 2.976,
+     "dur": 2.904,
      "segments": [
       {
        "text": "Protege siempre tus credenciales.",
        "start": 0.5,
-       "end": 2.602
+       "end": 2.545
       }
      ]
     }
@@ -211,92 +211,92 @@
   {
    "text": "Accede a tus sistemas institucionales en tres pasos.",
    "start": 0.9,
-   "end": 4.791
+   "end": 4.733
   },
   {
    "text": "Paso uno: abre tu navegador e ingresa a mail.policia.bo.",
-   "start": 7.78,
-   "end": 13.115
+   "start": 7.684,
+   "end": 12.738
   },
   {
    "text": "Escribe tu correo institucional completo",
-   "start": 13.9,
-   "end": 16.294
+   "start": 13.492,
+   "end": 15.704
   },
   {
    "text": "y tu contraseña inicial.",
-   "start": 16.344,
-   "end": 18.475
+   "start": 15.754,
+   "end": 17.893
   },
   {
    "text": "En tu primer ingreso, crea una nueva contraseña:",
-   "start": 21.552,
-   "end": 24.933
+   "start": 20.928,
+   "end": 24.047
   },
   {
    "text": "más de quince caracteres, con mayúsculas, minúsculas, números y símbolos,",
-   "start": 24.983,
-   "end": 30.012
+   "start": 24.097,
+   "end": 28.81
   },
   {
    "text": "sin tu nombre ni datos de tu correo.",
-   "start": 30.062,
-   "end": 32.75
+   "start": 28.86,
+   "end": 31.446
   },
   {
    "text": "Paso dos, opcional: para mayor comodidad,",
-   "start": 35.328,
-   "end": 38.482
+   "start": 33.984,
+   "end": 37.042
   },
   {
    "text": "usa la aplicación Carbonio Mail.",
-   "start": 38.532,
-   "end": 41.017
+   "start": 37.092,
+   "end": 39.485
   },
   {
    "text": "Primero valida tu cuenta en el navegador.",
-   "start": 41.608,
-   "end": 44.587
+   "start": 40.048,
+   "end": 43.059
   },
   {
    "text": "Luego escribe el dominio mail.policia.bo,",
-   "start": 45.176,
-   "end": 48.583
+   "start": 43.592,
+   "end": 46.687
   },
   {
    "text": "tu correo y tu nueva contraseña.",
-   "start": 48.633,
-   "end": 51.245
+   "start": 46.737,
+   "end": 49.286
   },
   {
    "text": "Paso tres: ingresa a kerberos-produccion.policia.bo",
-   "start": 54.64,
-   "end": 59.085
+   "start": 52.648,
+   "end": 56.541
   },
   {
    "text": "con tu correo institucional.",
-   "start": 59.135,
-   "end": 61.393
+   "start": 56.591,
+   "end": 58.79
   },
   {
    "text": "Su contraseña es diferente a la del correo:",
-   "start": 62.176,
-   "end": 64.823
+   "start": 59.536,
+   "end": 61.918
   },
   {
    "text": "la proporciona el personal encargado del sistema",
-   "start": 64.873,
-   "end": 67.381
+   "start": 61.968,
+   "end": 64.214
   },
   {
    "text": "o llega a tu correo institucional.",
-   "start": 67.431,
-   "end": 70.056
+   "start": 64.264,
+   "end": 66.838
   },
   {
    "text": "Protege siempre tus credenciales.",
-   "start": 73.34,
-   "end": 76.142
+   "start": 70.1,
+   "end": 72.845
   }
  ]
 }

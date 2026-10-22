@@ -23,7 +23,7 @@ _CA = "/root/.ccr/ca-bundle.crt"
 if os.path.exists(_CA):
     edge_tts.communicate._SSL_CTX = ssl.create_default_context(cafile=_CA)
 
-VOICE = "es-BO-MarceloNeural"
+VOICE = "es-BO-SofiaNeural"
 RATE = "-6%"
 ROOT = Path(__file__).parent
 

@@ -291,14 +291,14 @@
     const h1 = cKer.querySelector('.h1'), h2 = cKer.querySelector('.h2');
     const cur = cursor(cam);
     const u0 = T.S(0, 0), u1 = T.S(1, 0), u1b = T.S(1, 1), u1c = T.S(1, 2);
-    const sUrl = { node: B.url, text: 'kerberos-produccion.policia.bo', t0: u0 + 1.9, cps: 14, focus: 1.5, caretH: 20 };
+    const sUrl = { node: B.url, text: 'kerberos-produccion.policia.bo', t0: u0 + 1.6, cps: 16, focus: 1.5, caretH: 20 };
     const tEnter = sUrl.t0 + sUrl.text.length / sUrl.cps + 0.35;
     sUrl.blur = tEnter + 0.1;
-    const sE = { node: fE.val, text: 'nombre.usuario@policia.bo', t0: tEnter + 1.6, cps: 17, caretH: 13 };
+    const sE = { node: fE.val, text: 'nombre.usuario@policia.bo', t0: tEnter + 1.2, cps: 18, caretH: 13 };
     const tPc = sE.t0 + sE.text.length / sE.cps + 0.2;
-    const sP = { node: fP.val, text: 'x'.repeat(16), mask: true, t0: tPc + 0.3, cps: 15, caretH: 13 };
+    const sP = { node: fP.val, text: 'x'.repeat(16), mask: true, t0: tPc + 0.25, cps: 16, caretH: 13 };
     sE.blur = tPc;
-    const cmpIn = Math.max(sP.t0 + 16 / 15 + 0.3, u1 + 1.6), cmpOut = u1c + 2.2;
+    const cmpIn = Math.max(sP.t0 + 16 / 16 + 0.3, u1 + 1.2), cmpOut = u1c + 2.2;
     const tBtn = cmpOut + 1.3;
     const keys = [
       { t: 0.8, x: 1200, y: 640 },
