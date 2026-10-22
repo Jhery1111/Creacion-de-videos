@@ -16,6 +16,10 @@ from pathlib import Path
 import numpy as np
 
 ROOT = Path(__file__).parent
+VERTICAL = "--vertical" in sys.argv
+SUF = "_v" if VERTICAL else ""
+PAGE = "vertical.html" if VERTICAL else "index.html"
+VIEWPORT = {"width": 1080, "height": 1920} if VERTICAL else {"width": 1920, "height": 1080}
 SR = 48000
 rng = np.random.default_rng(3)
 
@@ -27,12 +31,12 @@ def export_events():
     srv = serve()
     with sync_playwright() as p:
         b = p.chromium.launch(executable_path="/opt/pw-browsers/chromium-1194/chrome-linux/chrome")
-        pg = b.new_page(viewport={"width": 1920, "height": 1080})
-        pg.goto(f"http://127.0.0.1:{srv.server_port}/index.html")
+        pg = b.new_page(viewport=VIEWPORT)
+        pg.goto(f"http://127.0.0.1:{srv.server_port}/{PAGE}")
         pg.evaluate("window.ready")
         evs = pg.evaluate("window.EVENTS")
         b.close()
-    (ROOT / "build" / "events.json").write_text(json.dumps(evs))
+    (ROOT / "build" / f"events{SUF}.json").write_text(json.dumps(evs))
     print(len(evs), "eventos")
 
 
@@ -186,8 +190,8 @@ def music(total):
 
 
 def main():
-    tl = json.loads((ROOT / "build" / "timeline.json").read_text())
-    evs = json.loads((ROOT / "build" / "events.json").read_text())
+    tl = json.loads((ROOT / "build" / f"timeline{SUF}.json").read_text())
+    evs = json.loads((ROOT / "build" / f"events{SUF}.json").read_text())
     total = tl["duration"]
     n = int(total * SR) + SR
     voice = np.zeros(n)
@@ -228,7 +232,7 @@ def main():
     if peak > 0.97:
         mix *= 0.97 / peak
     pcm = (np.clip(mix, -1, 1) * 32767).astype(np.int16)
-    out = ROOT / "build" / "mix.wav"
+    out = ROOT / "build" / f"mix{SUF}.wav"
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "s16le", "-ar", str(SR), "-ac", "1", "-i", "-", "-ac", "2", str(out)],
                    input=pcm.tobytes(), check=True)
     print("mezcla:", out, f"{total:.1f}s")

@@ -63,11 +63,13 @@ SCRIPT = {
     ],
     6: [
         [same("Una vez actualizada tu contraseña, podrás ingresar a tu correo institucional"),
-         same("directamente desde el navegador o utilizar la aplicación Carbonio Mail.")],
+         same("directamente desde el navegador o, como alternativa, usar la aplicación Carbonio Mail.")],
     ],
     7: [
-        [same("Para utilizar Carbonio Mail en tu celular,"),
-         same("primero debes haber actualizado correctamente tu contraseña desde el navegador.")],
+        [same("Como alternativa, para mayor comodidad,"),
+         same("también puedes usar la aplicación Carbonio Mail en tu celular.")],
+        [same("Pero recuerda: primero debes validar tu cuenta"),
+         same("y actualizar tu contraseña desde el navegador.")],
     ],
     8: [
         [(f"Al abrir Carbonio Mail, introduce el dominio {MAIL[0]} y presiona continuar.",
@@ -85,14 +87,48 @@ SCRIPT = {
         [same("Para acceder a Kerberos debes escribir tu correo institucional"),
          same("y la contraseña específica de este sistema.")],
         [same("Recuerda que no es la misma contraseña de tu correo.")],
-        [same("La contraseña de Kerberos será proporcionada por Alduin"),
+        [same("La contraseña de Kerberos será proporcionada por el personal encargado del sistema"),
          same("o llegará directamente a tu correo institucional.")],
     ],
     11: [
         [same("Recuerda: primero debes configurar tu correo institucional,"),
-         same("luego podrás utilizar Carbonio Mail"),
+         same("luego, si lo prefieres, podrás utilizar Carbonio Mail"),
          same("y finalmente ingresar a Kerberos con su contraseña independiente.")],
         [same("Mantén siempre tus credenciales protegidas.")],
+    ],
+}
+
+
+# Version vertical corta (TikTok / Reels)
+SCRIPT_V = {
+    1: [
+        [same("Accede a tus sistemas institucionales en tres pasos.")],
+    ],
+    2: [
+        [(f"Paso uno: abre tu navegador e ingresa a {MAIL[0]}.",
+          f"Paso uno: abre tu navegador e ingresa a {MAIL[1]}.")],
+        [same("Escribe tu correo institucional completo"), same("y tu contraseña inicial.")],
+    ],
+    3: [
+        [same("En tu primer ingreso, crea una nueva contraseña:"),
+         same("más de quince caracteres, con mayúsculas, minúsculas, números y símbolos,"),
+         same("sin tu nombre ni datos de tu correo.")],
+    ],
+    4: [
+        [same("Paso dos, opcional: para mayor comodidad,"), same("usa la aplicación Carbonio Mail.")],
+        [same("Primero valida tu cuenta en el navegador.")],
+        [(f"Luego escribe el dominio {MAIL[0]},", f"Luego escribe el dominio {MAIL[1]},"),
+         same("tu correo y tu nueva contraseña.")],
+    ],
+    5: [
+        [(f"Paso tres: ingresa a {KERB[0]}", f"Paso tres: ingresa a {KERB[1]}"),
+         same("con tu correo institucional.")],
+        [same("Su contraseña es diferente a la del correo:"),
+         same("la proporciona el personal encargado del sistema"),
+         same("o llega a tu correo institucional.")],
+    ],
+    6: [
+        [same("Protege siempre tus credenciales.")],
     ],
 }
 
@@ -119,12 +155,13 @@ def duration(path):
     return float(out)
 
 
-async def main():
+async def main(variant):
+    script, pre, out_name = (SCRIPT_V, "v", "narration_v.json") if variant == "vertical" else (SCRIPT, "s", "narration.json")
     data = {}
-    for scene, utts in SCRIPT.items():
+    for scene, utts in script.items():
         data[scene] = []
         for ui, segs in enumerate(utts):
-            path = ROOT / "audio" / f"s{scene:02d}_u{ui}.mp3"
+            path = ROOT / "audio" / f"{pre}{scene:02d}_u{ui}.mp3"
             spoken = " ".join(s[1] for s in segs)
             bounds = await synth(spoken, path)
             dur = duration(path)
@@ -145,8 +182,10 @@ async def main():
             data[scene].append({"file": path.name, "dur": round(dur, 3), "segments": seg_times,
                                 "aligned": ok})
             print(f"s{scene} u{ui}: {dur:.2f}s aligned={ok} ({len(bounds)} vs {sum(counts)})")
-    (ROOT / "build" / "narration.json").write_text(json.dumps(data, ensure_ascii=False, indent=1))
+    (ROOT / "build" / out_name).write_text(json.dumps(data, ensure_ascii=False, indent=1))
     print("total voz:", round(sum(u["dur"] for s in data.values() for u in s), 1), "s")
 
 
-asyncio.run(main())
+import sys  # noqa: E402
+
+asyncio.run(main("vertical" if "--vertical" in sys.argv else "horizontal"))

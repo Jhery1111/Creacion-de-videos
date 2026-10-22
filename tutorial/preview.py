@@ -1,4 +1,4 @@
-"""Captura cuadros sueltos para revisar: python3 preview.py t1 t2 ... -> build/preview/f_<t>.png"""
+"""Captura cuadros sueltos para revisar: python3 preview.py [--vertical] t1 t2 ... -> build/preview/f_<t>.png"""
 import functools
 import http.server
 import sys
@@ -21,23 +21,25 @@ def serve():
     return srv
 
 
-def main(times):
+def main(times, vertical=False):
     srv = serve()
     out = ROOT / "build" / "preview"
     out.mkdir(parents=True, exist_ok=True)
     with sync_playwright() as p:
         b = p.chromium.launch(executable_path="/opt/pw-browsers/chromium-1194/chrome-linux/chrome")
-        pg = b.new_page(viewport={"width": 1920, "height": 1080})
+        vp = {"width": 1080, "height": 1920} if vertical else {"width": 1920, "height": 1080}
+        pg = b.new_page(viewport=vp)
         pg.on("console", lambda m: print("console:", m.text))
         pg.on("pageerror", lambda e: print("ERROR:", e))
-        pg.goto(f"http://127.0.0.1:{srv.server_port}/index.html")
+        pg.goto(f"http://127.0.0.1:{srv.server_port}/{'vertical.html' if vertical else 'index.html'}")
         pg.evaluate("window.ready")
         for t in times:
             pg.evaluate(f"window.seek({t})")
-            pg.screenshot(path=str(out / f"f_{t:07.2f}.png"))
+            pg.screenshot(path=str(out / f"{'v' if vertical else 'f'}_{t:07.2f}.png"))
         print("eventos:", pg.evaluate("window.EVENTS.length"))
         b.close()
 
 
 if __name__ == "__main__":
-    main([float(x) for x in sys.argv[1:]])
+    args = [a for a in sys.argv[1:] if a != "--vertical"]
+    main([float(x) for x in args], "--vertical" in sys.argv)

@@ -152,7 +152,7 @@
  "6": [
   {
    "file": "s06_u0.mp3",
-   "dur": 9.384,
+   "dur": 10.584,
    "segments": [
     {
      "text": "Una vez actualizada tu contraseña, podrás ingresar a tu correo institucional",
@@ -160,9 +160,9 @@
      "end": 4.508
     },
     {
-     "text": "directamente desde el navegador o utilizar la aplicación Carbonio Mail.",
+     "text": "directamente desde el navegador o, como alternativa, usar la aplicación Carbonio Mail.",
      "start": 4.521,
-     "end": 8.497
+     "end": 9.688
     }
    ],
    "aligned": true
@@ -171,17 +171,34 @@
  "7": [
   {
    "file": "s07_u0.mp3",
-   "dur": 7.896,
+   "dur": 7.008,
    "segments": [
     {
-     "text": "Para utilizar Carbonio Mail en tu celular,",
+     "text": "Como alternativa, para mayor comodidad,",
      "start": 0.0,
-     "end": 2.418
+     "end": 2.507
     },
     {
-     "text": "primero debes haber actualizado correctamente tu contraseña desde el navegador.",
-     "start": 2.71,
-     "end": 7.016
+     "text": "también puedes usar la aplicación Carbonio Mail en tu celular.",
+     "start": 2.786,
+     "end": 6.129
+    }
+   ],
+   "aligned": true
+  },
+  {
+   "file": "s07_u1.mp3",
+   "dur": 6.192,
+   "segments": [
+    {
+     "text": "Pero recuerda: primero debes validar tu cuenta",
+     "start": 0.0,
+     "end": 2.748
+    },
+    {
+     "text": "y actualizar tu contraseña desde el navegador.",
+     "start": 2.76,
+     "end": 5.306
     }
    ],
    "aligned": true
@@ -293,17 +310,17 @@
   },
   {
    "file": "s10_u2.mp3",
-   "dur": 6.576,
+   "dur": 8.064,
    "segments": [
     {
-     "text": "La contraseña de Kerberos será proporcionada por Alduin",
+     "text": "La contraseña de Kerberos será proporcionada por el personal encargado del sistema",
      "start": 0.0,
-     "end": 3.064
+     "end": 4.533
     },
     {
      "text": "o llegará directamente a tu correo institucional.",
-     "start": 3.077,
-     "end": 5.686
+     "start": 4.546,
+     "end": 7.18
     }
    ],
    "aligned": true
@@ -312,22 +329,22 @@
  "11": [
   {
    "file": "s11_u0.mp3",
-   "dur": 10.464,
+   "dur": 11.808,
    "segments": [
     {
      "text": "Recuerda: primero debes configurar tu correo institucional,",
      "start": 0.0,
-     "end": 3.558
+     "end": 3.583
     },
     {
-     "text": "luego podrás utilizar Carbonio Mail",
-     "start": 3.9,
-     "end": 5.964
+     "text": "luego, si lo prefieres, podrás utilizar Carbonio Mail",
+     "start": 3.887,
+     "end": 7.319
     },
     {
      "text": "y finalmente ingresar a Kerberos con su contraseña independiente.",
-     "start": 5.977,
-     "end": 9.574
+     "start": 7.332,
+     "end": 10.929
     }
    ],
    "aligned": true
