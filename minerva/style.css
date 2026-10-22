@@ -1,0 +1,55 @@
+/* Identidad MINERVA: verdes institucionales, naranja de consentimiento, tema claro. */
+:root {
+  --g1: #1b5e20; --g2: #2e7d32; --g3: #43a047; --g4: #66bb6a; --g5: #e8f5e9;
+  --o1: #f39c12; --o2: #e67e22;
+  --bg: #f4f7f5; --ink: #22352b;
+}
+body { font-family: 'Inter', 'Segoe UI', sans-serif; color: var(--ink); }
+#stage { background: var(--bg); }
+.scene { background: transparent; }
+.hl { border-color: var(--g3); box-shadow: 0 0 0 7px rgba(67,160,71,.25); }
+.cursor .ring, .touch .ring { border-color: var(--g3); }
+.touch .dot { background: rgba(67,160,71,.38); }
+.bgfx { position: absolute; inset: 0; overflow: hidden; }
+.green-bg { background: radial-gradient(1200px 900px at 50% 40%, #2e7d32 0%, #1b5e20 55%, #0f3d14 100%); }
+.frame-browser { position: absolute; border-radius: 14px; overflow: hidden; background: #fff;
+  box-shadow: 0 30px 80px rgba(27,94,32,.25), 0 0 0 1px rgba(27,94,32,.12); }
+.frame-browser .chrome { position: absolute; left: 0; right: 0; top: 0; height: 40px; background: #e9efeb; display: flex; align-items: center; gap: 8px; padding: 0 16px; }
+.frame-browser .chrome i { width: 12px; height: 12px; border-radius: 50%; background: #c3cfc7; display: block; }
+.frame-browser .chrome .url { margin-left: 18px; height: 26px; border-radius: 13px; background: #fff; flex: 1; max-width: 560px; display: flex; align-items: center;
+  padding: 0 14px; font: 500 14px 'Inter'; color: #4a5d51; gap: 8px; }
+.frame-phone { position: absolute; border-radius: 54px; background: #15221a; box-shadow: 0 40px 90px rgba(27,94,32,.35), inset 0 0 0 2px #2c3e32; }
+.viewport { position: absolute; overflow: hidden; background: #fff; }
+.frame-phone + .viewport, .viewport.phone { border-radius: 40px; }
+.viewport img.shot { position: absolute; left: 0; top: 0; width: 100%; }
+.lens { position: absolute; border-radius: 50%; border: 6px solid var(--g3); box-shadow: 0 18px 40px rgba(0,0,0,.35), inset 0 0 0 3px #fff;
+  background-repeat: no-repeat; z-index: 35; opacity: 0; }
+.spot { position: absolute; border-radius: 14px; border: 3px solid var(--g4); box-shadow: 0 0 0 4000px rgba(10,38,18,.52); z-index: 30; opacity: 0; }
+.typed { position: absolute; z-index: 26; display: flex; align-items: center; white-space: pre; }
+.toast { position: absolute; z-index: 45; display: flex; align-items: center; gap: 16px; padding: 18px 34px 18px 20px; border-radius: 999px;
+  background: linear-gradient(135deg, #43a047, #1b5e20); color: #fff; font: 800 34px 'Inter'; box-shadow: 0 20px 50px rgba(27,94,32,.45); opacity: 0; white-space: nowrap; }
+.toast .ic { width: 52px; height: 52px; border-radius: 50%; background: #fff; color: var(--g2); display: flex; align-items: center; justify-content: center; }
+.toast .ic svg { width: 32px; height: 32px; }
+.chip { position: absolute; z-index: 44; padding: 10px 20px; border-radius: 14px; background: #fff; border: 3px solid var(--g3); color: var(--g1);
+  font: 800 26px 'Inter'; box-shadow: 0 14px 30px rgba(27,94,32,.25); opacity: 0; white-space: nowrap; }
+.chip small { display: block; font: 600 14px 'Inter'; color: #4a6b52; letter-spacing: .08em; text-transform: uppercase; }
+.chip.orange { border-color: var(--o2); color: #a8520c; }
+.steptitle { position: absolute; z-index: 46; display: flex; align-items: center; gap: 20px; padding: 16px 32px 16px 16px; border-radius: 20px;
+  background: linear-gradient(135deg, #2e7d32, #1b5e20); color: #fff; box-shadow: 0 24px 60px rgba(27,94,32,.4); opacity: 0; white-space: nowrap; }
+.steptitle .n { width: 84px; height: 84px; border-radius: 16px; background: #fff; color: var(--g1); display: flex; align-items: center; justify-content: center; font: 900 46px 'Inter'; }
+.steptitle .k { font: 700 16px 'Inter'; letter-spacing: .2em; color: #c8e6c9; }
+.steptitle .t { font: 900 40px 'Inter'; letter-spacing: .01em; }
+.progress { position: absolute; z-index: 40; }
+.progress .dot { position: absolute; width: 26px; height: 26px; border-radius: 50%; background: #fff; border: 3px solid #b9cdbf; color: #8aa092;
+  font: 800 12px 'Inter'; display: flex; align-items: center; justify-content: center; transform: translate(-50%, -50%); }
+.progress .dot.done { background: var(--g3); border-color: var(--g3); color: #fff; }
+.progress .dot.cur { background: #fff; border-color: var(--g2); color: var(--g1); }
+.progress .line { position: absolute; height: 4px; border-radius: 2px; background: #d3e1d7; }
+.progress .fill { position: absolute; height: 4px; border-radius: 2px; background: linear-gradient(90deg, #66bb6a, #2e7d32); }
+.progress .lab { position: absolute; font: 800 16px 'Inter'; color: var(--g1); letter-spacing: .08em; white-space: nowrap; transform: translateX(-50%); }
+.brandbar { position: absolute; z-index: 40; display: flex; align-items: center; gap: 12px; font: 800 17px 'Inter'; color: var(--g1); letter-spacing: .12em; white-space: nowrap; }
+.brandbar .em { width: 40px; height: 46px; background: var(--g2); -webkit-mask: url(assets/minerva_emblem.png) center/contain no-repeat; }
+#subs { position: absolute; left: 0; right: 0; display: flex; justify-content: center; z-index: 60; pointer-events: none; }
+#subs .box { padding: 12px 30px 14px; border-radius: 14px; background: rgba(27,94,32,.93); color: #fff; font: 700 32px/1.3 'Inter'; text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25); border-bottom: 4px solid var(--g4); }
+.confetti { position: absolute; width: 12px; height: 18px; border-radius: 3px; z-index: 47; }

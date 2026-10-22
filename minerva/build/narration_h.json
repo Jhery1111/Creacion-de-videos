@@ -1,0 +1,302 @@
+{
+ "0": [
+  {
+   "file": "h00_u0.mp3",
+   "dur": 4.56,
+   "segments": [
+    {
+     "text": "MINERVA, el Sistema de Evaluación Psicológica de la Policía Boliviana.",
+     "start": 0.0,
+     "end": 3.787
+    }
+   ]
+  },
+  {
+   "file": "h00_u1.mp3",
+   "dur": 3.984,
+   "segments": [
+    {
+     "text": "Te mostramos cómo ingresar y rendir tu examen, paso a paso.",
+     "start": 0.0,
+     "end": 3.219
+    }
+   ]
+  }
+ ],
+ "1": [
+  {
+   "file": "h01_u0.mp3",
+   "dur": 4.656,
+   "segments": [
+    {
+     "text": "Paso uno: en la pantalla de inicio, hacé clic en el portal Policía.",
+     "start": 0.0,
+     "end": 3.885
+    }
+   ]
+  }
+ ],
+ "2": [
+  {
+   "file": "h02_u0.mp3",
+   "dur": 4.656,
+   "segments": [
+    {
+     "text": "Escribí tu número de carnet y tu escalafón,",
+     "start": 0.0,
+     "end": 2.05
+    },
+    {
+     "text": "tal como figuran en tu credencial,",
+     "start": 2.323,
+     "end": 3.885
+    }
+   ]
+  },
+  {
+   "file": "h02_u1.mp3",
+   "dur": 2.376,
+   "segments": [
+    {
+     "text": "y presioná Ingresar al Sistema.",
+     "start": 0.0,
+     "end": 1.602
+    }
+   ]
+  }
+ ],
+ "3": [
+  {
+   "file": "h03_u0.mp3",
+   "dur": 3.888,
+   "segments": [
+    {
+     "text": "En la sala, tu sesión aparece en la pestaña En Inscripción.",
+     "start": 0.0,
+     "end": 3.12
+    }
+   ]
+  },
+  {
+   "file": "h03_u1.mp3",
+   "dur": 2.664,
+   "segments": [
+    {
+     "text": "Hacé clic en Descargar Consentimiento.",
+     "start": 0.0,
+     "end": 1.907
+    }
+   ]
+  }
+ ],
+ "4": [
+  {
+   "file": "h04_u0.mp3",
+   "dur": 6.312,
+   "segments": [
+    {
+     "text": "Verificá tus datos.",
+     "start": 0.0,
+     "end": 1.307
+    },
+    {
+     "text": "Si tu grado o tu departamento no son correctos, corregilos aquí.",
+     "start": 2.065,
+     "end": 5.529
+    }
+   ]
+  },
+  {
+   "file": "h04_u1.mp3",
+   "dur": 4.104,
+   "segments": [
+    {
+     "text": "Luego confirmá con: Mis datos son correctos, Descargar.",
+     "start": 0.0,
+     "end": 3.328
+    }
+   ]
+  }
+ ],
+ "5": [
+  {
+   "file": "h05_u0.mp3",
+   "dur": 5.184,
+   "segments": [
+    {
+     "text": "Se descarga tu Consentimiento Informado oficial,",
+     "start": 0.0,
+     "end": 2.301
+    },
+    {
+     "text": "con tus datos y el espacio para tu firma.",
+     "start": 2.552,
+     "end": 4.399
+    }
+   ]
+  }
+ ],
+ "6": [
+  {
+   "file": "h06_u0.mp3",
+   "dur": 4.584,
+   "segments": [
+    {
+     "text": "Cuando el examen se habilita,",
+     "start": 0.0,
+     "end": 1.219
+    },
+    {
+     "text": "la sesión pasa a la pestaña Ya Disponibles.",
+     "start": 1.503,
+     "end": 3.798
+    }
+   ]
+  },
+  {
+   "file": "h06_u1.mp3",
+   "dur": 2.424,
+   "segments": [
+    {
+     "text": "Hacé clic en Entrar al Examen.",
+     "start": 0.0,
+     "end": 1.656
+    }
+   ]
+  }
+ ],
+ "7": [
+  {
+   "file": "h07_u0.mp3",
+   "dur": 4.944,
+   "segments": [
+    {
+     "text": "En el lobby revisá la duración, tus intentos",
+     "start": 0.0,
+     "end": 2.41
+    },
+    {
+     "text": "y leé los términos y condiciones.",
+     "start": 2.421,
+     "end": 4.18
+    }
+   ]
+  },
+  {
+   "file": "h07_u1.mp3",
+   "dur": 4.68,
+   "segments": [
+    {
+     "text": "Marcá la casilla He leído y acepto:",
+     "start": 0.0,
+     "end": 2.006
+    },
+    {
+     "text": "así se habilita Iniciar Examen.",
+     "start": 2.257,
+     "end": 3.907
+    }
+   ]
+  }
+ ],
+ "8": [
+  {
+   "file": "h08_u0.mp3",
+   "dur": 6.6,
+   "segments": [
+    {
+     "text": "Respondé una pregunta a la vez.",
+     "start": 0.0,
+     "end": 1.809
+    },
+    {
+     "text": "Arriba ves el tiempo restante y, a la derecha, tu progreso.",
+     "start": 2.568,
+     "end": 5.835
+    }
+   ]
+  },
+  {
+   "file": "h08_u1.mp3",
+   "dur": 2.976,
+   "segments": [
+    {
+     "text": "Elegí tu respuesta y avanzá con Siguiente.",
+     "start": 0.0,
+     "end": 2.203
+    }
+   ]
+  }
+ ],
+ "9": [
+  {
+   "file": "h09_u0.mp3",
+   "dur": 4.296,
+   "segments": [
+    {
+     "text": "Al presionar Enviar, si te faltan preguntas, el sistema te avisa.",
+     "start": 0.0,
+     "end": 3.525
+    }
+   ]
+  },
+  {
+   "file": "h09_u1.mp3",
+   "dur": 3.696,
+   "segments": [
+    {
+     "text": "Podés responder las que faltan",
+     "start": 0.0,
+     "end": 1.405
+    },
+    {
+     "text": "o confirmar con Enviar Examen.",
+     "start": 1.416,
+     "end": 2.924
+    }
+   ]
+  }
+ ],
+ "10": [
+  {
+   "file": "h10_u0.mp3",
+   "dur": 2.616,
+   "segments": [
+    {
+     "text": "Tu examen se envía de forma segura,",
+     "start": 0.0,
+     "end": 1.831
+    }
+   ]
+  },
+  {
+   "file": "h10_u1.mp3",
+   "dur": 4.464,
+   "segments": [
+    {
+     "text": "y verás el resumen: intento, preguntas, duración y fecha.",
+     "start": 0.0,
+     "end": 3.689
+    }
+   ]
+  }
+ ],
+ "11": [
+  {
+   "file": "h11_u0.mp3",
+   "dur": 6.168,
+   "segments": [
+    {
+     "text": "¡Listo! Tu examen quedó registrado.",
+     "start": 0.0,
+     "end": 2.786
+    },
+    {
+     "text": "Consultá tu resultado en el sistema.",
+     "start": 3.54,
+     "end": 5.409
+    }
+   ]
+  }
+ ]
+}

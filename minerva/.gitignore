@@ -1,0 +1,11 @@
+# capturas originales SIN censura: nunca al repositorio
+raw/
+capturas*/
+*.zip
+# artefactos intermedios
+build/chunks_*/
+build/preview/
+build/mix_*.wav
+build/video_noaudio_*.mp4
+build/*.log
+__pycache__/
