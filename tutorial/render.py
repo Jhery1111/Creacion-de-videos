@@ -85,7 +85,8 @@ def main():
     out_dir.mkdir(exist_ok=True)
     final = out_dir / "tutorial_sistemas_institucionales.mp4"
     if mix.exists() and a.t_from == 0 and a.t_to is None:
-        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(video), "-i", str(mix), "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(video), "-i", str(mix), "-c:v", "copy", "-af", "loudnorm=I=-16:TP=-1.5:LRA=11", "-ar", "48000",
+                        "-c:a", "aac", "-b:a", "192k",
                         "-shortest", "-movflags", "+faststart", str(final)], check=True)
         write_srt(tl, final.with_suffix(".srt"))
         print("final:", final)

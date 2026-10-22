@@ -1,0 +1,135 @@
+1
+00:00:02,800 --> 00:00:04,968
+Bienvenido a esta guía.
+
+2
+00:00:05,852 --> 00:00:10,842
+Aprenderás paso a paso cómo ingresar a tu correo institucional de la Policía Boliviana,
+
+3
+00:00:10,892 --> 00:00:16,632
+actualizar tu contraseña, configurar Carbonio Mail y acceder al sistema Kerberos.
+
+4
+00:00:21,620 --> 00:00:26,369
+Primero, abre tu navegador e ingresa la dirección mail.policia.bo
+
+5
+00:00:26,419 --> 00:00:30,488
+para acceder al correo institucional de la Policía Boliviana.
+
+6
+00:00:38,068 --> 00:00:42,098
+En el primer campo escribe tu correo institucional completo.
+
+7
+00:00:44,892 --> 00:00:48,631
+En el segundo campo introduce tu contraseña inicial.
+
+8
+00:00:51,204 --> 00:00:55,677
+Una vez completados ambos espacios, presiona Iniciar sesión.
+
+9
+00:01:01,460 --> 00:01:07,035
+En tu primer ingreso, el sistema te solicitará establecer una nueva contraseña.
+
+10
+00:01:09,220 --> 00:01:14,745
+Escríbela en el primer espacio y repítela exactamente en el segundo para confirmarla.
+
+11
+00:01:20,332 --> 00:01:23,486
+Tu nueva contraseña debe tener más de quince caracteres
+
+12
+00:01:23,536 --> 00:01:28,351
+y combinar letras mayúsculas, minúsculas, números y símbolos.
+
+13
+00:01:30,140 --> 00:01:33,433
+Además, no debe contener tu nombre, apellidos
+
+14
+00:01:33,483 --> 00:01:37,172
+ni información relacionada con tu correo institucional.
+
+15
+00:01:45,764 --> 00:01:50,235
+Una vez actualizada tu contraseña, podrás ingresar a tu correo institucional
+
+16
+00:01:50,285 --> 00:01:54,961
+directamente desde el navegador o utilizar la aplicación Carbonio Mail.
+
+17
+00:02:01,948 --> 00:02:04,608
+Para utilizar Carbonio Mail en tu celular,
+
+18
+00:02:04,658 --> 00:02:09,664
+primero debes haber actualizado correctamente tu contraseña desde el navegador.
+
+19
+00:02:17,844 --> 00:02:24,508
+Al abrir Carbonio Mail, introduce el dominio mail.policia.bo y presiona continuar.
+
+20
+00:02:27,684 --> 00:02:30,989
+Después, escribe tu correo institucional completo
+
+21
+00:02:31,039 --> 00:02:34,918
+y la nueva contraseña que configuraste desde el navegador.
+
+22
+00:02:37,300 --> 00:02:40,089
+Finalmente, inicia sesión.
+
+23
+00:02:47,076 --> 00:02:50,204
+Para ingresar al sistema Kerberos, abre tu navegador
+
+24
+00:02:50,254 --> 00:02:54,462
+y escribe kerberos-produccion.policia.bo.
+
+25
+00:02:55,836 --> 00:02:59,587
+Encontrarás una nueva pantalla de inicio de sesión.
+
+26
+00:03:05,572 --> 00:03:09,017
+Para acceder a Kerberos debes escribir tu correo institucional
+
+27
+00:03:09,067 --> 00:03:12,249
+y la contraseña específica de este sistema.
+
+28
+00:03:14,636 --> 00:03:18,299
+Recuerda que no es la misma contraseña de tu correo.
+
+29
+00:03:21,276 --> 00:03:24,303
+La contraseña de Kerberos será proporcionada por Alduin
+
+30
+00:03:24,353 --> 00:03:27,662
+o llegará directamente a tu correo institucional.
+
+31
+00:03:36,252 --> 00:03:40,102
+Recuerda: primero debes configurar tu correo institucional,
+
+32
+00:03:40,152 --> 00:03:42,179
+luego podrás utilizar Carbonio Mail
+
+33
+00:03:42,229 --> 00:03:46,526
+y finalmente ingresar a Kerberos con su contraseña independiente.
+
+34
+00:03:48,316 --> 00:03:51,738
+Mantén siempre tus credenciales protegidas.
