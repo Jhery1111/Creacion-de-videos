@@ -1,0 +1,10 @@
+# Sesiones (JWT) generadas al sembrar los datos: solo sirven en el entorno local.
+datos/sesiones.json
+# Intermedios del render; se conservan los datos que alimentan la pagina del video.
+build/*
+!build/events_h.json
+!build/narration_h.json
+!build/targets.js
+!build/targets.json
+!build/timeline_h.js
+!build/timeline_h.json

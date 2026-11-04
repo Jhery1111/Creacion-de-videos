@@ -1,0 +1,817 @@
+{
+ "0": [
+  {
+   "file": "h00_u0.mp3",
+   "dur": 3.48,
+   "segments": [
+    {
+     "text": "SISCOP, el Sistema de Correspondencia Policial.",
+     "start": 0.0,
+     "end": 2.694
+    }
+   ]
+  },
+  {
+   "file": "h00_u1.mp3",
+   "dur": 5.616,
+   "segments": [
+    {
+     "text": "En esta guía vas a ver todo lo que hace la secretaria de una unidad,",
+     "start": 0.0,
+     "end": 3.109
+    },
+    {
+     "text": "y cómo hacerlo correctamente.",
+     "start": 3.415,
+     "end": 4.847
+    }
+   ]
+  }
+ ],
+ "1": [
+  {
+   "file": "h01_u0.mp3",
+   "dur": 9.048,
+   "segments": [
+    {
+     "text": "Al ingresar llegás al panel de correspondencia.",
+     "start": 0.0,
+     "end": 2.279
+    },
+    {
+     "text": "Arriba ves los pendientes de tu unidad, lo que lleva más de tres días sin atender",
+     "start": 3.038,
+     "end": 6.818
+    },
+    {
+     "text": "y el tiempo promedio de atención.",
+     "start": 6.829,
+     "end": 8.271
+    }
+   ]
+  },
+  {
+   "file": "h01_u1.mp3",
+   "dur": 8.736,
+   "segments": [
+    {
+     "text": "En el menú están las bandejas, la recepción de terceros y la nueva correspondencia;",
+     "start": 0.0,
+     "end": 3.94
+    },
+    {
+     "text": "y en Ajustes, las adscripciones, el organigrama y la configuración.",
+     "start": 4.202,
+     "end": 7.961
+    }
+   ]
+  }
+ ],
+ "2": [
+  {
+   "file": "h02_u0.mp3",
+   "dur": 9.552,
+   "segments": [
+    {
+     "text": "Antes de empezar, configurá tu unidad.",
+     "start": 0.0,
+     "end": 2.203
+    },
+    {
+     "text": "En Configuración, pestaña Remitente,",
+     "start": 2.961,
+     "end": 4.993
+    },
+    {
+     "text": "cargá el nombre, el cargo y el teléfono de quien firma los documentos.",
+     "start": 5.245,
+     "end": 8.774
+    }
+   ]
+  },
+  {
+   "file": "h02_u1.mp3",
+   "dur": 5.136,
+   "segments": [
+    {
+     "text": "Hacé clic en Guardar cambios:",
+     "start": 0.0,
+     "end": 1.47
+    },
+    {
+     "text": "estos datos se completan solos en cada documento nuevo.",
+     "start": 1.787,
+     "end": 4.366
+    }
+   ]
+  },
+  {
+   "file": "h02_u2.mp3",
+   "dur": 5.856,
+   "segments": [
+    {
+     "text": "En Hoja de ruta podés activar la numeración automática,",
+     "start": 0.0,
+     "end": 2.618
+    },
+    {
+     "text": "con un número inicial y un prefijo para tu unidad.",
+     "start": 2.913,
+     "end": 5.098
+    }
+   ]
+  }
+ ],
+ "3": [
+  {
+   "file": "h03_u0.mp3",
+   "dur": 6.528,
+   "segments": [
+    {
+     "text": "Para registrar un documento, hacé clic en Nueva correspondencia.",
+     "start": 0.0,
+     "end": 3.241
+    },
+    {
+     "text": "El registro tiene cinco pasos.",
+     "start": 3.999,
+     "end": 5.758
+    }
+   ]
+  },
+  {
+   "file": "h03_u1.mp3",
+   "dur": 10.512,
+   "segments": [
+    {
+     "text": "Primero elegí el origen: Interno, si va a otra unidad de la Policía,",
+     "start": 0.0,
+     "end": 3.798
+    },
+    {
+     "text": "o Externo, si va a otra institución.",
+     "start": 4.049,
+     "end": 6.202
+    },
+    {
+     "text": "Y marcá la clasificación; por ejemplo, Normal.",
+     "start": 6.949,
+     "end": 9.725
+    }
+   ]
+  },
+  {
+   "file": "h03_u2.mp3",
+   "dur": 7.32,
+   "segments": [
+    {
+     "text": "En el paso dos cargá el número de documento, la fecha, el tipo y las hojas.",
+     "start": 0.0,
+     "end": 4.071
+    },
+    {
+     "text": "La hoja de ruta se sugiere sola.",
+     "start": 4.83,
+     "end": 6.545
+    }
+   ]
+  },
+  {
+   "file": "h03_u3.mp3",
+   "dur": 3.552,
+   "segments": [
+    {
+     "text": "Y adjuntá el PDF escaneado del documento firmado.",
+     "start": 0.0,
+     "end": 2.782
+    }
+   ]
+  }
+ ],
+ "4": [
+  {
+   "file": "h04_u0.mp3",
+   "dur": 7.464,
+   "segments": [
+    {
+     "text": "En el paso tres, el remitente ya viene de la configuración.",
+     "start": 0.0,
+     "end": 3.175
+    },
+    {
+     "text": "Solo escribí la referencia: de qué trata el documento.",
+     "start": 3.923,
+     "end": 6.687
+    }
+   ]
+  },
+  {
+   "file": "h04_u1.mp3",
+   "dur": 4.488,
+   "segments": [
+    {
+     "text": "El paso cuatro es opcional: anexos o enlaces a archivos pesados.",
+     "start": 0.0,
+     "end": 3.71
+    }
+   ]
+  },
+  {
+   "file": "h04_u2.mp3",
+   "dur": 5.712,
+   "segments": [
+    {
+     "text": "En el paso cinco marcá las instrucciones para quien lo recibe;",
+     "start": 0.0,
+     "end": 2.771
+    },
+    {
+     "text": "por ejemplo, Informar y Responder.",
+     "start": 2.967,
+     "end": 4.956
+    }
+   ]
+  },
+  {
+   "file": "h04_u3.mp3",
+   "dur": 5.496,
+   "segments": [
+    {
+     "text": "Hacé clic en Registrar correspondencia.",
+     "start": 0.0,
+     "end": 1.995
+    },
+    {
+     "text": "El sistema le asigna un código único.",
+     "start": 2.753,
+     "end": 4.731
+    }
+   ]
+  }
+ ],
+ "5": [
+  {
+   "file": "h05_u0.mp3",
+   "dur": 5.928,
+   "segments": [
+    {
+     "text": "Registrar no es enviar.",
+     "start": 0.0,
+     "end": 1.427
+    },
+    {
+     "text": "Hacé clic en Enviar a unidades y buscá el destino por su nombre.",
+     "start": 2.174,
+     "end": 5.146
+    }
+   ]
+  },
+  {
+   "file": "h05_u1.mp3",
+   "dur": 6.312,
+   "segments": [
+    {
+     "text": "Podés marcar varias unidades a la vez.",
+     "start": 0.0,
+     "end": 2.181
+    },
+    {
+     "text": "El envío inicial siempre va a unidades de nivel uno.",
+     "start": 2.939,
+     "end": 5.54
+    }
+   ]
+  },
+  {
+   "file": "h05_u2.mp3",
+   "dur": 6.816,
+   "segments": [
+    {
+     "text": "Confirmá con Sí, enviar.",
+     "start": 0.0,
+     "end": 1.667
+    },
+    {
+     "text": "El envío no se puede deshacer: revisá los destinos antes de confirmar.",
+     "start": 2.426,
+     "end": 6.042
+    }
+   ]
+  },
+  {
+   "file": "h05_u3.mp3",
+   "dur": 3.072,
+   "segments": [
+    {
+     "text": "Listo: la correspondencia quedó enviada.",
+     "start": 0.0,
+     "end": 2.301
+    }
+   ]
+  }
+ ],
+ "6": [
+  {
+   "file": "h06_u0.mp3",
+   "dur": 8.664,
+   "segments": [
+    {
+     "text": "Lo que llega a tu unidad aparece en la Bandeja de entrada.",
+     "start": 0.0,
+     "end": 2.585
+    },
+    {
+     "text": "Las carpetas filtran por estado: pendientes, por responder, recepcionados y más.",
+     "start": 3.344,
+     "end": 7.889
+    }
+   ]
+  },
+  {
+   "file": "h06_u1.mp3",
+   "dur": 5.76,
+   "segments": [
+    {
+     "text": "Hacé clic en un documento para ver su detalle en el panel lateral,",
+     "start": 0.0,
+     "end": 2.967
+    },
+    {
+     "text": "con los datos y el PDF adjunto.",
+     "start": 3.219,
+     "end": 5.0
+    }
+   ]
+  }
+ ],
+ "7": [
+  {
+   "file": "h07_u0.mp3",
+   "dur": 8.4,
+   "segments": [
+    {
+     "text": "Cuando el documento llega a tu unidad, hacé clic en Recepcionar.",
+     "start": 0.0,
+     "end": 3.077
+    },
+    {
+     "text": "Si no corresponde, elegí Rechazar y explicá el motivo en observaciones.",
+     "start": 3.835,
+     "end": 7.627
+    }
+   ]
+  },
+  {
+   "file": "h07_u1.mp3",
+   "dur": 4.632,
+   "segments": [
+    {
+     "text": "Confirmá la recepción:",
+     "start": 0.0,
+     "end": 1.132
+    },
+    {
+     "text": "quien lo envió ve al instante que tu unidad ya lo recibió.",
+     "start": 1.361,
+     "end": 3.874
+    }
+   ]
+  },
+  {
+   "file": "h07_u2.mp3",
+   "dur": 4.2,
+   "segments": [
+    {
+     "text": "Recepcioná lo antes posible: el panel mide el tiempo de atención.",
+     "start": 0.0,
+     "end": 3.448
+    }
+   ]
+  }
+ ],
+ "8": [
+  {
+   "file": "h08_u0.mp3",
+   "dur": 7.92,
+   "segments": [
+    {
+     "text": "Con Abrir completo ves el documento y todas sus acciones:",
+     "start": 0.0,
+     "end": 2.672
+    },
+    {
+     "text": "el PDF, la hoja de ruta, derivar, responder o marcar como atendido.",
+     "start": 2.935,
+     "end": 7.152
+    }
+   ]
+  },
+  {
+   "file": "h08_u1.mp3",
+   "dur": 9.408,
+   "segments": [
+    {
+     "text": "Para pasarlo a una dependencia de tu unidad, hacé clic en Derivar",
+     "start": 0.0,
+     "end": 3.109
+    },
+    {
+     "text": "y elegí si va con un documento nuevo o sin documento.",
+     "start": 3.12,
+     "end": 5.743
+    },
+    {
+     "text": "Ojo: solo podés derivar una vez.",
+     "start": 6.501,
+     "end": 8.632
+    }
+   ]
+  },
+  {
+   "file": "h08_u2.mp3",
+   "dur": 4.944,
+   "segments": [
+    {
+     "text": "Marcá la dependencia de destino, revisá la hoja de ruta",
+     "start": 0.0,
+     "end": 3.022
+    },
+    {
+     "text": "y confirmá con Derivar.",
+     "start": 3.033,
+     "end": 4.169
+    }
+   ]
+  },
+  {
+   "file": "h08_u3.mp3",
+   "dur": 2.76,
+   "segments": [
+    {
+     "text": "El documento queda en estado Derivado.",
+     "start": 0.0,
+     "end": 2.006
+    }
+   ]
+  }
+ ],
+ "9": [
+  {
+   "file": "h09_u0.mp3",
+   "dur": 4.752,
+   "segments": [
+    {
+     "text": "En Seguimiento ves el avance y la ruta del documento,",
+     "start": 0.0,
+     "end": 2.465
+    },
+    {
+     "text": "con la fecha de cada paso.",
+     "start": 2.683,
+     "end": 3.973
+    }
+   ]
+  },
+  {
+   "file": "h09_u1.mp3",
+   "dur": 4.728,
+   "segments": [
+    {
+     "text": "Y en Árbol completo, cada unidad y dependencia que lo tiene, con su estado.",
+     "start": 0.0,
+     "end": 3.973
+    }
+   ]
+  }
+ ],
+ "10": [
+  {
+   "file": "h10_u0.mp3",
+   "dur": 6.36,
+   "segments": [
+    {
+     "text": "Para contestar, hacé clic en Responder.",
+     "start": 0.0,
+     "end": 2.159
+    },
+    {
+     "text": "La respuesta llega a la bandeja de quien te envió el documento.",
+     "start": 2.906,
+     "end": 5.583
+    }
+   ]
+  },
+  {
+   "file": "h10_u1.mp3",
+   "dur": 5.952,
+   "segments": [
+    {
+     "text": "Elegí el origen y la clasificación;",
+     "start": 0.0,
+     "end": 1.853
+    },
+    {
+     "text": "cargá los datos de tu oficio de respuesta y adjuntá su PDF.",
+     "start": 2.05,
+     "end": 5.175
+    }
+   ]
+  },
+  {
+   "file": "h10_u2.mp3",
+   "dur": 6.792,
+   "segments": [
+    {
+     "text": "El remitente se completa solo: escribí la referencia,",
+     "start": 0.0,
+     "end": 2.891
+    },
+    {
+     "text": "agregá anexos si hace falta y hacé clic en Enviar respuesta.",
+     "start": 3.12,
+     "end": 6.038
+    }
+   ]
+  },
+  {
+   "file": "h10_u3.mp3",
+   "dur": 3.984,
+   "segments": [
+    {
+     "text": "El documento queda Atendido, con la respuesta en su expediente.",
+     "start": 0.0,
+     "end": 3.23
+    }
+   ]
+  }
+ ],
+ "11": [
+  {
+   "file": "h11_u0.mp3",
+   "dur": 6.888,
+   "segments": [
+    {
+     "text": "En la Bandeja de salida está lo que tu unidad registró y envió.",
+     "start": 0.0,
+     "end": 2.946
+    },
+    {
+     "text": "La barra muestra cuántos destinos ya lo procesaron.",
+     "start": 3.693,
+     "end": 6.119
+    }
+   ]
+  },
+  {
+   "file": "h11_u1.mp3",
+   "dur": 3.96,
+   "segments": [
+    {
+     "text": "Al abrir uno, en Seguimiento ves el estado de cada unidad.",
+     "start": 0.0,
+     "end": 3.208
+    }
+   ]
+  },
+  {
+   "file": "h11_u2.mp3",
+   "dur": 7.392,
+   "segments": [
+    {
+     "text": "Cuando el trámite concluyó, hacé clic en Archivar y confirmá.",
+     "start": 0.0,
+     "end": 3.088
+    },
+    {
+     "text": "Un documento archivado ya no se puede modificar ni reenviar.",
+     "start": 3.846,
+     "end": 6.622
+    }
+   ]
+  }
+ ],
+ "12": [
+  {
+   "file": "h12_u0.mp3",
+   "dur": 5.232,
+   "segments": [
+    {
+     "text": "Cuando una persona civil entrega documentación en ventanilla,",
+     "start": 0.0,
+     "end": 2.771
+    },
+    {
+     "text": "usá Recepción de terceros.",
+     "start": 3.022,
+     "end": 4.453
+    }
+   ]
+  },
+  {
+   "file": "h12_u1.mp3",
+   "dur": 8.496,
+   "segments": [
+    {
+     "text": "Cargá los datos de quien entrega: nombre, carnet y teléfono;",
+     "start": 0.0,
+     "end": 3.241
+    },
+    {
+     "text": "y los del documento: tipo, fecha, hojas, clasificación y referencia.",
+     "start": 3.481,
+     "end": 7.72
+    }
+   ]
+  },
+  {
+   "file": "h12_u2.mp3",
+   "dur": 2.52,
+   "segments": [
+    {
+     "text": "Hacé clic en Registrar recepción.",
+     "start": 0.0,
+     "end": 1.765
+    }
+   ]
+  },
+  {
+   "file": "h12_u3.mp3",
+   "dur": 7.032,
+   "segments": [
+    {
+     "text": "Dictale el código de seguimiento a la persona e imprimí su comprobante.",
+     "start": 0.0,
+     "end": 3.47
+    },
+    {
+     "text": "El documento ya está en tu bandeja de entrada.",
+     "start": 4.229,
+     "end": 6.25
+    }
+   ]
+  }
+ ],
+ "13": [
+  {
+   "file": "h13_u0.mp3",
+   "dur": 6.168,
+   "segments": [
+    {
+     "text": "En Adscripciones gestionás al personal de tu unidad.",
+     "start": 0.0,
+     "end": 2.519
+    },
+    {
+     "text": "Las solicitudes pendientes aparecen primero.",
+     "start": 3.278,
+     "end": 5.387
+    }
+   ]
+  },
+  {
+   "file": "h13_u1.mp3",
+   "dur": 5.928,
+   "segments": [
+    {
+     "text": "Hacé clic en Asignar y aprobar,",
+     "start": 0.0,
+     "end": 1.503
+    },
+    {
+     "text": "y elegí la dependencia: cada cargo admite una sola persona.",
+     "start": 1.798,
+     "end": 5.153
+    }
+   ]
+  },
+  {
+   "file": "h13_u2.mp3",
+   "dur": 7.104,
+   "segments": [
+    {
+     "text": "Guardá la asignación.",
+     "start": 0.0,
+     "end": 1.219
+    },
+    {
+     "text": "En Integrantes de mi unidad podés cambiar su dependencia, reemplazarlo o desvincularlo.",
+     "start": 1.967,
+     "end": 6.326
+    }
+   ]
+  }
+ ],
+ "14": [
+  {
+   "file": "h14_u0.mp3",
+   "dur": 9.144,
+   "segments": [
+    {
+     "text": "En Organigrama recorrés la estructura de tu unidad por niveles.",
+     "start": 0.0,
+     "end": 3.077
+    },
+    {
+     "text": "Cada dependencia tiene sus acciones: ver, añadir hija, modificar o inactivar.",
+     "start": 3.835,
+     "end": 8.37
+    }
+   ]
+  },
+  {
+   "file": "h14_u1.mp3",
+   "dur": 4.872,
+   "segments": [
+    {
+     "text": "Para crear una nueva, hacé clic en Añadir hija,",
+     "start": 0.0,
+     "end": 2.454
+    },
+    {
+     "text": "escribí el nombre y guardá.",
+     "start": 2.705,
+     "end": 4.093
+    }
+   ]
+  },
+  {
+   "file": "h14_u2.mp3",
+   "dur": 3.336,
+   "segments": [
+    {
+     "text": "La nueva división aparece dentro de su departamento.",
+     "start": 0.0,
+     "end": 2.563
+    }
+   ]
+  }
+ ],
+ "15": [
+  {
+   "file": "h15_u0.mp3",
+   "dur": 6.984,
+   "segments": [
+    {
+     "text": "La campana te avisa en tiempo real de cada documento nuevo.",
+     "start": 0.0,
+     "end": 2.935
+    },
+    {
+     "text": "Podés ver solo las no leídas o marcarlas todas.",
+     "start": 3.693,
+     "end": 6.195
+    }
+   ]
+  },
+  {
+   "file": "h15_u1.mp3",
+   "dur": 6.168,
+   "segments": [
+    {
+     "text": "En tu avatar ves tus datos y tu unidad.",
+     "start": 0.0,
+     "end": 2.039
+    },
+    {
+     "text": "Al terminar la jornada, salí con Cerrar sistema.",
+     "start": 2.797,
+     "end": 5.387
+    }
+   ]
+  }
+ ],
+ "16": [
+  {
+   "file": "h16_u0.mp3",
+   "dur": 7.872,
+   "segments": [
+    {
+     "text": "Recordá: configurá tu unidad, recepcioná a tiempo,",
+     "start": 0.0,
+     "end": 2.989
+    },
+    {
+     "text": "revisá antes de enviar, derivá una sola vez",
+     "start": 3.284,
+     "end": 5.633
+    },
+    {
+     "text": "y archivá solo lo concluido.",
+     "start": 5.644,
+     "end": 7.098
+    }
+   ]
+  },
+  {
+   "file": "h16_u1.mp3",
+   "dur": 3.984,
+   "segments": [
+    {
+     "text": "SISCOP: la correspondencia de tu unidad, en orden y a tiempo.",
+     "start": 0.0,
+     "end": 3.219
+    }
+   ]
+  }
+ ]
+}

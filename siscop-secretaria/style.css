@@ -1,0 +1,67 @@
+/* Identidad SISCOP: verdes institucionales del sistema (barra lateral y botones), ambar de avisos, tema claro. */
+:root {
+  --g0: #16280e; --g1: #223d16; --g2: #2f5a17; --g3: #45751b; --g4: #77a845; --g5: #e9f1e0;
+  --o1: #ffb400; --o2: #c98a00;
+  --bg: #f3f6f0; --ink: #1f2d17;
+}
+body { font-family: 'Inter', 'Segoe UI', sans-serif; color: var(--ink); }
+#stage { background: var(--bg); }
+.scene { background: transparent; }
+.hl { position: absolute; border: 3px solid var(--g3); border-radius: 10px; box-shadow: 0 0 0 6px rgba(69,117,27,.22); z-index: 28; opacity: 0; }
+.cursor { z-index: 50; }
+.cursor .ring { border-color: var(--g3); }
+.bgfx { position: absolute; inset: 0; overflow: hidden; }
+.green-bg { background: radial-gradient(1300px 900px at 50% 42%, #3d6b1f 0%, #223d16 55%, #0f1d09 100%); }
+.grid-green { position: absolute; inset: -60px; background:
+    linear-gradient(rgba(233,241,224,.06) 1px, transparent 1px) 0 0/60px 60px,
+    linear-gradient(90deg, rgba(233,241,224,.06) 1px, transparent 1px) 0 0/60px 60px; }
+.frame-browser { position: absolute; border-radius: 14px; overflow: hidden; background: #fff;
+  box-shadow: 0 30px 80px rgba(34,61,22,.28), 0 0 0 1px rgba(34,61,22,.14); }
+.frame-browser .chrome { position: absolute; left: 0; right: 0; top: 0; height: 40px; background: #e7ede2; display: flex; align-items: center; gap: 8px; padding: 0 16px; }
+.frame-browser .chrome i { width: 12px; height: 12px; border-radius: 50%; background: #c2cdb9; display: block; }
+.frame-browser .chrome .url { margin-left: 18px; height: 26px; border-radius: 13px; background: #fff; flex: 1; max-width: 560px; display: flex; align-items: center;
+  padding: 0 14px; font: 500 14px 'Inter'; color: #4d5e42; gap: 8px; }
+.viewport { position: absolute; overflow: hidden; background: #fff; }
+.viewport img.shot { position: absolute; left: 0; top: 0; width: 100%; }
+.patch { position: absolute; overflow: hidden; z-index: 20; }
+.patch img { position: absolute; }
+.cover { position: absolute; z-index: 21; background: #fff; }
+.lens { position: absolute; border-radius: 50%; border: 6px solid var(--g3); box-shadow: 0 18px 40px rgba(0,0,0,.35), inset 0 0 0 3px #fff;
+  background-repeat: no-repeat; z-index: 35; opacity: 0; }
+.spot { position: absolute; border-radius: 12px; border: 3px solid var(--g4); box-shadow: 0 0 0 4000px rgba(14,28,8,.5); z-index: 30; opacity: 0; }
+.tip { position: absolute; z-index: 44; display: flex; align-items: center; gap: 14px; padding: 14px 22px 14px 14px; border-radius: 16px; background: #fff;
+  border: 3px solid var(--g3); color: var(--g1); font: 800 25px/1.2 'Inter'; box-shadow: 0 16px 36px rgba(34,61,22,.28); opacity: 0; white-space: nowrap; }
+.tip .ic { flex: none; width: 44px; height: 44px; border-radius: 12px; background: var(--g3); color: #fff; display: flex; align-items: center; justify-content: center; }
+.tip .ic svg { width: 26px; height: 26px; }
+.tip small { display: block; font: 700 13px 'Inter'; color: #5b7349; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 2px; }
+.tip.warn { border-color: var(--o1); color: #7a5200; }
+.tip.warn .ic { background: var(--o1); }
+.tip.warn small { color: #9a6c00; }
+.steptitle { position: absolute; z-index: 46; display: flex; align-items: center; gap: 20px; padding: 16px 32px 16px 16px; border-radius: 20px;
+  background: linear-gradient(135deg, #45751b, #223d16); color: #fff; box-shadow: 0 24px 60px rgba(34,61,22,.4); opacity: 0; white-space: nowrap; }
+.steptitle .n { width: 84px; height: 84px; border-radius: 16px; background: #fff; color: var(--g1); display: flex; align-items: center; justify-content: center; font: 900 46px 'Inter'; }
+.steptitle .k { font: 700 16px 'Inter'; letter-spacing: .2em; color: #d3e6c1; }
+.steptitle .t { font: 900 40px 'Inter'; letter-spacing: .01em; }
+.progress { position: absolute; z-index: 40; }
+.progress .dot { position: absolute; width: 26px; height: 26px; border-radius: 50%; background: #fff; border: 3px solid #bccbb1; color: #82937a;
+  font: 800 11px 'Inter'; display: flex; align-items: center; justify-content: center; transform: translate(-50%, -50%); }
+.progress .dot.done { background: var(--g3); border-color: var(--g3); color: #fff; }
+.progress .dot.cur { background: #fff; border-color: var(--g2); color: var(--g1); }
+.progress .line { position: absolute; height: 4px; border-radius: 2px; background: #d6e0cd; }
+.progress .fill { position: absolute; height: 4px; border-radius: 2px; background: linear-gradient(90deg, #77a845, #2f5a17); }
+.progress .lab { position: absolute; font: 800 15px 'Inter'; color: var(--g1); letter-spacing: .08em; white-space: nowrap; transform: translateX(-50%); }
+.brandbar { position: absolute; z-index: 40; display: flex; align-items: center; gap: 12px; font: 800 17px 'Inter'; color: var(--g1); letter-spacing: .12em; white-space: nowrap; }
+.brandbar .em { width: 40px; height: 40px; border-radius: 11px; background: var(--g3); color: #fff; display: flex; align-items: center; justify-content: center; }
+.brandbar .em svg { width: 24px; height: 24px; }
+#subs { position: absolute; left: 0; right: 0; display: flex; justify-content: center; z-index: 60; pointer-events: none; }
+#subs .box { padding: 12px 30px 14px; border-radius: 14px; background: rgba(34,61,22,.94); color: #fff; font: 700 31px/1.3 'Inter'; text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25); border-bottom: 4px solid var(--g4); max-width: 1560px; }
+.pill { position: absolute; display: flex; align-items: center; gap: 14px; padding: 10px 26px 10px 10px; border-radius: 999px;
+  background: rgba(255,255,255,.12); border: 2px solid rgba(255,255,255,.32); color: #fff; font: 800 30px 'Inter'; white-space: nowrap; }
+.pill .ic { width: 56px; height: 56px; border-radius: 50%; background: #fff; color: var(--g2); display: flex; align-items: center; justify-content: center; }
+.pill .ic svg { width: 30px; height: 30px; }
+.check-card { position: absolute; border-radius: 26px; background: #fff; box-shadow: 0 40px 90px rgba(0,0,0,.35); padding: 34px 44px; }
+.check-card h3 { font: 900 30px 'Inter'; color: var(--g1); letter-spacing: .06em; margin-bottom: 18px; }
+.check-row { display: flex; align-items: center; gap: 18px; font: 800 32px 'Inter'; color: var(--ink); padding: 10px 0; }
+.check-row .ic { width: 50px; height: 50px; border-radius: 50%; background: var(--g3); color: #fff; display: flex; align-items: center; justify-content: center; flex: none; }
+.check-row .ic svg { width: 30px; height: 30px; }
