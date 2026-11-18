@@ -141,7 +141,7 @@
   },
   {
    "file": "h03_u1.mp3",
-   "dur": 13.488,
+   "dur": 13.512,
    "segments": [
     {
      "text": "Primero elegí el tipo: Interno, si va a las dependencias de tu propia unidad;",
@@ -154,36 +154,94 @@
      "end": 6.748
     },
     {
-     "text": "Este oficio va a otras unidades: marcá Externo y la clasificación; por ejemplo, Normal.",
+     "text": "Este oficio va a otras unidades: marcá Externo y la clasificación; por ejemplo, Corriente.",
      "start": 7.507,
-     "end": 12.708
+     "end": 12.751
     }
    ]
   },
   {
    "file": "h03_u2.mp3",
-   "dur": 7.824,
+   "dur": 10.032,
    "segments": [
     {
-     "text": "En el paso dos cargá el número de documento, la fecha, el tipo y las hojas.",
+     "text": "En el paso dos cargá el número de documento, la fecha y el tipo.",
      "start": 0.0,
-     "end": 4.071
+     "end": 3.197
+    },
+    {
+     "text": "La lista de tipos es la oficial de la institución.",
+     "start": 3.945,
+     "end": 6.272
     },
     {
      "text": "Al ser externo, no lleva hoja de ruta.",
-     "start": 4.83,
-     "end": 7.048
+     "start": 7.037,
+     "end": 9.255
     }
    ]
   },
   {
    "file": "h03_u3.mp3",
-   "dur": 3.552,
+   "dur": 3.456,
    "segments": [
     {
-     "text": "Y adjuntá el PDF escaneado del documento firmado.",
+     "text": "Adjuntá el PDF escaneado del documento firmado.",
      "start": 0.0,
-     "end": 2.782
+     "end": 2.694
+    }
+   ]
+  },
+  {
+   "file": "h03_u4.mp3",
+   "dur": 10.104,
+   "segments": [
+    {
+     "text": "Apenas lo cargás, el sistema te muestra hoja por hoja lo que tiene adentro",
+     "start": 0.0,
+     "end": 3.492
+    },
+    {
+     "text": "y cuenta las hojas por vos.",
+     "start": 3.503,
+     "end": 4.869
+    },
+    {
+     "text": "Si el conteo no coincide con el documento en papel, podés corregirlo a mano.",
+     "start": 5.627,
+     "end": 9.32
+    }
+   ]
+  },
+  {
+   "file": "h03_u5.mp3",
+   "dur": 7.896,
+   "segments": [
+    {
+     "text": "Si el escaneo salió desordenado o trae hojas de más, usá Ordenar y quitar hojas:",
+     "start": 0.0,
+     "end": 4.322
+    },
+    {
+     "text": "acomodá las hojas, sacá lo que sobra y aplicá.",
+     "start": 4.606,
+     "end": 7.119
+    }
+   ]
+  },
+  {
+   "file": "h03_u6.mp3",
+   "dur": 5.76,
+   "segments": [
+    {
+     "text": "Revisá siempre el desglose antes de seguir:",
+     "start": 0.0,
+     "end": 1.973
+    },
+    {
+     "text": "lo que registres acá es lo que va a ver la unidad de destino.",
+     "start": 2.268,
+     "end": 4.978
     }
    ]
   }
@@ -218,22 +276,59 @@
   },
   {
    "file": "h04_u2.mp3",
-   "dur": 5.712,
+   "dur": 10.872,
    "segments": [
     {
-     "text": "En el paso cinco marcá las instrucciones para quien lo recibe;",
+     "text": "El paso cinco depende del tipo.",
      "start": 0.0,
-     "end": 2.771
+     "end": 1.787
     },
     {
-     "text": "por ejemplo, Informar y Responder.",
-     "start": 2.967,
-     "end": 4.956
+     "text": "En un documento Externo no se marcan instrucciones:",
+     "start": 2.535,
+     "end": 4.906
+    },
+    {
+     "text": "las disposiciones son internas de la Policía, y a otra unidad se le manda el documento, no la orden.",
+     "start": 5.168,
+     "end": 10.085
     }
    ]
   },
   {
    "file": "h04_u3.mp3",
+   "dur": 3.144,
+   "segments": [
+    {
+     "text": "Ahí solo revisás el resumen de lo que cargaste.",
+     "start": 0.0,
+     "end": 2.388
+    }
+   ]
+  },
+  {
+   "file": "h04_u4.mp3",
+   "dur": 10.8,
+   "segments": [
+    {
+     "text": "En cambio, si el documento fuera Interno, en este paso marcás las disposiciones",
+     "start": 0.0,
+     "end": 3.973
+    },
+    {
+     "text": "para la dependencia que lo recibe; por ejemplo, Coordinar o Informar.",
+     "start": 3.984,
+     "end": 7.393
+    },
+    {
+     "text": "La lista es la oficial de la institución.",
+     "start": 8.14,
+     "end": 10.031
+    }
+   ]
+  },
+  {
+   "file": "h04_u5.mp3",
    "dur": 5.496,
    "segments": [
     {
@@ -268,22 +363,33 @@
   },
   {
    "file": "h05_u1.mp3",
-   "dur": 6.312,
+   "dur": 4.248,
    "segments": [
     {
-     "text": "Podés marcar varias unidades a la vez.",
+     "text": "Cada unidad aparece con su emblema, para que no te equivoques de destino.",
      "start": 0.0,
-     "end": 2.181
-    },
-    {
-     "text": "El envío inicial siempre va a unidades de nivel uno.",
-     "start": 2.939,
-     "end": 5.54
+     "end": 3.481
     }
    ]
   },
   {
    "file": "h05_u2.mp3",
+   "dur": 6.48,
+   "segments": [
+    {
+     "text": "Podés marcar varias a la vez.",
+     "start": 0.0,
+     "end": 1.744
+    },
+    {
+     "text": "En un documento Externo, el envío va a unidades de nivel uno.",
+     "start": 2.502,
+     "end": 5.704
+    }
+   ]
+  },
+  {
+   "file": "h05_u3.mp3",
    "dur": 6.816,
    "segments": [
     {
@@ -299,13 +405,24 @@
    ]
   },
   {
-   "file": "h05_u3.mp3",
+   "file": "h05_u4.mp3",
    "dur": 3.072,
    "segments": [
     {
      "text": "Listo: la correspondencia quedó enviada.",
      "start": 0.0,
      "end": 2.301
+    }
+   ]
+  },
+  {
+   "file": "h05_u5.mp3",
+   "dur": 5.184,
+   "segments": [
+    {
+     "text": "Si el documento es Interno, el mismo botón te ofrece las dependencias de tu propia unidad.",
+     "start": 0.0,
+     "end": 4.432
     }
    ]
   }
@@ -329,17 +446,39 @@
   },
   {
    "file": "h06_u1.mp3",
-   "dur": 5.76,
+   "dur": 3.84,
    "segments": [
     {
-     "text": "Hacé clic en un documento para ver su detalle en el panel lateral,",
+     "text": "Hacé clic en un documento para ver su detalle en el panel lateral.",
      "start": 0.0,
-     "end": 2.967
+     "end": 3.077
+    }
+   ]
+  },
+  {
+   "file": "h06_u2.mp3",
+   "dur": 4.488,
+   "segments": [
+    {
+     "text": "Ahí leés las instrucciones que dispuso quien lo envió, con su nombre completo.",
+     "start": 0.0,
+     "end": 3.721
+    }
+   ]
+  },
+  {
+   "file": "h06_u3.mp3",
+   "dur": 6.144,
+   "segments": [
+    {
+     "text": "Y con Ver PDF lo mirás sin salir de la bandeja:",
+     "start": 0.0,
+     "end": 2.421
     },
     {
-     "text": "con los datos y el PDF adjunto.",
-     "start": 3.219,
-     "end": 5.0
+     "text": "se abre encima, lo cerrás y seguís donde estabas.",
+     "start": 2.716,
+     "end": 5.382
     }
    ]
   }
@@ -392,22 +531,38 @@
  "8": [
   {
    "file": "h08_u0.mp3",
-   "dur": 7.032,
+   "dur": 6.48,
    "segments": [
     {
-     "text": "Con Abrir completo ves el documento y todas sus acciones:",
+     "text": "Con Abrir completo ves el documento entero y todas sus acciones:",
      "start": 0.0,
-     "end": 2.738
+     "end": 3.066
     },
     {
-     "text": "el PDF, derivar, responder o marcarlo como atendido.",
-     "start": 2.978,
-     "end": 6.278
+     "text": "derivar, responder o marcarlo como atendido.",
+     "start": 3.339,
+     "end": 5.71
     }
    ]
   },
   {
    "file": "h08_u1.mp3",
+   "dur": 6.936,
+   "segments": [
+    {
+     "text": "Esta pantalla es para leer.",
+     "start": 0.0,
+     "end": 1.58
+    },
+    {
+     "text": "Acomodar las hojas de un PDF se hace al cargarlo o al responder, no acá.",
+     "start": 2.338,
+     "end": 6.163
+    }
+   ]
+  },
+  {
+   "file": "h08_u2.mp3",
    "dur": 11.136,
    "segments": [
     {
@@ -428,7 +583,7 @@
    ]
   },
   {
-   "file": "h08_u2.mp3",
+   "file": "h08_u3.mp3",
    "dur": 4.944,
    "segments": [
     {
@@ -444,7 +599,7 @@
    ]
   },
   {
-   "file": "h08_u3.mp3",
+   "file": "h08_u4.mp3",
    "dur": 2.76,
    "segments": [
     {
@@ -474,12 +629,28 @@
   },
   {
    "file": "h09_u1.mp3",
-   "dur": 4.728,
+   "dur": 4.608,
    "segments": [
     {
-     "text": "Y en Árbol completo, cada unidad y dependencia que lo tiene, con su estado.",
+     "text": "En Árbol completo, cada unidad y dependencia que lo tiene, con su estado.",
      "start": 0.0,
-     "end": 3.973
+     "end": 3.852
+    }
+   ]
+  },
+  {
+   "file": "h09_u2.mp3",
+   "dur": 6.672,
+   "segments": [
+    {
+     "text": "Y en Datos, de un vistazo, cuántas respuestas lleva el documento desde que se creó",
+     "start": 0.0,
+     "end": 4.082
+    },
+    {
+     "text": "y cuántas hojas suma el expediente.",
+     "start": 4.093,
+     "end": 5.907
     }
    ]
   }
@@ -519,6 +690,44 @@
   },
   {
    "file": "h10_u2.mp3",
+   "dur": 5.112,
+   "segments": [
+    {
+     "text": "Tu respuesta se une al documento que recibiste, así la otra unidad lee todo junto.",
+     "start": 0.0,
+     "end": 4.344
+    }
+   ]
+  },
+  {
+   "file": "h10_u3.mp3",
+   "dur": 6.672,
+   "segments": [
+    {
+     "text": "Las hojas que te mandaron aparecen con candado:",
+     "start": 0.0,
+     "end": 2.115
+    },
+    {
+     "text": "no las podés mover ni quitar, porque son el documento de la otra unidad.",
+     "start": 2.421,
+     "end": 5.896
+    }
+   ]
+  },
+  {
+   "file": "h10_u4.mp3",
+   "dur": 4.944,
+   "segments": [
+    {
+     "text": "Las tuyas sí: podés sumar varios PDF, ordenarlos y sacar lo que no va.",
+     "start": 0.0,
+     "end": 4.191
+    }
+   ]
+  },
+  {
+   "file": "h10_u5.mp3",
    "dur": 6.792,
    "segments": [
     {
@@ -534,13 +743,45 @@
    ]
   },
   {
-   "file": "h10_u3.mp3",
-   "dur": 3.984,
+   "file": "h10_u6.mp3",
+   "dur": 2.4,
    "segments": [
     {
-     "text": "El documento queda Atendido, con la respuesta en su expediente.",
+     "text": "El documento queda Atendido.",
      "start": 0.0,
-     "end": 3.23
+     "end": 1.645
+    }
+   ]
+  },
+  {
+   "file": "h10_u7.mp3",
+   "dur": 5.856,
+   "segments": [
+    {
+     "text": "En el expediente, cada unidad que respondió tiene su propia tarjeta,",
+     "start": 0.0,
+     "end": 3.492
+    },
+    {
+     "text": "con su escudo y su documento.",
+     "start": 3.732,
+     "end": 5.076
+    }
+   ]
+  },
+  {
+   "file": "h10_u8.mp3",
+   "dur": 7.872,
+   "segments": [
+    {
+     "text": "Tocá una y se abre esa respuesta con el original adelante, tal como esa unidad la mandó.",
+     "start": 0.0,
+     "end": 4.508
+    },
+    {
+     "text": "Las respuestas no se mezclan entre sí.",
+     "start": 5.256,
+     "end": 7.091
     }
    ]
   }
@@ -659,22 +900,55 @@
   },
   {
    "file": "h13_u1.mp3",
-   "dur": 5.928,
+   "dur": 3.84,
    "segments": [
     {
-     "text": "Hacé clic en Asignar y aprobar,",
+     "text": "Hacé clic en Asignar y aprobar, y elegí la dependencia.",
      "start": 0.0,
-     "end": 1.503
-    },
-    {
-     "text": "y elegí la dependencia: cada cargo admite una sola persona.",
-     "start": 1.798,
-     "end": 5.153
+     "end": 3.077
     }
    ]
   },
   {
    "file": "h13_u2.mp3",
+   "dur": 4.968,
+   "segments": [
+    {
+     "text": "Un departamento, una división o una sección admiten una sola persona a cargo.",
+     "start": 0.0,
+     "end": 4.191
+    }
+   ]
+  },
+  {
+   "file": "h13_u3.mp3",
+   "dur": 7.32,
+   "segments": [
+    {
+     "text": "Si el cargo que elegiste ya está ocupado, el sistema te avisa y no deja guardar:",
+     "start": 0.0,
+     "end": 4.147
+    },
+    {
+     "text": "designá un reemplazo o liberalo primero.",
+     "start": 4.453,
+     "end": 6.54
+    }
+   ]
+  },
+  {
+   "file": "h13_u4.mp3",
+   "dur": 5.496,
+   "segments": [
+    {
+     "text": "La unidad en sí es distinta: ahí van las secretarías, y una unidad puede tener varias.",
+     "start": 0.0,
+     "end": 4.727
+    }
+   ]
+  },
+  {
+   "file": "h13_u5.mp3",
    "dur": 7.104,
    "segments": [
     {
@@ -688,27 +962,81 @@
      "end": 6.326
     }
    ]
+  },
+  {
+   "file": "h13_u6.mp3",
+   "dur": 8.472,
+   "segments": [
+    {
+     "text": "Podés desvincular a alguien aunque tenga trámites sin terminar:",
+     "start": 0.0,
+     "end": 2.738
+    },
+    {
+     "text": "los documentos quedan en la dependencia, no en la persona,",
+     "start": 3.011,
+     "end": 5.601
+    },
+    {
+     "text": "y los ve quien ocupe el cargo después.",
+     "start": 5.83,
+     "end": 7.688
+    }
+   ]
+  },
+  {
+   "file": "h13_u7.mp3",
+   "dur": 4.128,
+   "segments": [
+    {
+     "text": "Y cuando una fila no tiene acciones, el sistema te explica por qué.",
+     "start": 0.0,
+     "end": 3.372
+    }
+   ]
   }
  ],
  "14": [
   {
    "file": "h14_u0.mp3",
-   "dur": 9.144,
+   "dur": 3.84,
    "segments": [
     {
      "text": "En Organigrama recorrés la estructura de tu unidad por niveles.",
      "start": 0.0,
      "end": 3.077
-    },
-    {
-     "text": "Cada dependencia tiene sus acciones: ver, añadir hija, modificar o inactivar.",
-     "start": 3.835,
-     "end": 8.37
     }
    ]
   },
   {
    "file": "h14_u1.mp3",
+   "dur": 7.632,
+   "segments": [
+    {
+     "text": "Ves solo tu unidad, con su emblema y los de sus dependencias,",
+     "start": 0.0,
+     "end": 3.088
+    },
+    {
+     "text": "en dos columnas: la unidad a la izquierda y sus dependencias a la derecha.",
+     "start": 3.306,
+     "end": 6.868
+    }
+   ]
+  },
+  {
+   "file": "h14_u2.mp3",
+   "dur": 5.4,
+   "segments": [
+    {
+     "text": "Cada dependencia tiene sus acciones: ver, añadir hija, modificar o inactivar.",
+     "start": 0.0,
+     "end": 4.628
+    }
+   ]
+  },
+  {
+   "file": "h14_u3.mp3",
    "dur": 4.872,
    "segments": [
     {
@@ -724,7 +1052,7 @@
    ]
   },
   {
-   "file": "h14_u2.mp3",
+   "file": "h14_u4.mp3",
    "dur": 3.336,
    "segments": [
     {
@@ -738,22 +1066,44 @@
  "15": [
   {
    "file": "h15_u0.mp3",
-   "dur": 6.984,
+   "dur": 3.72,
    "segments": [
     {
      "text": "La campana te avisa en tiempo real de cada documento nuevo.",
      "start": 0.0,
      "end": 2.935
-    },
-    {
-     "text": "Podés ver solo las no leídas o marcarlas todas.",
-     "start": 3.693,
-     "end": 6.195
     }
    ]
   },
   {
    "file": "h15_u1.mp3",
+   "dur": 5.28,
+   "segments": [
+    {
+     "text": "Cada aviso trae el código completo, sin cortar, y el estado en que está el documento.",
+     "start": 0.0,
+     "end": 4.508
+    }
+   ]
+  },
+  {
+   "file": "h15_u2.mp3",
+   "dur": 7.44,
+   "segments": [
+    {
+     "text": "Podés ver solo las no leídas o marcarlas todas.",
+     "start": 0.0,
+     "end": 2.596
+    },
+    {
+     "text": "Los avisos no se acumulan para siempre: los viejos se van solos.",
+     "start": 3.354,
+     "end": 6.654
+    }
+   ]
+  },
+  {
+   "file": "h15_u3.mp3",
    "dur": 6.168,
    "segments": [
     {

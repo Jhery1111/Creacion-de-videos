@@ -259,7 +259,7 @@
   // ---------- capitulos ----------
   const STEPS = {
     1: ['INICIO', 'Panel de correspondencia'], 2: ['CONFIGURACIÓN', 'Remitente y hoja de ruta'],
-    3: ['NUEVA', 'Tipo y documento'], 4: ['NUEVA', 'Referencia e instrucciones'], 5: ['ENVIAR', 'A unidades de nivel 1'],
+    3: ['NUEVA', 'Tipo y documento'], 4: ['NUEVA', 'Referencia e instrucciones'], 5: ['ENVIAR', 'Según el tipo'],
     6: ['BANDEJA DE ENTRADA', 'Lo que llega'], 7: ['RECEPCIONAR', 'Recibir o rechazar'], 8: ['DERIVAR', 'A una dependencia'],
     9: ['SEGUIMIENTO', 'Ruta y árbol'], 10: ['RESPONDER', 'Respuesta al remitente'], 11: ['BANDEJA DE SALIDA', 'Lo que enviaste'],
     12: ['TERCEROS', 'Ventanilla'], 13: ['ADSCRIPCIONES', 'Personal de la unidad'], 14: ['ORGANIGRAMA', 'Dependencias'],
@@ -371,20 +371,24 @@
     return k.done();
   });
 
-  // ===== 3: NUEVA CORRESPONDENCIA (pasos 1 y 2) =====
+  // ===== 3: NUEVA CORRESPONDENCIA (tipo, documento y desglose del PDF) =====
   scene(3, function (root, T, ctx) {
     const k = kit(root, ctx);
-    const S = T.S;
-    const tNew = S(0, 0) + 1.6, tNext = S(2, 0) - 0.1, tPdf = S(3, 0) + 1.2;
-    const tExt = S(1, 2) + 2.0, tNorm = S(1, 2) + 4.3;
+    const S = T.S, E = T.E;
+    const V = '07-nueva-p2-vacia', L = '08-nueva-p2-llena';
+    const tNew = S(0, 0) + 1.6, tExt = S(1, 2) + 2.0, tNorm = S(1, 2) + 4.3, tNext = S(2, 0) - 0.1;
+    const tTipo = S(2, 1) - 0.4, tSel = S(2, 2) - 0.3, tPdf = S(3, 0) + 1.3;
+    const tMov = S(5, 0) + 2.8, tQuit = S(5, 1) + 1.0, tUsar = E(5) + 0.3;
     k.shot('01-inicio').shot('06a-nueva-p1-inicial', tNew + 0.15).shot('06-nueva-p1', tExt + 0.1, 0.15)
-      .shot('07-nueva-p2-vacia', tNext + 0.15).shot('08-nueva-p2-llena', tPdf + 0.15);
+      .shot(V, tNext + 0.15).shot('07b-nueva-tipos', tTipo + 0.15, 0.12).shot(V, tSel + 0.1, 0.12)
+      .shot('08a-taller', tPdf + 0.2, 0.3).shot('08b-taller-movido', tMov + 0.15).shot('08c-taller-listo', tQuit + 0.15)
+      .shot(L, tUsar + 0.15);
     k.click('01-inicio', 'nueva', tNew, 1.2).lens('01-inicio', 'nueva', tNew - 0.6, tNew + 0.4, { dx: -260, dy: 140 });
     k.spot('06a-nueva-p1-inicial', R('06-nueva-p1', 'pasos'), S(0, 1) + 0.1, S(1, 0) - 0.1, 4);
     k.tip('5 pasos', 'Registro', S(0, 1) + 0.3, S(1, 0) - 0.2, { icon: IC.file });
+    // Interno = dependencias de la propia unidad; Externo = otra unidad de la Policia
     const opts = union(R('06-nueva-p1', 'interno'), R('06-nueva-p1', 'externo'), R('06-nueva-p1', 'clasificaciones'));
     k.zoom(opts, 1.22, S(1, 0) + 0.4, 0.9);
-    // Interno = dependencias de la propia unidad; Externo = otra unidad de la Policia
     k.spot('06-nueva-p1', 'interno', S(1, 0) + 0.3, S(1, 1) - 0.05, 4).spot('06-nueva-p1', 'externo', S(1, 1), S(1, 2) + 0.3, 4);
     k.move('06-nueva-p1', 'interno', S(1, 0) + 0.6, 0.9).move('06-nueva-p1', 'externo', S(1, 1) + 0.3, 0.8);
     k.tip('Hacia las dependencias de tu unidad', 'Interno', S(1, 0) + 0.5, tNext - 0.3, { icon: IC.tree, pos: 'bl' });
@@ -394,27 +398,42 @@
     k.hl('06-nueva-p1', 'clasificaciones', tExt + 0.8, tNext - 0.2, 4).click('06-nueva-p1', 'normal', tNorm, 0.8)
       .lens('06-nueva-p1', 'normal', tNorm - 0.5, tNorm + 0.6, { dx: 120, dy: -150 });
     k.click('06-nueva-p1', 'siguiente', tNext, 0.9).home(tNext - 0.1, 0.6);
+    // paso 2: numero, fecha y tipo (lista oficial)
     const s2 = S(2, 0) + 0.2;
-    const form = union(R('07-nueva-p2-vacia', 'numero'), R('07-nueva-p2-vacia', 'hojas'), R('07-nueva-p2-vacia', 'fecha'));
-    k.zoom(form, 1.35, s2 + 0.6, 0.8);
-    k.type('08-nueva-p2-llena', 'numero', s2 + 0.5, 1.2).hl('07-nueva-p2-vacia', 'numero', s2 + 0.4, s2 + 1.8, 3)
-      .hl('07-nueva-p2-vacia', 'fecha', s2 + 1.8, s2 + 2.5, 3)
-      .type('08-nueva-p2-llena', 'tipo', s2 + 2.6, 0.35).hl('07-nueva-p2-vacia', 'tipo', s2 + 2.5, s2 + 3.3, 3)
-      .type('08-nueva-p2-llena', 'hojas', s2 + 3.4, 0.25).hl('07-nueva-p2-vacia', 'hojas', s2 + 3.3, S(2, 1), 3);
-    k.at(mid(R('07-nueva-p2-vacia', 'numero')), s2 + 0.4, 0.7).at(mid(R('07-nueva-p2-vacia', 'tipo')), s2 + 2.5, 0.6)
-      .at(mid(R('07-nueva-p2-vacia', 'hojas')), s2 + 3.3, 0.5);
-    k.tip('Externo: sin hoja de ruta', 'Hoja de ruta', S(2, 1) + 0.2, S(3, 0) - 0.2, { icon: IC.route });
-    k.zoom(R('07-nueva-p2-vacia', 'pdf'), 1.25, S(3, 0) + 0.5, 0.7);
-    k.click('07-nueva-p2-vacia', 'pdf', tPdf, 0.8).spot('08-nueva-p2-llena', 'pdf', tPdf + 0.4, T.dur - 0.3, 6);
+    const form = union(R(V, 'numero'), R(V, 'hojas'), R(V, 'fecha'));
+    k.zoom(form, 1.3, s2 + 0.5, 0.8);
+    k.type(L, 'numero', s2 + 0.4, 1.1).hl(V, 'numero', s2 + 0.3, s2 + 1.7, 3).hl(V, 'fecha', s2 + 1.7, tTipo, 3);
+    k.at(mid(R(V, 'numero')), s2 + 0.3, 0.7).click(V, 'tipo', tTipo, 0.7);
+    k.zoom(union(R('07b-nueva-tipos', 'tipo'), R('07b-nueva-tipos', 'lista')), 1.25, tTipo + 0.4, 0.6);
+    k.spot('07b-nueva-tipos', 'lista', tTipo + 0.4, tSel, 4).tip('La lista oficial', 'Tipos de documento', S(2, 1) + 0.2, tSel, { icon: IC.file });
+    k.at(mid(R('07b-nueva-tipos', 'lista')), tSel - 0.1, 0.5);
+    k.type(L, 'numero', tSel + 0.1, 0.02).type(L, 'tipo', tSel + 0.1, 0.02);
+    k.zoom(form, 1.3, tSel + 0.4, 0.5);
+    k.tip('Externo: sin hoja de ruta', 'Hoja de ruta', S(2, 2) + 0.2, S(3, 0) - 0.2, { icon: IC.route });
+    // PDF: al cargarlo se abre el desglose hoja por hoja
+    k.zoom(R(V, 'pdf'), 1.2, S(3, 0) + 0.3, 0.6).click(V, 'pdf', tPdf, 0.8).home(tPdf + 0.1, 0.5);
+    const D = '08a-taller';
+    k.spot(D, 'hojas', S(4, 0) + 0.1, S(4, 1) - 0.05, 4).spot(D, 'contador', S(4, 1), S(4, 2) + 0.6, 4);
+    k.tip('Se cuentan solas; podés corregirlas', 'Hojas', S(4, 2) + 0.1, S(5, 0) - 0.2, { icon: IC.file, pos: 'br' });
+    k.hl(D, 'hoja4', S(5, 0) + 1.3, tMov, 3).hl(D, 'hoja3', S(5, 0) + 0.3, tMov, 3);
+    k.at(mid(R(D, 'hoja3')), S(5, 0) + 0.6, 0.8).click(D, 'mover', tMov, 0.7);
+    k.hl('08b-taller-movido', 'hoja4', tMov + 0.4, tQuit, 3).click('08b-taller-movido', 'quitar', tQuit, 0.8);
+    k.tip('Ordenar y quitar hojas', 'Taller', S(5, 0) + 0.3, tUsar, { icon: IC.file, pos: 'tr' });
+    k.spot('08c-taller-listo', 'contador', tQuit + 0.4, tUsar - 0.1, 4).click('08c-taller-listo', 'usar', tUsar, 0.8);
+    // paso 2 completo: hojas contadas, PDF ordenado
+    k.zoom(union(R(L, 'numero'), R(L, 'ordenar')), 1.22, tUsar + 0.5, 0.7);
+    k.spot(L, 'hojas', S(6, 0) + 0.05, S(6, 1) - 0.05, 4).spot(L, union(R(L, 'pdf'), R(L, 'ordenar')), S(6, 1), T.dur - 0.2, 4);
+    k.tip('3 hojas, en orden', 'Desglose', S(6, 0) + 0.2, T.dur - 0.2, { icon: IC.check, pos: 'br' });
     return k.done();
   });
 
-  // ===== 4: NUEVA CORRESPONDENCIA (pasos 3 a 5) =====
+  // ===== 4: NUEVA CORRESPONDENCIA (referencia; instrucciones segun el tipo) =====
   scene(4, function (root, T, ctx) {
     const k = kit(root, ctx);
     const S = T.S, E = T.E;
-    const t1 = S(1, 0) - 0.2, t2 = S(2, 0) - 0.2, tReg = S(3, 0) + 1.0;
-    k.shot('09-nueva-p3').shot('10-nueva-p4', t1 + 0.15).shot('11-nueva-p5', t2 + 0.15).shot('12-registrada', tReg + 0.15);
+    const t1 = S(1, 0) - 0.2, t2 = S(2, 0) - 0.2, tInt = S(4, 0) - 0.15, tVuelta = S(5, 0) - 0.4, tReg = S(5, 0) + 1.0;
+    k.shot('09-nueva-p3').shot('10-nueva-p4', t1 + 0.15).shot('11-nueva-p5', t2 + 0.15)
+      .shot('11b-interno-instrucciones', tInt, 0.4).shot('11-nueva-p5', tVuelta, 0.4).shot('12-registrada', tReg + 0.15);
     const rem = union(R('09-nueva-p3', 'nombre'), R('09-nueva-p3', 'cargo'), R('09-nueva-p3', 'telefono'));
     k.zoom(union(rem, R('09-nueva-p3', 'referencia')), 1.3, S(0, 0) + 0.5, 0.9);
     k.spot('09-nueva-p3', rem, S(0, 0) + 0.4, S(0, 1) - 0.1, 6);
@@ -425,43 +444,58 @@
     k.spot('10-nueva-p4', 'archivos', S(1, 0) + 0.4, S(1, 0) + 2.4, 6).spot('10-nueva-p4', 'enlace', S(1, 0) + 2.4, t2 - 0.3, 6);
     k.tip('Paso opcional', 'Anexos', S(1, 0) + 0.6, t2 - 0.3, { icon: IC.file });
     k.click('10-nueva-p4', 'siguiente', t2, 0.9);
-    const g = R('11-nueva-p5', 'grilla');
-    k.zoom(g, 1.3, S(2, 0) + 0.6, 0.9);
-    k.spot('11-nueva-p5', 'grilla', S(2, 0) + 0.3, S(2, 1), 4);
-    k.click('11-nueva-p5', 'informar', S(2, 1) + 0.3, 0.7).hl('11-nueva-p5', 'informar', S(2, 1) + 0.3, S(3, 0), 3)
-      .click('11-nueva-p5', 'responder', S(2, 1) + 1.1, 0.6).hl('11-nueva-p5', 'responder', S(2, 1) + 1.1, S(3, 0), 3);
-    k.home(S(3, 0) - 0.3, 0.6).click('11-nueva-p5', 'registrar', tReg, 1.0)
-      .lens('11-nueva-p5', 'registrar', tReg - 0.6, tReg + 0.4, { dx: -260, dy: -120 });
-    k.spot('12-registrada', 'aviso', tReg + 0.4, S(3, 1) + 0.2, 4).sfx(tReg + 0.3, 'chime');
-    k.zoom(R('12-registrada', 'codigo'), 1.3, S(3, 1) + 0.6, 0.8);
-    k.spot('12-registrada', 'codigo', S(3, 1) + 0.3, T.dur - 0.2, 6);
-    k.tip('Código único', 'Correspondencia registrada', S(3, 1) + 0.4, T.dur - 0.2, { icon: IC.check, pos: 'br' });
+    // paso 5 en un Externo: aviso y resumen, sin instrucciones
+    const P5 = '11-nueva-p5';
+    const av = R(P5, 'aviso'), reg = R(P5, 'registrar');
+    const resumen = { x: av.x, y: R(P5, 'resumen').y, w: av.w, h: reg.y - 14 - R(P5, 'resumen').y };
+    k.zoom(av, 1.4, S(2, 1) - 0.2, 0.8).spot(P5, 'aviso', S(2, 1), S(3, 0) - 0.1, 5);
+    k.tip('Sin instrucciones', 'Externo', S(2, 1) + 0.3, tInt - 0.1, { icon: IC.send, pos: 'br' });
+    k.home(S(3, 0) - 0.2, 0.6).spot(P5, resumen, S(3, 0) + 0.1, tInt - 0.1, 4);
+    // en un Interno, el paso 5 lleva las disposiciones
+    const I5 = '11b-interno-instrucciones';
+    k.tip('Con instrucciones', 'Interno', tInt + 0.3, tVuelta - 0.1, { icon: IC.tree, pos: 'tr' });
+    k.zoom(R(I5, 'grilla'), 1.2, tInt + 0.5, 0.8).spot(I5, 'grilla', tInt + 0.4, S(4, 1) + 0.2, 4);
+    k.hl(I5, 'coordinar', S(4, 1) + 0.3, tVuelta, 3).hl(I5, 'informar', S(4, 1) + 1.4, tVuelta, 3)
+      .at(mid(R(I5, 'coordinar')), S(4, 1) + 0.5, 0.8).at(mid(R(I5, 'informar')), S(4, 1) + 1.6, 0.6);
+    k.home(tVuelta, 0.5).click(P5, 'registrar', tReg, 1.0).lens(P5, 'registrar', tReg - 0.6, tReg + 0.4, { dx: -260, dy: -120 });
+    k.spot('12-registrada', 'aviso', tReg + 0.4, S(5, 1) + 0.2, 4).sfx(tReg + 0.3, 'chime');
+    k.zoom(R('12-registrada', 'codigo'), 1.3, S(5, 1) + 0.4, 0.7);
+    k.spot('12-registrada', 'codigo', S(5, 1) + 0.2, T.dur - 0.2, 6);
+    k.tip('Código único', 'Correspondencia registrada', S(5, 1) + 0.3, T.dur - 0.2, { icon: IC.check, pos: 'br' });
     return k.done();
   });
 
-  // ===== 5: ENVIAR =====
+  // ===== 5: ENVIAR (externo a nivel 1; interno a las dependencias propias) =====
   scene(5, function (root, T, ctx) {
     const k = kit(root, ctx);
     const S = T.S, E = T.E;
-    const tEnv = S(0, 1) + 0.9, tMore = S(1, 0) + 1.3, tSend = S(2, 0) - 0.3, tOk = E(2) + 0.3;
+    const tEnv = S(0, 1) + 0.9, tMore = S(2, 0) + 0.3, tSend = S(3, 0) - 0.3, tOk = E(3) + 0.3, tInt = S(5, 0) - 0.2;
     k.shot('12-registrada').shot('13-enviar-buscar', tEnv + 0.15).shot('14-enviar-seleccion', tMore + 0.1, 0.15)
-      .shot('15-enviar-confirmar', tSend + 0.15).shot('16-enviada', tOk + 0.15);
+      .shot('15-enviar-confirmar', tSend + 0.15).shot('16-enviada', tOk + 0.15).shot('16c-enviar-interno', tInt, 0.4);
     k.spot('12-registrada', 'estado', S(0, 0) + 0.2, S(0, 1) + 0.2, 6);
     k.tip('Registrada no es enviada', 'Estado: Pendiente', S(0, 0) + 0.3, tEnv - 0.1, { icon: IC.alert, warn: true });
     k.click('12-registrada', 'enviar', tEnv, 1.0).lens('12-registrada', 'enviar', tEnv - 0.6, tEnv + 0.4, { dx: -250, dy: 140 });
-    k.zoom(R('13-enviar-buscar', 'dialogo'), 1.32, tEnv + 0.5, 0.8);
+    k.zoom(R('13-enviar-buscar', 'dialogo'), 1.3, tEnv + 0.5, 0.8);
     k.cover('13-enviar-buscar', 'buscar', tEnv + 0.8, 0.7, { l: 40, from: tEnv + 0.1 }).hl('13-enviar-buscar', 'buscar', tEnv + 0.7, tEnv + 1.8, 3);
-    k.at(mid(R('13-enviar-buscar', 'buscar')), tEnv + 0.7, 0.6).click('13-enviar-buscar', 'fila', tEnv + 2.0, 0.6);
-    k.hl('13-enviar-buscar', 'fila', tEnv + 2.0, tMore, 2);
+    k.at(mid(R('13-enviar-buscar', 'buscar')), tEnv + 0.7, 0.6);
+    // cada destino con su emblema
+    const filaE = R('13-enviar-buscar', 'fila'), emb = { x: filaE.x - 62, y: filaE.y - 14, w: filaE.w + 70, h: filaE.h + 28 };
+    k.spot('13-enviar-buscar', emb, S(1, 0) + 0.1, tMore - 0.1, 4).lens('13-enviar-buscar', { x: filaE.x - 40, y: filaE.y - 8, w: 30, h: 30 }, S(1, 0) + 0.5, tMore - 0.2, { dx: 120, dy: 120, zoom: 3 });
+    k.click('13-enviar-buscar', 'fila', S(1, 0) + 0.4, 0.6);
+    k.tip('Con su emblema', 'Destinos', S(1, 0) + 0.3, tMore - 0.1, { icon: IC.check, pos: 'br' });
     k.cover('14-enviar-seleccion', 'buscar', tMore + 0.15, 0.5, { l: 40, from: tMore }).click('14-enviar-seleccion', 'fila', tMore + 1.0, 0.6)
       .hl('14-enviar-seleccion', 'fila', tMore + 1.0, tSend, 2);
-    k.tip('Envío inicial: unidades de nivel 1', 'Destinos', S(1, 1) + 0.1, tSend - 0.2, { icon: IC.send, pos: 'br' });
+    k.tip('Unidades de nivel 1', 'Externo', S(2, 1) + 0.1, tSend - 0.2, { icon: IC.send, pos: 'br' });
     k.click('14-enviar-seleccion', 'enviar', tSend, 0.8);
     k.zoom(R('15-enviar-confirmar', 'lista'), 1.4, tSend + 0.6, 0.6);
-    k.spot('15-enviar-confirmar', 'lista', S(2, 0) + 0.3, S(2, 1), 4).spot('15-enviar-confirmar', 'aviso', S(2, 1) + 0.05, tOk - 0.1, 4);
-    k.tip('No se puede deshacer', 'Antes de confirmar', S(2, 1) + 0.2, tOk, { warn: true, pos: 'br' });
+    k.spot('15-enviar-confirmar', 'lista', S(3, 0) + 0.3, S(3, 1), 4).spot('15-enviar-confirmar', 'aviso', S(3, 1) + 0.05, tOk - 0.1, 4);
+    k.tip('No se puede deshacer', 'Antes de confirmar', S(3, 1) + 0.2, tOk, { warn: true, pos: 'br' });
     k.click('15-enviar-confirmar', 'confirmar', tOk, 0.9).home(tOk + 0.2, 0.6);
-    k.spot('16-enviada', 'aviso', tOk + 0.4, T.dur - 0.2, 4).spot('16-enviada', 'estado', tOk + 0.4, T.dur - 0.2, 6).sfx(tOk + 0.3, 'chime');
+    k.spot('16-enviada', 'aviso', tOk + 0.4, tInt - 0.1, 4).spot('16-enviada', 'estado', tOk + 0.4, tInt - 0.1, 6).sfx(tOk + 0.3, 'chime');
+    // interno: el mismo boton ofrece las dependencias de la propia unidad
+    const I = '16c-enviar-interno';
+    k.zoom(R(I, 'dialogo'), 1.25, tInt + 0.4, 0.7).spot(I, 'lista', tInt + 0.5, T.dur - 0.2, 4).hl(I, 'modo', tInt + 0.4, T.dur - 0.2, 3);
+    k.tip('Dependencias de tu unidad', 'Interno', tInt + 0.4, T.dur - 0.2, { icon: IC.tree, pos: 'br' });
     return k.done();
   });
 
@@ -469,15 +503,20 @@
   scene(6, function (root, T, ctx) {
     const k = kit(root, ctx);
     const S = T.S;
-    const tRow = S(1, 0) + 0.9;
-    k.shot('17-entrada').shot('18-panel', tRow + 0.15);
+    const P = '18-panel';
+    const tRow = S(1, 0) + 0.9, tPdf = S(3, 0) + 0.8, tCerrar = S(3, 1) + 1.6;
+    k.shot('17-entrada').shot(P, tRow + 0.15).shot('18b-visor', tPdf + 0.2, 0.3).shot(P, tCerrar + 0.15, 0.3);
     k.click('17-entrada', 'menu', S(0, 0) + 1.1, 1.0).hl('17-entrada', 'menu', S(0, 0) + 1.1, S(0, 1), 2);
     k.spot('17-entrada', 'carpetas', S(0, 1) + 0.05, S(1, 0) - 0.05, 2);
     k.at(mid(R('17-entrada', 'pendientes')), S(0, 1) + 0.9, 0.7).hl('17-entrada', 'pendientes', S(0, 1) + 1.0, S(1, 0) - 0.1, 2);
     k.tip('Pendiente → Recepcionado → Atendido', 'Estados', S(0, 1) + 1.6, S(1, 0) - 0.1, { icon: IC.route, pos: 'br' });
     k.hl('17-entrada', 'fila', S(1, 0) + 0.2, tRow + 0.1, 2).click('17-entrada', 'fila', tRow, 0.9);
-    k.zoom(R('18-panel', 'panel'), 1.32, tRow + 0.7, 0.8);
-    k.spot('18-panel', 'panel', tRow + 0.5, S(1, 1) + 0.2, 4).spot('18-panel', 'pdf', S(1, 1) + 0.2, T.dur - 0.2, 4);
+    k.zoom(R(P, 'panel'), 1.3, tRow + 0.7, 0.8).spot(P, 'panel', tRow + 0.5, S(2, 0) - 0.05, 4);
+    k.spot(P, 'instrucciones', S(2, 0) + 0.05, tPdf - 0.2, 4).at(mid(R(P, 'instrucciones')), S(2, 0) + 0.5, 0.8);
+    k.tip('Instrucciones con su nombre', 'Del Comando General', S(2, 0) + 0.3, tPdf - 0.2, { icon: IC.check, pos: 'bl' });
+    k.click(P, 'verPdf', tPdf, 0.8).home(tPdf + 0.1, 0.5);
+    k.tip('Se abre encima de la bandeja', 'Ver PDF', S(3, 0) + 1.4, tCerrar, { icon: IC.file, pos: 'br' });
+    k.click('18b-visor', 'cerrar', tCerrar, 1.0);
     return k.done();
   });
 
@@ -505,30 +544,34 @@
     const k = kit(root, ctx);
     const S = T.S, E = T.E;
     const C = '21-detalle';
-    const tDer = S(1, 1) + 0.9, tSin = E(1) + 0.25, tGo = S(2, 1) + 1.0;
+    const tDer = S(2, 1) + 0.9, tSin = S(3, 0) - 0.3, tGo = S(3, 1) + 0.9;
     k.shot(C).shot('22-derivar-modo', tDer + 0.15).shot('23-derivar-seleccion', tSin + 0.15).shot('24-derivada', tGo + 0.15);
     const acts = union(R(C, 'pdf'), R(C, 'atendido'));
     k.tip('Abrir completo', 'Desde el panel lateral', S(0, 0) + 0.2, S(0, 1) - 0.1, { icon: IC.file });
     k.zoom(acts, 1.25, S(0, 0) + 0.8, 0.9);
-    const seq = ['pdf', 'derivar', 'responder', 'atendido'];
-    seq.forEach((key, i) => {
-      const a = S(0, 1) + 0.1 + i * 0.8;
-      k.hl(C, key, a, a + 0.8, 3).move(C, key, a + 0.3, 0.55);
+    ['derivar', 'responder', 'atendido'].forEach((key, i) => {
+      const a = S(0, 1) + 0.1 + i * 0.85;
+      k.hl(C, key, a, a + 0.85, 3).move(C, key, a + 0.3, 0.6);
     });
-    k.tip('Derivar es interno', 'Hacia dependencias de tu unidad', S(1, 0) + 0.2, S(1, 2) - 0.1, { icon: IC.tree });
-    k.hl(C, 'derivar', S(1, 0) + 0.4, tDer, 3).move(C, 'derivar', S(1, 0) + 1.2, 0.8);
+    // pantalla de lectura
+    k.home(S(1, 0) - 0.2, 0.7);
+    k.spot(C, union(R(C, 'pestanas'), R(C, 'instrucciones')), S(1, 0) + 0.1, S(2, 0) - 0.1, 4);
+    k.tip('Para leer', 'Documento completo', S(1, 0) + 0.2, S(2, 0) - 0.1, { icon: IC.file, pos: 'br' });
+    k.tip('Derivar es interno', 'Hacia dependencias de tu unidad', S(2, 0) + 0.2, S(2, 2) - 0.1, { icon: IC.tree });
+    k.zoom(acts, 1.25, S(2, 0) + 0.2, 0.7);
+    k.hl(C, 'derivar', S(2, 0) + 0.4, tDer, 3).move(C, 'derivar', S(2, 0) + 1.2, 0.8);
     k.click(C, 'derivar', tDer, 0.6);
     k.zoom(R('22-derivar-modo', 'dialogo'), 1.38, tDer + 0.5, 0.7);
-    k.spot('22-derivar-modo', 'con', tDer + 0.6, tDer + 1.7, 4).spot('22-derivar-modo', 'sin', tDer + 1.7, S(1, 2), 4);
+    k.spot('22-derivar-modo', 'con', tDer + 0.6, tDer + 1.7, 4).spot('22-derivar-modo', 'sin', tDer + 1.7, S(2, 2), 4);
     k.move('22-derivar-modo', 'con', tDer + 0.9, 0.6).move('22-derivar-modo', 'sin', tDer + 2.0, 0.6);
-    k.hl('22-derivar-modo', 'unaVez', S(1, 2) + 0.05, tSin, 3);
-    k.tip('Solo podés derivar una vez', 'Atención', S(1, 2) + 0.15, S(2, 0) + 0.5, { icon: IC.once, warn: true, pos: 'br' });
+    k.hl('22-derivar-modo', 'unaVez', S(2, 2) + 0.05, tSin, 3);
+    k.tip('Solo podés derivar una vez', 'Atención', S(2, 2) + 0.15, S(3, 0) + 0.5, { icon: IC.once, warn: true, pos: 'br' });
     k.click('22-derivar-modo', 'sin', tSin, 0.6);
     k.zoom(R('23-derivar-seleccion', 'dialogo'), 1.3, tSin + 0.4, 0.6);
-    k.click('23-derivar-seleccion', 'soporte', S(2, 0) + 0.7, 0.8).hl('23-derivar-seleccion', 'soporte', S(2, 0) + 0.7, tGo, 2)
-      .hl('23-derivar-seleccion', 'hojaRuta', S(2, 0) + 1.9, tGo, 3);
+    k.click('23-derivar-seleccion', 'soporte', S(3, 0) + 0.8, 0.8).hl('23-derivar-seleccion', 'soporte', S(3, 0) + 0.8, tGo, 2)
+      .hl('23-derivar-seleccion', 'hojaRuta', S(3, 0) + 1.9, tGo, 3);
     k.click('23-derivar-seleccion', 'derivar', tGo, 0.8).home(tGo + 0.2, 0.6);
-    k.spot('24-derivada', 'aviso', tGo + 0.4, S(3, 0) + 0.4, 4).spot('24-derivada', 'estado', S(3, 0) + 0.3, T.dur - 0.2, 6).sfx(tGo + 0.3, 'chime');
+    k.spot('24-derivada', 'aviso', tGo + 0.4, S(4, 0) + 0.4, 4).spot('24-derivada', 'estado', S(4, 0) + 0.3, T.dur - 0.2, 6).sfx(tGo + 0.3, 'chime');
     return k.done();
   });
 
@@ -536,18 +579,21 @@
   scene(9, function (root, T, ctx) {
     const k = kit(root, ctx);
     const S = T.S;
-    const t1 = S(0, 0) + 0.6, t2 = S(1, 0) + 0.4;
-    k.shot('24-derivada').shot('25-seguimiento', t1 + 0.15).shot('26-arbol', t2 + 0.15);
+    const t1 = S(0, 0) + 0.6, t2 = S(1, 0) + 0.4, t3 = S(2, 0) + 0.3;
+    k.shot('24-derivada').shot('25-seguimiento', t1 + 0.15).shot('26-arbol', t2 + 0.15).shot('26b-datos', t3 + 0.15, 0.3);
     k.click('25-seguimiento', 'pestana', t1, 0.8);
     k.spot('25-seguimiento', 'avance', t1 + 0.5, S(0, 1) - 0.05, 4);
-    k.zoom(R('25-seguimiento', 'ruta'), 1.15, S(0, 1) - 0.2, 0.8);
     const ruta = union(R('25-seguimiento', 'ruta'), R('25-seguimiento', 'derivado'));
-    k.spot('25-seguimiento', ruta, S(0, 1) + 0.05, t2 - 0.1, 4);
+    k.zoom(ruta, 1.15, S(0, 1) - 0.2, 0.8).spot('25-seguimiento', ruta, S(0, 1) + 0.05, t2 - 0.1, 4);
     k.home(t2 - 0.3, 0.5).click('26-arbol', 'pestana', t2, 0.7);
     const arb = union(R('26-arbol', 'filtros'), R('26-arbol', 'soporte'), R('26-arbol', 'expandir'));
-    k.zoom(arb, 1.25, t2 + 0.8, 0.8);
-    k.spot('26-arbol', arb, t2 + 0.6, T.dur - 0.2, 6);
-    k.at(mid(R('26-arbol', 'soporte')), t2 + 1.6, 0.8);
+    k.zoom(arb, 1.25, t2 + 0.8, 0.8).spot('26-arbol', arb, t2 + 0.6, t3 - 0.1, 6).at(mid(R('26-arbol', 'soporte')), t2 + 1.6, 0.8);
+    const pDatos = R('21-detalle', 'pestanas');
+    k.home(t3 - 0.3, 0.4).click('26-arbol', { x: pDatos.x + 20, y: pDatos.y + 8, w: pDatos.w * 0.22, h: pDatos.h - 16 }, t3, 0.7);
+    const D = '26b-datos';
+    const chips = union(R(D, 'respuestas'), R(D, 'hojas'));
+    k.zoom(union(chips, R(D, 'expediente')), 1.45, t3 + 0.5, 0.7).spot(D, chips, t3 + 0.5, T.dur - 0.2, 5);
+    k.tip('Cuántas respuestas y hojas', 'Expediente', S(2, 0) + 0.8, T.dur - 0.2, { icon: IC.file, pos: 'br' });
     return k.done();
   });
 
@@ -555,31 +601,45 @@
   scene(10, function (root, T, ctx) {
     const k = kit(root, ctx);
     const S = T.S, E = T.E;
-    const btnResp = box([2888, 558, 3120, 632]);
-    const tR = S(0, 0) + 1.5, t2 = S(1, 1) + 0.1, t3 = S(2, 0) - 0.2, t4 = S(2, 1) + 0.4, t5 = S(2, 1) + 1.9, tSend = E(2) + 0.35;
-    k.shot('26-arbol').shot('27-responder-p1', tR + 0.15).shot('28-responder-p2', t2 + 0.15).shot('29-responder-p3', t3 + 0.15)
-      .shot('30-responder-p4', t4 + 0.15).shot('31-responder-enviar', t5, 0.45).shot('32-respondida', tSend + 0.15);
-    k.click('26-arbol', btnResp, tR, 1.0).lens('26-arbol', btnResp, tR - 0.6, tR + 0.4, { dx: -240, dy: 150 });
+    const btnResp = box([2888, 558, 3119, 633]);
+    const tR = S(0, 0) + 1.5, t2 = S(1, 1) + 0.1, tAnx = S(4, 0) + 0.8, tUsar = S(5, 0) - 0.7, t29 = S(5, 0) + 0.5,
+      t30 = S(5, 1) + 0.2, t31 = S(5, 1) + 1.3, tSend = E(5) + 0.3, tTarj = S(7, 0) - 0.3, tVis = S(8, 0) + 0.8;
+    k.shot('24-derivada').shot('27-responder-p1', tR + 0.15).shot('28a-unir', t2 + 0.2, 0.3).shot('28b-unir2', tAnx + 0.2, 0.3)
+      .shot('28-responder-p2', tUsar + 0.15).shot('29-responder-p3', t29 + 0.15).shot('30-responder-p4', t30 + 0.15)
+      .shot('31-responder-enviar', t31, 0.4).shot('32-respondida', tSend + 0.15).shot('32b-tarjetas', tTarj, 0.4)
+      .shot('32c-visor-respuesta', tVis + 0.2, 0.3);
+    k.click('24-derivada', btnResp, tR, 1.0).lens('24-derivada', btnResp, tR - 0.6, tR + 0.4, { dx: -240, dy: 150 });
     k.spot('27-responder-p1', 'destino', S(0, 1) + 0.05, S(1, 0) - 0.1, 4);
     k.tip('Llega a quien te lo envió', 'Respuesta', S(0, 1) + 0.3, S(1, 0) - 0.1, { icon: IC.reply, pos: 'br' });
     k.click('27-responder-p1', 'externo', S(1, 0) + 1.3, 0.8).hl('27-responder-p1', 'externo', S(1, 0) + 1.3, t2, 3)
       .click('27-responder-p1', 'normal', S(1, 0) + 2.3, 0.7);
     k.tip('Vuelve a otra unidad: Externo', 'Respuesta', S(1, 0) + 0.3, t2, { icon: IC.send, pos: 'br' });
-    k.click('27-responder-p1', 'siguiente', t2, 0.8);
-    const f = union(R('28-responder-p2', 'numero'), R('28-responder-p2', 'hojas'), R('28-responder-p2', 'pdf'));
-    k.zoom(f, 1.25, t2 + 0.5, 0.7);
-    k.cover('28-responder-p2', 'numero', t2 + 0.5, 0.9).cover('28-responder-p2', 'tipo', t2 + 1.6, 0.3, { r: 50 })
-      .cover('28-responder-p2', 'hojas', t2 + 2.1, 0.2);
-    k.at(mid(R('28-responder-p2', 'numero')), t2 + 0.4, 0.6).at(mid(R('28-responder-p2', 'tipo')), t2 + 1.5, 0.5)
-      .move('28-responder-p2', 'pdf', t2 + 2.7, 0.6).spot('28-responder-p2', 'pdf', t2 + 2.8, t3 - 0.2, 4);
-    k.click('28-responder-p2', 'siguiente', t3, 0.7).home(t3 + 0.1, 0.5);
-    k.spot('29-responder-p3', union(R('29-responder-p3', 'nombre'), R('29-responder-p3', 'cargo')), S(2, 0) + 0.3, S(2, 0) + 1.6, 6);
-    k.cover('29-responder-p3', 'referencia', S(2, 0) + 1.8, 1.1, { t: 8, b: 30 }).hl('29-responder-p3', 'referencia', S(2, 0) + 1.7, t4, 3);
-    k.click('29-responder-p3', 'siguiente', t4, 0.7);
-    k.spot('30-responder-p4', 'archivos', t4 + 0.4, t5 - 0.05, 6);
+    k.click('27-responder-p1', 'siguiente', t2, 0.7);
+    // union: las hojas recibidas van primero y con candado; las propias se ordenan
+    const U = '28a-unir';
+    k.zoom(R(U, 'dialogo'), 1.12, t2 + 0.5, 0.7);
+    k.spot(U, R(U, 'dialogo'), S(2, 0) + 0.1, S(3, 0) - 0.1, 2);
+    k.tip('Todo junto, en un solo documento', 'Respuesta', S(2, 0) + 0.3, S(3, 0) - 0.1, { icon: IC.file, pos: 'br' });
+    k.spot(U, 'bloqueadas', S(3, 0) + 0.05, S(4, 0) - 0.1, 4).hl(U, 'candado', S(3, 0) + 0.5, S(4, 0) - 0.1, 3);
+    k.tip('Con candado: no se tocan', 'Hojas ajenas', S(3, 0) + 0.4, S(4, 0) - 0.1, { icon: IC.alert, warn: true, pos: 'br' });
+    k.click(U, 'anadir', tAnx, 0.9);
+    k.spot('28b-unir2', 'suyas', tAnx + 0.5, tUsar - 0.1, 4).hl('28b-unir2', 'contador', tAnx + 0.7, tUsar - 0.1, 3);
+    k.click('28b-unir2', 'usar', tUsar, 0.6).home(tUsar + 0.1, 0.5);
+    k.click('28-responder-p2', 'siguiente', t29, 0.6);
+    k.spot('29-responder-p3', union(R('29-responder-p3', 'nombre'), R('29-responder-p3', 'cargo')), t29 + 0.3, S(5, 0) + 1.7, 6);
+    k.cover('29-responder-p3', 'referencia', S(5, 0) + 1.1, 1.0, { t: 8, b: 30 });
+    k.click('29-responder-p3', 'siguiente', t30, 0.6);
+    k.spot('30-responder-p4', 'archivos', t30 + 0.4, t31 - 0.05, 6);
     k.click('31-responder-enviar', 'enviar', tSend, 0.9).lens('31-responder-enviar', 'enviar', tSend - 0.6, tSend + 0.4, { dx: -260, dy: -150 });
-    k.spot('32-respondida', 'estado', S(3, 0) + 0.05, T.dur - 0.2, 6).spot('32-respondida', 'respuesta', S(3, 0) + 0.05, T.dur - 0.2, 4)
+    k.spot('32-respondida', 'estado', S(6, 0) + 0.05, tTarj - 0.1, 6).spot('32-respondida', 'respuesta', S(6, 0) + 0.05, tTarj - 0.1, 4)
       .sfx(tSend + 0.3, 'chime');
+    // expediente con una tarjeta por unidad (un envio de la unidad que respondieron dos)
+    const B = '32b-tarjetas';
+    k.tip('Relevamiento de necesidades', 'Ejemplo: tu bandeja de salida', tTarj + 0.3, tVis, { icon: IC.send, pos: 'tr' });
+    k.zoom(R(B, 'tarjetas'), 1.3, tTarj + 0.5, 0.7).spot(B, 'tarjetas', tTarj + 0.4, tVis - 0.1, 4);
+    k.hl(B, 'primera', S(7, 1) + 0.1, tVis, 3).hl(B, 'segunda', S(7, 1) + 0.6, tVis, 3);
+    k.click(B, 'primera', tVis, 0.8).home(tVis + 0.1, 0.5);
+    k.tip('El original adelante; las respuestas no se mezclan', 'Una tarjeta por unidad', S(8, 1) - 0.4, T.dur - 0.2, { icon: IC.check, pos: 'br' });
     return k.done();
   });
 
@@ -634,20 +694,34 @@
   scene(13, function (root, T, ctx) {
     const k = kit(root, ctx);
     const S = T.S;
-    const tAp = S(1, 0) + 1.0, tOpt = S(1, 1) + 2.6, tSave = S(2, 0) + 0.7;
-    k.shot('41-adscripciones').shot('42-adscribir-lista', tAp + 0.15).shot('43-adscribir-elegido', tOpt + 0.15).shot('44-integrantes', tSave + 0.15);
+    const tAp = S(1, 0) + 1.0, tOcu = S(3, 0) + 0.6, tPlan = S(4, 0) - 0.5, tSave = S(5, 0) + 0.5, tDes = S(6, 0) + 1.2, tFin = S(7, 0) - 0.4;
+    const A = '42-adscribir-lista', I = '44-integrantes';
+    k.shot('41-adscripciones').shot(A, tAp + 0.15).shot('42b-ocupado', tOcu + 0.15).shot('43-adscribir-elegido', tPlan + 0.15)
+      .shot(I, tSave + 0.15).shot('44b-desvincular', tDes + 0.15).shot(I, tFin, 0.3);
     k.click('41-adscripciones', 'menu', S(0, 0) + 0.9, 1.0);
     k.spot('41-adscripciones', 'solicitud', S(0, 1) + 0.05, tAp - 0.2, 4);
     k.click('41-adscripciones', 'aprobar', tAp, 0.8).lens('41-adscripciones', 'aprobar', tAp - 0.6, tAp + 0.4, { dx: 230, dy: 120 });
-    k.zoom(R('42-adscribir-lista', 'dialogo'), 1.32, tAp + 0.5, 0.7);
-    k.hl('42-adscribir-lista', 'opcion', S(1, 1) + 0.3, tOpt, 2).click('42-adscribir-lista', 'opcion', tOpt, 0.8);
-    k.tip('Cada cargo admite una persona', 'Asignación', S(1, 1) + 0.4, S(2, 0), { icon: IC.users, pos: 'br' });
+    k.zoom(R(A, 'dialogo'), 1.32, tAp + 0.5, 0.7).hl(A, 'lista', S(2, 0) + 0.1, tOcu, 2);
+    k.tip('Una sola persona a cargo', 'Departamento, división o sección', S(2, 0) + 0.2, S(3, 0) - 0.1, { icon: IC.users, pos: 'br' });
+    const lst = R(A, 'lista');
+    k.at({ x: lst.x + lst.w * 0.4, y: lst.y + lst.h * (4.5 / 8) }, tOcu, 0.8).sfx(tOcu, 'click');
+    k.spot('42b-ocupado', 'aviso', tOcu + 0.4, tPlan - 0.1, 4);
+    k.tip('No deja guardar', 'Cargo ocupado', S(3, 0) + 1.2, tPlan - 0.1, { icon: IC.alert, warn: true, pos: 'br' });
+    k.click('42b-ocupado', 'departamento', tPlan - 0.6, 0.6);
+    k.hl('43-adscribir-elegido', R(A, 'unidad'), S(4, 0) + 0.1, tSave - 0.2, 3);
+    k.tip('Varias secretarías', 'La unidad', S(4, 0) + 0.3, tSave - 0.2, { icon: IC.users, pos: 'br' });
     k.click('43-adscribir-elegido', 'guardar', tSave, 0.8).home(tSave + 0.2, 0.6).sfx(tSave + 0.3, 'chime');
-    const j = '44-integrantes';
-    k.spot(j, 'juan', S(2, 1) + 0.05, T.dur - 0.2, 4);
-    k.hl(j, 'cambiar', S(2, 1) + 1.6, S(2, 1) + 2.6, 3).hl(j, 'reemplazar', S(2, 1) + 2.6, S(2, 1) + 3.6, 3).hl(j, 'desvincular', S(2, 1) + 3.6, T.dur - 0.2, 3);
-    k.move(j, 'cambiar', S(2, 1) + 1.8, 0.7).move(j, 'reemplazar', S(2, 1) + 2.8, 0.6).move(j, 'desvincular', S(2, 1) + 3.8, 0.6);
-    k.zoom(union(R(j, 'juan'), R(j, 'reemplazar')), 1.3, S(2, 1) + 0.8, 0.8);
+    k.spot(I, 'juan', S(5, 1) + 0.05, tDes - 0.6, 4);
+    k.hl(I, 'cambiar', S(5, 1) + 1.0, S(5, 1) + 2.2, 3).hl(I, 'reemplazar', S(5, 1) + 2.2, S(5, 1) + 3.2, 3).hl(I, 'desvincular', S(5, 1) + 3.2, S(6, 0), 3);
+    k.move(I, 'cambiar', S(5, 1) + 1.2, 0.7).move(I, 'reemplazar', S(5, 1) + 2.4, 0.6).move(I, 'desvincular', S(5, 1) + 3.4, 0.6);
+    k.zoom(union(R(I, 'juan'), R(I, 'reemplazar')), 1.25, S(5, 1) + 0.6, 0.8).home(S(6, 0) - 0.2, 0.6);
+    k.hl(I, 'pendiente', S(6, 0) + 0.1, tDes, 3).click(I, box([2646, 1260, 2854, 1327]), tDes, 0.8);
+    k.zoom(R('44b-desvincular', 'dialogo'), 1.6, tDes + 0.4, 0.6).spot('44b-desvincular', 'texto', tDes + 0.5, tFin - 0.1, 4);
+    k.tip('Los pendientes quedan en la dependencia', 'Desvincular', S(6, 1) + 0.1, tFin - 0.1, { icon: IC.check, pos: 'br' });
+    k.home(tFin, 0.5);
+    const secre = union(R(I, 'carla'), R(I, 'luciaNota'));
+    k.zoom(union(R(I, 'lucia'), R(I, 'carla')), 1.3, tFin + 0.5, 0.7).hl(I, 'carla', S(7, 0) + 0.3, T.dur - 0.2, 3).hl(I, 'luciaNota', S(7, 0) + 0.9, T.dur - 0.2, 3);
+    k.tip('Te dice por qué', 'Sin acciones', S(7, 0) + 0.4, T.dur - 0.2, { icon: IC.check, pos: 'br' });
     return k.done();
   });
 
@@ -656,20 +730,22 @@
     const k = kit(root, ctx);
     const S = T.S, E = T.E;
     const C = '45-organigrama';
-    const tF = S(1, 0) - 0.3, tAdd = S(1, 0) + 1.6, tSave = E(1) + 0.35;
+    const tF = S(3, 0) - 0.3, tAdd = S(3, 0) + 1.6, tSave = E(3) + 0.35;
     k.shot(C).shot('45b-organigrama-filtro', tF, 0.25).shot('46-nueva-division', tAdd + 0.15).shot('47-division-creada', tSave + 0.15);
-    k.click(C, 'menu', S(0, 0) + 0.9, 1.0).spot(C, 'unidad', S(0, 0) + 1.6, S(0, 1) - 0.05, 6);
-    k.zoom(R(C, 'tarjeta'), 1.3, S(0, 1) + 0.3, 0.8);
-    k.spot(C, 'tarjeta', S(0, 1) + 0.05, tF - 0.1, 4);
+    k.click(C, 'menu', S(0, 0) + 0.9, 1.0).spot(C, 'unidad', S(0, 0) + 1.6, S(1, 0) - 0.05, 6);
+    k.spot(C, 'raiz', S(1, 0) + 0.05, S(1, 1) - 0.05, 4).at(mid(R(C, 'raiz')), S(1, 0) + 0.5, 0.8);
+    k.tip('Solo tu unidad', 'Organigrama', S(1, 0) + 0.3, S(2, 0) - 0.1, { icon: IC.tree, pos: 'br' });
+    k.spot(C, union(R(C, 'unidad'), R(C, 'tarjeta')), S(1, 1) + 0.05, S(2, 0) - 0.05, 4);
+    k.zoom(R(C, 'tarjeta'), 1.3, S(2, 0) + 0.1, 0.8).spot(C, 'tarjeta', S(2, 0) + 0.05, tF - 0.1, 4);
     ['ver', 'anadir', 'modificar', 'inactivar'].forEach((key, i) => {
-      const a = S(0, 1) + 1.2 + i * 0.95;
-      k.hl(C, key, a, a + 0.95, 3).move(C, key, a + 0.2, 0.55);
+      const a = S(2, 0) + 0.9 + i * 0.9;
+      k.hl(C, key, a, a + 0.9, 3).move(C, key, a + 0.2, 0.55);
     });
     k.home(tF, 0.5);
     k.cover('45b-organigrama-filtro', 'buscar', tF + 0.2, 0.6, { l: 40 });
     k.click('45b-organigrama-filtro', 'anadir', tAdd, 0.8).hl('45b-organigrama-filtro', 'tarjeta', tF + 0.8, tAdd + 0.1, 3);
     k.zoom(R('46-nueva-division', 'dialogo'), 1.4, tAdd + 0.5, 0.7);
-    k.cover('46-nueva-division', 'nombre', S(1, 1) + 0.1, 1.2).cover('46-nueva-division', 'descripcion', S(1, 1) + 1.4, 0.6, { t: 8, b: 6 });
+    k.cover('46-nueva-division', 'nombre', S(3, 1) + 0.0, 1.0).cover('46-nueva-division', 'descripcion', S(3, 1) + 1.1, 0.5, { t: 8, b: 6 });
     k.click('46-nueva-division', 'guardar', tSave, 0.8).home(tSave + 0.2, 0.6).sfx(tSave + 0.3, 'chime');
     k.spot('47-division-creada', 'nueva', tSave + 0.5, T.dur - 0.2, 4).spot('47-division-creada', 'migas', tSave + 0.5, T.dur - 0.2, 4);
     return k.done();
@@ -679,18 +755,22 @@
   scene(15, function (root, T, ctx) {
     const k = kit(root, ctx);
     const S = T.S;
-    const tAv = S(1, 0) + 0.4;
-    k.shot('48-notificaciones').shot('49-perfil', tAv + 0.15);
-    k.click('48-notificaciones', 'campana', S(0, 0) + 0.7, 1.0);
-    k.zoom(R('48-notificaciones', 'panel'), 1.3, S(0, 0) + 0.8, 0.8);
-    k.spot('48-notificaciones', 'panel', S(0, 0) + 1.0, S(0, 1) - 0.05, 4);
-    k.hl('48-notificaciones', 'noLeidas', S(0, 1) + 0.2, S(0, 1) + 1.6, 3).hl('48-notificaciones', 'marcar', S(0, 1) + 1.6, tAv, 3);
-    k.move('48-notificaciones', 'noLeidas', S(0, 1) + 0.5, 0.6).move('48-notificaciones', 'marcar', S(0, 1) + 1.8, 0.6);
-    k.tip('En tiempo real', 'Avisos', S(0, 0) + 1.4, S(0, 1), { icon: IC.bell, pos: 'bl' });
+    const N = '48-notificaciones';
+    const tAv = S(3, 0) + 0.4;
+    k.shot(N).shot('49-perfil', tAv + 0.15);
+    k.click(N, 'campana', S(0, 0) + 0.7, 1.0);
+    k.zoom(R(N, 'panel'), 1.3, S(0, 0) + 0.8, 0.8).spot(N, 'panel', S(0, 0) + 1.0, S(1, 0) - 0.05, 4);
+    k.tip('En tiempo real', 'Avisos', S(0, 0) + 1.4, S(1, 0), { icon: IC.bell, pos: 'bl' });
+    k.zoom(R(N, 'primera'), 1.6, S(1, 0) + 0.1, 0.7).spot(N, 'primera', S(1, 0) + 0.1, S(2, 0) - 0.05, 4);
+    k.tip('Código completo y estado', 'Cada aviso', S(1, 0) + 0.4, S(2, 0) - 0.05, { icon: IC.check, pos: 'bl' });
+    k.zoom(R(N, 'panel'), 1.3, S(2, 0) + 0.1, 0.6);
+    k.hl(N, 'noLeidas', S(2, 0) + 0.2, S(2, 0) + 1.6, 3).hl(N, 'marcar', S(2, 0) + 1.6, tAv, 3);
+    k.move(N, 'noLeidas', S(2, 0) + 0.5, 0.6).move(N, 'marcar', S(2, 0) + 1.8, 0.6);
+    k.tip('Los viejos se van solos', 'Sin acumularse', S(2, 1) + 0.1, tAv, { icon: IC.clock, pos: 'bl' });
     k.click('01-inicio', 'avatar', tAv, 0.7);
     k.zoom(R('49-perfil', 'menu'), 1.3, tAv + 0.5, 0.7);
-    k.spot('49-perfil', 'menu', tAv + 0.4, S(1, 1), 4);
-    k.hl('49-perfil', 'cerrar', S(1, 1) + 0.6, T.dur - 0.2, 3).move('49-perfil', 'cerrar', S(1, 1) + 1.2, 0.8);
+    k.spot('49-perfil', 'menu', tAv + 0.4, S(3, 1), 4);
+    k.hl('49-perfil', 'cerrar', S(3, 1) + 0.6, T.dur - 0.2, 3).move('49-perfil', 'cerrar', S(3, 1) + 1.2, 0.8);
     return k.done();
   });
 

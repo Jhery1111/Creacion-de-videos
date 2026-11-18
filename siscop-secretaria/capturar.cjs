@@ -13,8 +13,11 @@ const RAIZ = __dirname
 const BASE = 'http://127.0.0.1:5050'
 const tok = JSON.parse(fs.readFileSync(path.join(RAIZ, 'datos', 'sesiones.json'), 'utf8'))
 const HASTA = process.argv.includes('--hasta') ? process.argv[process.argv.indexOf('--hasta') + 1] : null
-const PDF = path.join(RAIZ, 'datos', 'CITE-DNTT-221-2026.pdf')
-const PDF_RESP = path.join(RAIZ, 'datos', 'CITE-DNTT-230-2026.pdf')
+// Generados por datos/pdf-ejemplo.cjs
+const PDF = path.join(RAIZ, 'datos', 'OF-DNTT-221-2026.pdf')
+const PDF_RESP = path.join(RAIZ, 'datos', 'OF-DNTT-230-2026.pdf')
+const PDF_ANX = path.join(RAIZ, 'datos', 'ANX-DNTT-230-2026.pdf')
+const IDS = JSON.parse(fs.readFileSync(path.join(RAIZ, 'datos', 'ids.json'), 'utf8'))
 const ESCALA = 2
 
 let page
@@ -132,7 +135,7 @@ seccion('nueva', async () => {
     clasificaciones: css('.clasificacion-chip').first().locator('xpath=..'),
   })
   await css('.option-card').nth(1).click(); await espera(300)
-  await chip('NORMAL').click(); await espera(300)
+  await chip('CORRIENTE').click(); await espera(300)
   await corregirTarjetas({ ...TARJETAS, Externo: TARJETAS.Externo + ' (sin hoja de ruta)' })
   await page.mouse.move(1500, 860); await espera(200)
   await cap('06-nueva-p1', {
@@ -143,7 +146,7 @@ seccion('nueva', async () => {
     internoTxt: css('.option-card').nth(0).locator('.text-caption'),
     externoTxt: css('.option-card').nth(1).locator('.text-caption'),
     clasificaciones: css('.clasificacion-chip').first().locator('xpath=..'),
-    normal: chip('NORMAL'),
+    normal: chip('CORRIENTE'),
     siguiente: btn(/Siguiente/),
   })
   await btn(/Siguiente/).click(); await espera(700)
@@ -153,18 +156,49 @@ seccion('nueva', async () => {
     tipo: campo('Tipo de documento *'),
     hojas: campo('Número de hojas *'),
     pdf: css('.dropzone').first(),
+    ordenar: btn(/Ordenar y quitar hojas/i),
   })
-  await page.getByLabel('Número de documento *', { exact: true }).fill('CITE DNTT N° 221/2026')
-  await page.getByLabel('Tipo de documento *', { exact: true }).click(); await espera(400)
-  await page.getByRole('option', { name: 'CITE', exact: true }).click(); await espera(300)
-  await page.getByLabel('Número de hojas *', { exact: true }).fill('2')
-  await css('input[type=file][accept="application/pdf"]').setInputFiles(PDF); await espera(500)
+  await page.getByLabel('Número de documento *', { exact: true }).fill('OF. DNTT N° 221/2026')
+  await page.getByLabel('Tipo de documento *', { exact: true }).click(); await espera(500)
+  await cap('07b-nueva-tipos', {
+    tipo: campo('Tipo de documento *'),
+    lista: css('.v-overlay--active .v-list').last(),
+  })
+  await page.getByRole('option', { name: 'OFICIO', exact: true }).click(); await espera(300)
+  // Al elegir el PDF se abre el taller con el desglose hoja por hoja
+  await css('input[type=file][accept="application/pdf"]').first().setInputFiles(PDF); await espera(4500)
+  const taller = css('.v-overlay--active .v-card').filter({ hasText: 'Ordenar el documento' }).last()
+  const hoja = (i) => taller.locator('.editor-hoja').nth(i)
+  await page.mouse.move(1500, 880); await espera(300)
+  await cap('08a-taller', {
+    dialogo: taller,
+    hojas: taller.locator('.editor-hoja').first().locator('xpath=..'),
+    contador: taller.getByText(/hojas en el expediente/),
+    hoja2: hoja(1), hoja3: hoja(2), hoja4: hoja(3),
+    mover: hoja(2).getByRole('button', { name: 'Mover a la posición 2' }),
+    usar: taller.getByRole('button', { name: /Usar este documento/i }),
+  })
+  await hoja(2).getByRole('button', { name: 'Mover a la posición 2' }).click(); await espera(900)
+  await hoja(3).hover(); await espera(500)
+  await cap('08b-taller-movido', {
+    hoja2: hoja(1), hoja3: hoja(2), hoja4: hoja(3),
+    quitar: hoja(3).getByRole('button', { name: /^Quitar/ }),
+  })
+  await hoja(3).getByRole('button', { name: /^Quitar/ }).click(); await espera(1000)
+  await page.mouse.move(1500, 880); await espera(300)
+  await cap('08c-taller-listo', {
+    hojas: taller.locator('.editor-hoja').first().locator('xpath=..'),
+    contador: taller.getByText(/hojas en el expediente/).locator('xpath=..'),
+    usar: taller.getByRole('button', { name: /Usar este documento/i }),
+  })
+  await taller.getByRole('button', { name: /Usar este documento/i }).click(); await espera(1500)
   await css('h4').first().click()
   await cap('08-nueva-p2-llena', {
     numero: campo('Número de documento *'),
     tipo: campo('Tipo de documento *'),
     hojas: campo('Número de hojas *'),
-    pdf: css('.v-card').filter({ hasText: 'CITE-DNTT-221-2026.pdf' }).last(),
+    pdf: css('.v-card').filter({ hasText: /\.pdf/ }).last(),
+    ordenar: btn(/Ordenar y quitar hojas/i),
     siguiente: btn(/Siguiente/),
   })
   await btn(/Siguiente/).click(); await espera(700)
@@ -184,13 +218,10 @@ seccion('nueva', async () => {
     enlace: btn(/Agregar enlace/i),
     siguiente: btn(/Siguiente/),
   })
-  await btn(/Siguiente/).click(); await espera(700)
-  const instr = (t) => css('.instruccion-item').filter({ hasText: t })
-  await instr('INFORMAR').click(); await instr('RESPONDER').click(); await espera(300)
+  await btn(/Siguiente/).click(); await espera(800)
   await cap('11-nueva-p5', {
-    grilla: css('.instrucciones-grid'),
-    informar: instr('INFORMAR'),
-    responder: instr('RESPONDER'),
+    aviso: css('.v-alert').filter({ hasText: /externa no lleva instrucciones/ }).first(),
+    resumen: txt('Resumen').first(),
     registrar: btn(/Registrar correspondencia/i),
   })
   await btn(/Registrar correspondencia/i).click(); await espera(1800)
@@ -243,9 +274,31 @@ seccion('enviar', async () => {
     estado: css('.v-chip').filter({ hasText: /Enviado/ }).first(),
   })
   await cerrarAviso()
+
+  // Un INTERNO pendiente de la unidad: en el paso 5 lleva instrucciones y se envia a las dependencias propias
+  await ir(`/correspondencia/nueva?id=${IDS.interno}`); await espera(800)
+  await corregirTarjetas(TARJETAS)
+  for (let i = 0; i < 4; i++) { await btn(/Siguiente/).click(); await espera(700) }
+  const instr = (t) => css('.instruccion-item').filter({ hasText: t })
+  await page.mouse.move(1500, 880); await espera(300)
+  await cap('11b-interno-instrucciones', {
+    grilla: css('.instrucciones-grid'),
+    coordinar: instr('COORDINAR'),
+    informar: instr(/^INFORMAR$/),
+  })
+  await ir(`/correspondencia/${IDS.interno}`); await espera(600)
+  await btn(/Enviar a unidades/i).click(); await espera(1200)
+  const di = css('.v-overlay--active .v-card').last()
+  await page.mouse.move(1500, 880); await espera(300)
+  await cap('16c-enviar-interno', {
+    dialogo: di,
+    modo: di.getByText('INTERNO', { exact: true }).first(),
+    lista: di.locator('.selector-unidades__lista'),
+  })
+  await di.getByRole('button', { name: 'Cancelar' }).click(); await espera(500)
 })
 
-const MANT = 'Solicitud de mantenimiento preventivo de equipos de computación'
+const MANT = 'Mantenimiento preventivo de equipos de computación'
 const fila = (t) => css('.bandeja-row').filter({ hasText: t }).first()
 
 seccion('entrada', async () => {
@@ -267,7 +320,14 @@ seccion('entrada', async () => {
     rechazar: panel.getByRole('button', { name: /Rechazar/ }),
     abrir: panel.getByRole('button', { name: /Abrir completo/i }),
     pdf: panel.getByText('Documento adjunto disponible').locator('xpath=ancestor::div[contains(@class,"v-alert") or contains(@class,"v-card")][1]'),
+    instrucciones: panel.getByText('Instrucciones', { exact: true }).locator('xpath=..'),
+    verPdf: panel.getByRole('button', { name: /Ver PDF/i }).last(),
   })
+  await panel.getByRole('button', { name: /Ver PDF/i }).last().click(); await espera(4500)
+  const visor = css('.v-overlay--active .visor-pdf').last()
+  await page.mouse.move(1500, 880); await espera(300)
+  await cap('18b-visor', { dialogo: visor, cerrar: visor.getByRole('button', { name: 'Cerrar' }) })
+  await visor.getByRole('button', { name: 'Cerrar' }).click(); await espera(800)
   await panel.getByRole('button', { name: /Recepcionar/ }).click(); await espera(800)
   const dlg = css('.v-overlay--active .v-card').last()
   await cap('19-recepcionar', {
@@ -341,9 +401,18 @@ seccion('entrada', async () => {
     expandir: btn(/Expandir/),
     soporte: css('text=DEPARTAMENTO NACIONAL SOPORTE TECNICO >> visible=true').locator('xpath=ancestor::div[1]'),
   })
+  await pestana('Datos').click(); await espera(900)
+  const chipResp = css('.v-chip').filter({ hasText: /desde su origen/ }).first()
+  await chipResp.scrollIntoViewIfNeeded(); await page.mouse.wheel(0, 120); await espera(600)
+  await cap('26b-datos', {
+    respuestas: chipResp,
+    hojas: css('.v-chip').filter({ hasText: /^\d+ hojas?$/ }).first(),
+    expediente: txt('Documentos del expediente').locator('xpath=..'),
+  })
+  await page.mouse.wheel(0, -2000); await espera(400)
   await btn(/^Responder$/).click(); await espera(1500)
   await css('.option-card').nth(1).click(); await espera(300)
-  await css('.clasificacion-chip').filter({ hasText: 'NORMAL' }).click(); await espera(300)
+  await css('.clasificacion-chip').filter({ hasText: 'CORRIENTE' }).click(); await espera(300)
   await corregirTarjetas(TARJETAS)
   await page.mouse.move(1500, 860); await espera(200)
   await cap('27-responder-p1', {
@@ -351,24 +420,45 @@ seccion('entrada', async () => {
     pasos: css('.app-step-header').first(),
     interno: css('.option-card').nth(0),
     externo: css('.option-card').nth(1),
-    normal: css('.clasificacion-chip').filter({ hasText: 'NORMAL' }),
+    normal: css('.clasificacion-chip').filter({ hasText: 'CORRIENTE' }),
     siguiente: btn(/Siguiente/),
   })
-  await btn(/Siguiente/).click(); await espera(700)
-  await page.getByLabel('Número de documento *', { exact: true }).fill('CITE DNTT N° 230/2026')
+  await btn(/Siguiente/).click(); await espera(1200)
+  // El taller de union: arriba las hojas recibidas (bloqueadas), abajo las propias
+  let unir = css('.v-overlay--active .v-card').filter({ hasText: 'Unir y ordenar el documento' }).last()
+  if (!(await unir.count())) { await btn(/Ordenar y quitar hojas|Elegir/i).first().click(); await espera(1200) }
+  unir = css('.v-overlay--active .v-card').filter({ hasText: 'Unir y ordenar el documento' }).last()
+  await unir.locator('input[type=file]').last().setInputFiles(PDF_RESP); await espera(4500)
+  await page.mouse.move(1500, 880); await espera(300)
+  await cap('28a-unir', {
+    dialogo: unir,
+    bloqueadas: unir.getByText(/Ya en el expediente/).first().locator('xpath=..'),
+    candado: unir.locator('.editor-hoja-candado').first(),
+    suyas: unir.getByText('Sus hojas', { exact: true }),
+    anadir: unir.getByRole('button', { name: /Añadir otro PDF/i }),
+  })
+  await unir.locator('input[type=file]').last().setInputFiles(PDF_ANX); await espera(4500)
+  await page.mouse.move(1500, 880); await espera(300)
+  await cap('28b-unir2', {
+    dialogo: unir,
+    contador: unir.getByText(/hojas en el expediente/).locator('xpath=..'),
+    suyas: unir.getByText('Sus hojas', { exact: true }).locator('xpath=..'),
+    usar: unir.getByRole('button', { name: /Usar este documento/i }),
+  })
+  await unir.getByRole('button', { name: /Usar este documento/i }).click(); await espera(1500)
+  await page.getByLabel('Número de documento *', { exact: true }).fill('OF. DNTT N° 230/2026')
   await page.getByLabel('Tipo de documento *', { exact: true }).click(); await espera(400)
-  await page.getByRole('option', { name: 'CITE', exact: true }).click(); await espera(300)
-  await page.getByLabel('Número de hojas *', { exact: true }).fill('1')
-  await css('input[type=file][accept="application/pdf"]').first().setInputFiles(PDF_RESP); await espera(500)
+  await page.getByRole('option', { name: 'OFICIO', exact: true }).click(); await espera(300)
   await page.mouse.click(1500, 330); await espera(300)
   await cap('28-responder-p2', {
     numero: campo('Número de documento *'),
     fecha: campo('Fecha del documento *'),
     tipo: campo('Tipo de documento *'),
     hojas: campo('Número de hojas *'),
-    pdf: css('.v-card').filter({ hasText: 'CITE-DNTT-230-2026.pdf' }).last(),
+    pdf: css('.v-card').filter({ hasText: /\.pdf/ }).last(),
     siguiente: btn(/Siguiente/),
   })
+
   await btn(/Siguiente/).click(); await espera(700)
   await page.getByLabel('Referencia / Asunto *', { exact: true })
     .fill('Respuesta: mantenimiento preventivo programado para la semana del 9 de noviembre')
@@ -397,6 +487,22 @@ seccion('entrada', async () => {
     respuesta: css('.v-alert, .v-card').filter({ hasText: /Respondido — Doc/ }).last(),
   })
   await cerrarAviso()
+
+  // Un envio de la unidad que respondieron dos unidades: una tarjeta por unidad
+  await ir(`/correspondencia/${IDS.relevamiento}`); await espera(800)
+  await pestana('Respuestas').click(); await espera(1000)
+  await page.mouse.move(1500, 880); await espera(300)
+  await cap('32b-tarjetas', {
+    pestana: pestana('Respuestas'),
+    tarjetas: css('.respuesta-tarjeta').first().locator('xpath=..'),
+    primera: css('.respuesta-tarjeta').first(),
+    segunda: css('.respuesta-tarjeta').nth(1),
+  })
+  await css('.respuesta-tarjeta').first().click(); await espera(5000)
+  const vr = css('.v-overlay--active .visor-pdf').last()
+  await page.mouse.move(1500, 880); await espera(300)
+  await cap('32c-visor-respuesta', { dialogo: vr, cerrar: vr.getByRole('button', { name: 'Cerrar' }) })
+  await vr.getByRole('button', { name: 'Cerrar' }).click(); await espera(600)
 })
 
 const CRONO = 'Cronograma de mantenimiento de la red de radiocomunicaciones'
@@ -434,11 +540,11 @@ seccion('terceros', async () => {
   await page.getByLabel('Cédula de identidad *', { exact: true }).fill('9132457 LP')
   await page.getByLabel('Teléfono de contacto', { exact: true }).fill('71548236')
   await page.getByLabel('Tipo de documento *', { exact: true }).click(); await espera(400)
-  await page.getByRole('option', { name: 'SOLICITUD', exact: true }).click(); await espera(300)
+  await page.getByRole('option', { name: 'MEMORIAL', exact: true }).click(); await espera(300)
   const f = page.getByLabel('Fecha del documento *', { exact: true })
   if (!(await f.inputValue())) await f.fill('2026-11-04')
   await page.getByLabel('Número de hojas *', { exact: true }).fill('3')
-  await css('.clasificacion-chip').filter({ hasText: 'NORMAL' }).click()
+  await css('.clasificacion-chip').filter({ hasText: 'CORRIENTE' }).click()
   await page.getByLabel('Referencia / Asunto *', { exact: true })
     .fill('Solicitud de certificado de trabajo para trámite de jubilación')
   await page.mouse.click(1500, 130); await espera(300)
@@ -449,7 +555,7 @@ seccion('terceros', async () => {
     tipo: campo('Tipo de documento *'),
     fecha: campo('Fecha del documento *'),
     hojas: campo('Número de hojas *'),
-    clasificacion: css('.clasificacion-chip').filter({ hasText: 'NORMAL' }),
+    clasificacion: css('.clasificacion-chip').filter({ hasText: 'CORRIENTE' }),
     referencia: campo('Referencia / Asunto *'),
   })
   await btn(/Registrar recepción/).scrollIntoViewIfNeeded(); await espera(500)
@@ -490,6 +596,16 @@ seccion('adscripciones', async () => {
     lista: css('.v-overlay--active .v-list').last(),
     opcion: plan,
   })
+  // Un cargo ocupado: el sistema avisa y no deja guardar
+  await page.getByRole('option', { name: 'DEPARTAMENTO NACIONAL INFORMATICA', exact: true }).click(); await espera(900)
+  await page.mouse.move(1500, 860); await espera(300)
+  await cap('42b-ocupado', {
+    dialogo: dj,
+    departamento: campo('Departamento · Nivel 2'),
+    aviso: dj.locator('.v-alert').filter({ hasText: /ya tiene una persona/ }).first(),
+    guardar: dj.getByRole('button', { name: /Guardar asignación/i }),
+  })
+  await page.getByLabel('Departamento · Nivel 2', { exact: true }).click(); await espera(500)
   await plan.click(); await espera(800)
   await page.mouse.move(1500, 860); await espera(300)
   await cap('43-adscribir-elegido', {
@@ -510,7 +626,22 @@ seccion('adscripciones', async () => {
     cambiar: filaJuan.getByRole('button', { name: /Seleccionar dependencia/i }),
     desvincular: filaJuan.getByRole('button', { name: /Desvincular/i }),
     reemplazar: filaJuan.locator('.reemplazo-select'),
+    carla: css('tr').filter({ hasText: 'CARLA ANDREA' }).getByText(/propia cuenta/),
+    lucia: css('tr').filter({ hasText: 'LUCIA FERNANDA' }),
+    luciaNota: css('tr').filter({ hasText: 'LUCIA FERNANDA' }).getByText(/Administrador/),
+    pendiente: css('tr').filter({ hasText: 'DIEGO ARMANDO' }).getByText(/pendiente/),
   })
+  // Desvincular con tramites pendientes: avisa cuantos quedan en la dependencia
+  await css('tr').filter({ hasText: 'DIEGO ARMANDO' }).getByRole('button', { name: /Desvincular/i }).click(); await espera(1000)
+  const dv = css('.v-overlay--active .v-card').last()
+  await page.mouse.move(1500, 880); await espera(300)
+  await cap('44b-desvincular', {
+    dialogo: dv,
+    texto: dv.getByText(/trámite/).first(),
+    confirmar: dv.getByRole('button', { name: /Desvincular/i }),
+    cancelar: dv.getByRole('button', { name: /Cancelar/i }),
+  })
+  await dv.getByRole('button', { name: /Cancelar/i }).click(); await espera(500)
 })
 
 seccion('organigrama', async () => {
@@ -598,7 +729,9 @@ async function recorrido() {
 ;(async () => {
   fs.mkdirSync(path.join(RAIZ, 'caps'), { recursive: true })
   fs.mkdirSync(path.join(RAIZ, 'build'), { recursive: true })
+  // Chromium completo (headless nuevo): el de modo shell no dibuja los PDF dentro de la pagina.
   const b = await chromium.launch({
+    channel: 'chromium',
     args: ['--lang=es-BO'],
     // Sin LANG el campo de fecha sale en formato de EE. UU. (mm/dd/aaaa).
     env: { ...process.env, LANG: 'es_BO.UTF-8', LANGUAGE: 'es_BO:es', LC_ALL: 'es_BO.UTF-8' },

@@ -29,17 +29,17 @@ def s(text, spoken=None):
 
 
 SCRIPT = {
-    # 0 · presentacion
+    # Presentacion
     0: [[s("SISCOP, el Sistema de Correspondencia Policial.")],
         [s("En esta guía vas a ver todo lo que hace la secretaria de una unidad,"),
          s("y cómo hacerlo correctamente.")]],
-    # 1 · panel de inicio
+    # 1 · Inicio
     1: [[s("Al ingresar llegás al panel de correspondencia."),
          s("Arriba ves los pendientes de tu unidad, lo que lleva más de tres días sin atender"),
          s("y el tiempo promedio de atención.")],
         [s("En el menú están las bandejas, la recepción de terceros y la nueva correspondencia;"),
          s("y en Ajustes, las adscripciones, el organigrama y la configuración.")]],
-    # 2 · configuracion
+    # 2 · Configuracion
     2: [[s("Antes de empezar, configurá tu unidad."),
          s("En Configuración, pestaña Remitente,"),
          s("cargá el nombre, el cargo y el teléfono de quien firma los documentos.")],
@@ -47,69 +47,98 @@ SCRIPT = {
          s("estos datos se completan solos en cada documento nuevo.")],
         [s("En Hoja de ruta podés activar la numeración automática,"),
          s("con un número inicial y un prefijo para tu unidad.")]],
-    # 3 · nueva correspondencia (pasos 1 y 2)
+    # 3 · Nueva correspondencia: tipo y documento
     3: [[s("Para registrar un documento, hacé clic en Nueva correspondencia."),
          s("El registro tiene cinco pasos.")],
         [s("Primero elegí el tipo: Interno, si va a las dependencias de tu propia unidad;"),
          s("Externo, si va a otra unidad de la Policía."),
-         s("Este oficio va a otras unidades: marcá Externo y la clasificación; por ejemplo, Normal.")],
-        [s("En el paso dos cargá el número de documento, la fecha, el tipo y las hojas."),
+         s("Este oficio va a otras unidades: marcá Externo y la clasificación; por ejemplo, Corriente.")],
+        [s("En el paso dos cargá el número de documento, la fecha y el tipo."),
+         s("La lista de tipos es la oficial de la institución."),
          s("Al ser externo, no lleva hoja de ruta.")],
-        [s("Y adjuntá el PDF escaneado del documento firmado.")]],
-    # 4 · nueva correspondencia (pasos 3 a 5)
+        [s("Adjuntá el PDF escaneado del documento firmado.")],
+        [s("Apenas lo cargás, el sistema te muestra hoja por hoja lo que tiene adentro"),
+         s("y cuenta las hojas por vos."),
+         s("Si el conteo no coincide con el documento en papel, podés corregirlo a mano.")],
+        [s("Si el escaneo salió desordenado o trae hojas de más, usá Ordenar y quitar hojas:"),
+         s("acomodá las hojas, sacá lo que sobra y aplicá.")],
+        [s("Revisá siempre el desglose antes de seguir:"),
+         s("lo que registres acá es lo que va a ver la unidad de destino.")]],
+    # 4 · Nueva correspondencia: referencia e instrucciones
     4: [[s("En el paso tres, el remitente ya viene de la configuración."),
          s("Solo escribí la referencia: de qué trata el documento.")],
         [s("El paso cuatro es opcional: anexos o enlaces a archivos pesados.")],
-        [s("En el paso cinco marcá las instrucciones para quien lo recibe;"),
-         s("por ejemplo, Informar y Responder.")],
+        [s("El paso cinco depende del tipo."),
+         s("En un documento Externo no se marcan instrucciones:"),
+         s("las disposiciones son internas de la Policía, y a otra unidad se le manda el documento, no la orden.")],
+        [s("Ahí solo revisás el resumen de lo que cargaste.")],
+        [s("En cambio, si el documento fuera Interno, en este paso marcás las disposiciones"),
+         s("para la dependencia que lo recibe; por ejemplo, Coordinar o Informar."),
+         s("La lista es la oficial de la institución.")],
         [s("Hacé clic en Registrar correspondencia."),
          s("El sistema le asigna un código único.")]],
-    # 5 · enviar
+    # 5 · Enviar
     5: [[s("Registrar no es enviar."),
          s("Hacé clic en Enviar a unidades y buscá el destino por su nombre.")],
-        [s("Podés marcar varias unidades a la vez."),
-         s("El envío inicial siempre va a unidades de nivel uno.")],
+        [s("Cada unidad aparece con su emblema, para que no te equivoques de destino.")],
+        [s("Podés marcar varias a la vez."),
+         s("En un documento Externo, el envío va a unidades de nivel uno.")],
         [s("Confirmá con Sí, enviar."),
          s("El envío no se puede deshacer: revisá los destinos antes de confirmar.")],
-        [s("Listo: la correspondencia quedó enviada.")]],
-    # 6 · bandeja de entrada
+        [s("Listo: la correspondencia quedó enviada.")],
+        [s("Si el documento es Interno, el mismo botón te ofrece las dependencias de tu propia unidad.")]],
+    # 6 · Bandeja de entrada
     6: [[s("Lo que llega a tu unidad aparece en la Bandeja de entrada."),
          s("Las carpetas filtran por estado: pendientes, por responder, recepcionados y más.")],
-        [s("Hacé clic en un documento para ver su detalle en el panel lateral,"),
-         s("con los datos y el PDF adjunto.")]],
-    # 7 · recepcionar
+        [s("Hacé clic en un documento para ver su detalle en el panel lateral.")],
+        [s("Ahí leés las instrucciones que dispuso quien lo envió, con su nombre completo.")],
+        [s("Y con Ver PDF lo mirás sin salir de la bandeja:"),
+         s("se abre encima, lo cerrás y seguís donde estabas.")]],
+    # 7 · Recepcionar
     7: [[s("Cuando el documento llega a tu unidad, hacé clic en Recepcionar."),
          s("Si no corresponde, elegí Rechazar y explicá el motivo en observaciones.")],
         [s("Confirmá la recepción:"),
          s("quien lo envió ve al instante que tu unidad ya lo recibió.")],
         [s("Recepcioná lo antes posible: el panel mide el tiempo de atención.")]],
-    # 8 · derivar
-    8: [[s("Con Abrir completo ves el documento y todas sus acciones:"),
-         s("el PDF, derivar, responder o marcarlo como atendido.")],
+    # 8 · Derivar
+    8: [[s("Con Abrir completo ves el documento entero y todas sus acciones:"),
+         s("derivar, responder o marcarlo como atendido.")],
+        [s("Esta pantalla es para leer."),
+         s("Acomodar las hojas de un PDF se hace al cargarlo o al responder, no acá.")],
         [s("Derivar es interno: lo pasa a una dependencia de tu unidad."),
          s("Hacé clic en Derivar y elegí si va con un documento nuevo o sin documento."),
          s("Ojo: solo podés derivar una vez.")],
         [s("Marcá la dependencia de destino, revisá la hoja de ruta"),
          s("y confirmá con Derivar.")],
         [s("El documento queda en estado Derivado.")]],
-    # 9 · seguimiento
+    # 9 · Seguimiento
     9: [[s("En Seguimiento ves el avance y la ruta del documento,"),
          s("con la fecha de cada paso.")],
-        [s("Y en Árbol completo, cada unidad y dependencia que lo tiene, con su estado.")]],
-    # 10 · responder
+        [s("En Árbol completo, cada unidad y dependencia que lo tiene, con su estado.")],
+        [s("Y en Datos, de un vistazo, cuántas respuestas lleva el documento desde que se creó"),
+         s("y cuántas hojas suma el expediente.")]],
+    # 10 · Responder
     10: [[s("Para contestar, hacé clic en Responder."),
           s("La respuesta llega a la bandeja de quien te envió el documento.")],
          [s("Como vuelve a otra unidad, elegí Externo y la clasificación;"),
           s("cargá los datos de tu oficio de respuesta y adjuntá su PDF.")],
+         [s("Tu respuesta se une al documento que recibiste, así la otra unidad lee todo junto.")],
+         [s("Las hojas que te mandaron aparecen con candado:"),
+          s("no las podés mover ni quitar, porque son el documento de la otra unidad.")],
+         [s("Las tuyas sí: podés sumar varios PDF, ordenarlos y sacar lo que no va.")],
          [s("El remitente se completa solo: escribí la referencia,"),
           s("agregá anexos si hace falta y hacé clic en Enviar respuesta.")],
-         [s("El documento queda Atendido, con la respuesta en su expediente.")]],
-    # 11 · bandeja de salida
+         [s("El documento queda Atendido.")],
+         [s("En el expediente, cada unidad que respondió tiene su propia tarjeta,"),
+          s("con su escudo y su documento.")],
+         [s("Tocá una y se abre esa respuesta con el original adelante, tal como esa unidad la mandó."),
+          s("Las respuestas no se mezclan entre sí.")]],
+    # 11 · Bandeja de salida
     11: [[s("En la Bandeja de salida está lo que tu unidad registró y envió."),
           s("La barra muestra cuántos destinos ya lo procesaron.")],
          [s("Al abrir uno, en Seguimiento ves el estado de cada unidad:"),
           s("quién lo tiene pendiente y quién ya lo recepcionó.")]],
-    # 12 · recepcion de terceros
+    # 12 · Recepcion de terceros
     12: [[s("Cuando una persona civil entrega documentación en ventanilla,"),
           s("usá Recepción de terceros.")],
          [s("Cargá los datos de quien entrega: nombre, carnet y teléfono;"),
@@ -117,25 +146,36 @@ SCRIPT = {
          [s("Hacé clic en Registrar recepción.")],
          [s("Dictale el código de seguimiento a la persona e imprimí su comprobante."),
           s("El documento ya está en tu bandeja de entrada.")]],
-    # 13 · adscripciones
+    # 13 · Adscripciones
     13: [[s("En Adscripciones gestionás al personal de tu unidad."),
           s("Las solicitudes pendientes aparecen primero.")],
-         [s("Hacé clic en Asignar y aprobar,"),
-          s("y elegí la dependencia: cada cargo admite una sola persona.")],
+         [s("Hacé clic en Asignar y aprobar, y elegí la dependencia.")],
+         [s("Un departamento, una división o una sección admiten una sola persona a cargo.")],
+         [s("Si el cargo que elegiste ya está ocupado, el sistema te avisa y no deja guardar:"),
+          s("designá un reemplazo o liberalo primero.")],
+         [s("La unidad en sí es distinta: ahí van las secretarías, y una unidad puede tener varias.")],
          [s("Guardá la asignación."),
-          s("En Integrantes de mi unidad podés cambiar su dependencia, reemplazarlo o desvincularlo.")]],
-    # 14 · organigrama
-    14: [[s("En Organigrama recorrés la estructura de tu unidad por niveles."),
-          s("Cada dependencia tiene sus acciones: ver, añadir hija, modificar o inactivar.")],
+          s("En Integrantes de mi unidad podés cambiar su dependencia, reemplazarlo o desvincularlo.")],
+         [s("Podés desvincular a alguien aunque tenga trámites sin terminar:"),
+          s("los documentos quedan en la dependencia, no en la persona,"),
+          s("y los ve quien ocupe el cargo después.")],
+         [s("Y cuando una fila no tiene acciones, el sistema te explica por qué.")]],
+    # 14 · Organigrama
+    14: [[s("En Organigrama recorrés la estructura de tu unidad por niveles.")],
+         [s("Ves solo tu unidad, con su emblema y los de sus dependencias,"),
+          s("en dos columnas: la unidad a la izquierda y sus dependencias a la derecha.")],
+         [s("Cada dependencia tiene sus acciones: ver, añadir hija, modificar o inactivar.")],
          [s("Para crear una nueva, hacé clic en Añadir hija,"),
           s("escribí el nombre y guardá.")],
          [s("La nueva división aparece dentro de su departamento.")]],
-    # 15 · notificaciones y perfil
-    15: [[s("La campana te avisa en tiempo real de cada documento nuevo."),
-          s("Podés ver solo las no leídas o marcarlas todas.")],
+    # 15 · Avisos
+    15: [[s("La campana te avisa en tiempo real de cada documento nuevo.")],
+         [s("Cada aviso trae el código completo, sin cortar, y el estado en que está el documento.")],
+         [s("Podés ver solo las no leídas o marcarlas todas."),
+          s("Los avisos no se acumulan para siempre: los viejos se van solos.")],
          [s("En tu avatar ves tus datos y tu unidad."),
           s("Al terminar la jornada, salí con Cerrar sistema.")]],
-    # 16 · cierre y buenas practicas
+    # Cierre
     16: [[s("Recordá: configurá tu unidad, recepcioná a tiempo,"),
           s("revisá antes de enviar, derivá una sola vez"),
           s("y elegí bien entre Interno y Externo.")],
