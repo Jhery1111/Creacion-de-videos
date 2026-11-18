@@ -103,9 +103,13 @@ async function api(tok, metodo, ruta, cuerpo) {
   return texto ? JSON.parse(texto) : null
 }
 
+// Fecha de hoy en Bolivia (AAAA-MM-DD).
+const HOY = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/La_Paz' }).format(new Date())
+
 async function crearCorr(tok, unidadNombre, d) {
   const f = new FormData()
-  const campos = { tipoRegistro: 'INTERNO', fechaDocumento: '2026-11-04', numeroHojas: 2, ...d.campos }
+  // Entre unidades distintas la correspondencia es EXTERNA (INTERNO es solo hacia las dependencias propias).
+  const campos = { tipoRegistro: 'EXTERNO', fechaDocumento: HOY, numeroHojas: 2, ...d.campos }
   for (const [k, v] of Object.entries(campos)) if (v != null) f.append(k, String(v))
   const pdf = await pdfOficio(unidadNombre, campos.numeroDocumento, campos.referencia, d.cuerpo)
   f.append('pdf', new Blob([pdf], { type: 'application/pdf' }), `${campos.numeroDocumento.replace(/\W+/g, '-')}.pdf`)
@@ -126,19 +130,19 @@ async function main() {
 
   // Correspondencia que llega a Telemática desde otras unidades
   const llegan = [
-    ['marco', { numeroDocumento: 'CIRC. DNA N° 041/2026', tipoDocumentoId: T.CIRCULAR, clasificacionId: C.NORMAL, hojaRuta: '1187',
+    ['marco', { numeroDocumento: 'CIRC. DNA N° 041/2026', tipoDocumentoId: T.CIRCULAR, clasificacionId: C.NORMAL,
       referencia: 'Instructivo para el inventario anual de activos fijos gestión 2026', instrucciones: `${I.CONOCIMIENTO},${I.INFORMAR}` },
      'Se instruye a todas las direcciones nacionales realizar el inventario anual de activos fijos conforme al cronograma adjunto.', [U.TELEMATICA, U.PERSONAL, U.LA_PAZ]],
-    ['rosa', { numeroDocumento: 'INF. CDLP N° 318/2026', tipoDocumentoId: T.INFORME, clasificacionId: C.URGENTE, hojaRuta: '2264',
+    ['rosa', { numeroDocumento: 'INF. CDLP N° 318/2026', tipoDocumentoId: T.INFORME, clasificacionId: C.URGENTE,
       referencia: 'Informe de conectividad de los módulos policiales EPI de la ciudad de El Alto', instrucciones: `${I.ATENDER},${I.URGENTE}` },
      'Se remite el informe de fallas de conectividad registradas en los módulos EPI, para su atención por la unidad técnica.', [U.TELEMATICA]],
-    ['luis', { numeroDocumento: 'MEMO DNP N° 095/2026', tipoDocumentoId: T.MEMO, clasificacionId: C.NORMAL, hojaRuta: '0932',
+    ['luis', { numeroDocumento: 'MEMO DNP N° 095/2026', tipoDocumentoId: T.MEMO, clasificacionId: C.NORMAL,
       referencia: 'Requerimiento de cuentas de correo institucional para personal nuevo', instrucciones: `${I.ATENDER},${I.RESPONDER}` },
      'Se solicita la habilitación de cuentas de correo institucional para el personal que se incorpora en la presente gestión.', [U.TELEMATICA]],
-    ['rosa', { numeroDocumento: 'OF. CDLP N° 327/2026', tipoDocumentoId: T.OFICIO, clasificacionId: C.NORMAL, hojaRuta: '2271',
+    ['rosa', { numeroDocumento: 'OF. CDLP N° 327/2026', tipoDocumentoId: T.OFICIO, clasificacionId: C.NORMAL,
       referencia: 'Solicitud de soporte técnico para el sistema de registro de denuncias', instrucciones: `${I.ATENDER}` },
      'Se solicita asistencia técnica para el sistema de registro de denuncias de las estaciones policiales integrales.', [U.TELEMATICA]],
-    ['luis', { numeroDocumento: 'SOL. DNP N° 112/2026', tipoDocumentoId: T.SOLICITUD, clasificacionId: C.NORMAL, hojaRuta: '0948',
+    ['luis', { numeroDocumento: 'SOL. DNP N° 112/2026', tipoDocumentoId: T.SOLICITUD, clasificacionId: C.NORMAL,
       referencia: 'Solicitud de mantenimiento preventivo de equipos de computación', instrucciones: `${I.ATENDER},${I.DERIVAR}` },
      'Se solicita el mantenimiento preventivo de los equipos de computación de la Dirección Nacional de Personal.', [U.TELEMATICA]],
   ]
@@ -170,17 +174,17 @@ async function main() {
   {
     const d = new FormData()
     for (const [k, v] of Object.entries({ referencia: 'Habilitación de cuentas de correo institucional solicitadas', numeroDocumento: 'NOTA DNTT N° 211/2026',
-      tipoRegistro: 'INTERNO', clasificacionId: C.NORMAL, tipoDocumentoId: T.NOTA, fechaDocumento: '2026-11-04', numeroHojas: 1, ...remitentes.carla }))
+      tipoRegistro: 'EXTERNO', clasificacionId: C.NORMAL, tipoDocumentoId: T.NOTA, fechaDocumento: HOY, numeroHojas: 1, ...remitentes.carla }))
       d.append(k, String(v))
     await api(tok.carla, 'POST', `/detalle/${det(memo).id}/responder`, d)
   }
 
   // Bandeja de salida de Telemática: dos enviadas antes
   const salen = [
-    [{ numeroDocumento: 'CITE DNTT N° 205/2026', tipoDocumentoId: T.CITE, clasificacionId: C.NORMAL, hojaRuta: '0412',
+    [{ numeroDocumento: 'CITE DNTT N° 205/2026', tipoDocumentoId: T.CITE, clasificacionId: C.NORMAL,
       referencia: 'Cronograma de mantenimiento de la red de radiocomunicaciones', instrucciones: `${I.CONOCIMIENTO},${I.COORDINAR}` },
      'Se remite el cronograma de mantenimiento de la red de radiocomunicaciones para su coordinación.', [U.LA_PAZ, U.PERSONAL]],
-    [{ numeroDocumento: 'CITE DNTT N° 208/2026', tipoDocumentoId: T.CITE, clasificacionId: C.RESERVADO, hojaRuta: '0415',
+    [{ numeroDocumento: 'CITE DNTT N° 208/2026', tipoDocumentoId: T.CITE, clasificacionId: C.RESERVADO,
       referencia: 'Actualización de credenciales de acceso a sistemas institucionales', instrucciones: `${I.ATENDER},${I.RESPONDER}` },
      'Se instruye la actualización de credenciales de acceso a los sistemas institucionales del personal a su cargo.', [U.ADMINISTRATIVA]],
   ]

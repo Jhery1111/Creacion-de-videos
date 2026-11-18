@@ -1,6 +1,6 @@
 # SISCOP · Guía del rol Secretaria
 
-Video tutorial (1920x1080, ~6 min 20 s, voz es-BO, subtítulos) con todo lo que hace la
+Video tutorial (1920x1080, ~6 min 26 s, voz es-BO, subtítulos) con todo lo que hace la
 secretaria de una unidad en SISCOP v2: configuración, nueva correspondencia, envío,
 bandeja de entrada, recepción, derivación, seguimiento, respuesta, bandeja de salida y
 archivo, recepción de terceros, adscripciones, organigrama, notificaciones y perfil.
@@ -9,6 +9,12 @@ Resultado: `renders/siscop-secretaria.mp4` y `renders/siscop-secretaria.srt`.
 
 Las pantallas son capturas reales de SISCOP v2 corriendo en local con **datos ficticios**
 (personas, CI, teléfonos y documentos inventados).
+
+**Interno y externo.** Regla de la institución: *Interno* va a las dependencias de la propia
+unidad; *Externo* va a otra unidad de la Policía. Por eso los documentos entre unidades se
+siembran y se registran como EXTERNO. Las tarjetas Interno/Externo de SISCOP hoy describen
+otra cosa; `capturar.cjs` reemplaza ese texto **solo en la captura** (la aplicación no se
+modificó).
 
 ## Cómo se regenera
 

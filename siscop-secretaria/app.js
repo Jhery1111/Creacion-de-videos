@@ -376,20 +376,26 @@
     const k = kit(root, ctx);
     const S = T.S;
     const tNew = S(0, 0) + 1.6, tNext = S(2, 0) - 0.1, tPdf = S(3, 0) + 1.2;
-    k.shot('01-inicio').shot('06-nueva-p1', tNew + 0.15).shot('07-nueva-p2-vacia', tNext + 0.15).shot('08-nueva-p2-llena', tPdf + 0.15);
+    const tExt = S(1, 2) + 2.0, tNorm = S(1, 2) + 4.3;
+    k.shot('01-inicio').shot('06a-nueva-p1-inicial', tNew + 0.15).shot('06-nueva-p1', tExt + 0.1, 0.15)
+      .shot('07-nueva-p2-vacia', tNext + 0.15).shot('08-nueva-p2-llena', tPdf + 0.15);
     k.click('01-inicio', 'nueva', tNew, 1.2).lens('01-inicio', 'nueva', tNew - 0.6, tNew + 0.4, { dx: -260, dy: 140 });
-    k.spot('06-nueva-p1', 'pasos', S(0, 1) + 0.1, S(1, 0) - 0.1, 4);
+    k.spot('06a-nueva-p1-inicial', R('06-nueva-p1', 'pasos'), S(0, 1) + 0.1, S(1, 0) - 0.1, 4);
     k.tip('5 pasos', 'Registro', S(0, 1) + 0.3, S(1, 0) - 0.2, { icon: IC.file });
     const opts = union(R('06-nueva-p1', 'interno'), R('06-nueva-p1', 'externo'), R('06-nueva-p1', 'clasificaciones'));
     k.zoom(opts, 1.22, S(1, 0) + 0.4, 0.9);
-    k.spot('06-nueva-p1', 'interno', S(1, 0) + 0.3, S(1, 1) - 0.05, 4).spot('06-nueva-p1', 'externo', S(1, 1), S(1, 2) - 0.05, 4);
+    // Interno = dependencias de la propia unidad; Externo = otra unidad de la Policia
+    k.spot('06-nueva-p1', 'interno', S(1, 0) + 0.3, S(1, 1) - 0.05, 4).spot('06-nueva-p1', 'externo', S(1, 1), S(1, 2) + 0.3, 4);
     k.move('06-nueva-p1', 'interno', S(1, 0) + 0.6, 0.9).move('06-nueva-p1', 'externo', S(1, 1) + 0.3, 0.8);
-    const tNorm = S(1, 2) + 1.2;
-    k.hl('06-nueva-p1', 'clasificaciones', S(1, 2) + 0.1, tNext - 0.2, 4).click('06-nueva-p1', 'normal', tNorm, 0.8)
+    k.tip('Hacia las dependencias de tu unidad', 'Interno', S(1, 0) + 0.5, tNext - 0.3, { icon: IC.tree, pos: 'bl' });
+    k.tip('Hacia otra unidad de la Policía', 'Externo', S(1, 1) + 0.2, tNext - 0.3, { icon: IC.send, pos: 'br' });
+    k.click('06-nueva-p1', 'externo', tExt, 0.8).lens('06-nueva-p1', 'externo', tExt - 0.5, tExt + 0.7, { dx: -250, dy: 150 });
+    k.patch('06a-nueva-p1-inicial', R('06-nueva-p1', 'clasificaciones', 6), tExt, tNorm + 0.05);
+    k.hl('06-nueva-p1', 'clasificaciones', tExt + 0.8, tNext - 0.2, 4).click('06-nueva-p1', 'normal', tNorm, 0.8)
       .lens('06-nueva-p1', 'normal', tNorm - 0.5, tNorm + 0.6, { dx: 120, dy: -150 });
     k.click('06-nueva-p1', 'siguiente', tNext, 0.9).home(tNext - 0.1, 0.6);
     const s2 = S(2, 0) + 0.2;
-    const form = union(R('07-nueva-p2-vacia', 'numero'), R('07-nueva-p2-vacia', 'hojas'), R('07-nueva-p2-vacia', 'hojaRuta'));
+    const form = union(R('07-nueva-p2-vacia', 'numero'), R('07-nueva-p2-vacia', 'hojas'), R('07-nueva-p2-vacia', 'fecha'));
     k.zoom(form, 1.35, s2 + 0.6, 0.8);
     k.type('08-nueva-p2-llena', 'numero', s2 + 0.5, 1.2).hl('07-nueva-p2-vacia', 'numero', s2 + 0.4, s2 + 1.8, 3)
       .hl('07-nueva-p2-vacia', 'fecha', s2 + 1.8, s2 + 2.5, 3)
@@ -397,8 +403,7 @@
       .type('08-nueva-p2-llena', 'hojas', s2 + 3.4, 0.25).hl('07-nueva-p2-vacia', 'hojas', s2 + 3.3, S(2, 1), 3);
     k.at(mid(R('07-nueva-p2-vacia', 'numero')), s2 + 0.4, 0.7).at(mid(R('07-nueva-p2-vacia', 'tipo')), s2 + 2.5, 0.6)
       .at(mid(R('07-nueva-p2-vacia', 'hojas')), s2 + 3.3, 0.5);
-    k.spot('07-nueva-p2-vacia', 'hojaRuta', S(2, 1) + 0.05, S(3, 0) - 0.1, 5);
-    k.tip('Hoja de ruta sugerida', 'Automático', S(2, 1) + 0.2, S(3, 0) - 0.2, { icon: IC.route });
+    k.tip('Externo: sin hoja de ruta', 'Hoja de ruta', S(2, 1) + 0.2, S(3, 0) - 0.2, { icon: IC.route });
     k.zoom(R('07-nueva-p2-vacia', 'pdf'), 1.25, S(3, 0) + 0.5, 0.7);
     k.click('07-nueva-p2-vacia', 'pdf', tPdf, 0.8).spot('08-nueva-p2-llena', 'pdf', tPdf + 0.4, T.dur - 0.3, 6);
     return k.done();
@@ -500,20 +505,22 @@
     const k = kit(root, ctx);
     const S = T.S, E = T.E;
     const C = '21-detalle';
-    const tDer = S(1, 0) + 1.7, tSin = E(1) + 0.25, tGo = S(2, 1) + 1.0;
+    const tDer = S(1, 1) + 0.9, tSin = E(1) + 0.25, tGo = S(2, 1) + 1.0;
     k.shot(C).shot('22-derivar-modo', tDer + 0.15).shot('23-derivar-seleccion', tSin + 0.15).shot('24-derivada', tGo + 0.15);
     const acts = union(R(C, 'pdf'), R(C, 'atendido'));
     k.tip('Abrir completo', 'Desde el panel lateral', S(0, 0) + 0.2, S(0, 1) - 0.1, { icon: IC.file });
     k.zoom(acts, 1.25, S(0, 0) + 0.8, 0.9);
-    const seq = ['pdf', 'hojaRuta', 'derivar', 'responder', 'atendido'];
+    const seq = ['pdf', 'derivar', 'responder', 'atendido'];
     seq.forEach((key, i) => {
-      const a = S(0, 1) + 0.1 + i * 0.85;
-      k.hl(C, key, a, a + 0.85, 3).move(C, key, a + 0.3, 0.6);
+      const a = S(0, 1) + 0.1 + i * 0.8;
+      k.hl(C, key, a, a + 0.8, 3).move(C, key, a + 0.3, 0.55);
     });
-    k.click(C, 'derivar', tDer, 0.8);
+    k.tip('Derivar es interno', 'Hacia dependencias de tu unidad', S(1, 0) + 0.2, S(1, 2) - 0.1, { icon: IC.tree });
+    k.hl(C, 'derivar', S(1, 0) + 0.4, tDer, 3).move(C, 'derivar', S(1, 0) + 1.2, 0.8);
+    k.click(C, 'derivar', tDer, 0.6);
     k.zoom(R('22-derivar-modo', 'dialogo'), 1.38, tDer + 0.5, 0.7);
-    k.spot('22-derivar-modo', 'con', S(1, 1) + 0.05, S(1, 1) + 1.6, 4).spot('22-derivar-modo', 'sin', S(1, 1) + 1.6, S(1, 2), 4);
-    k.move('22-derivar-modo', 'con', S(1, 1) + 0.4, 0.7).move('22-derivar-modo', 'sin', S(1, 1) + 1.9, 0.7);
+    k.spot('22-derivar-modo', 'con', tDer + 0.6, tDer + 1.7, 4).spot('22-derivar-modo', 'sin', tDer + 1.7, S(1, 2), 4);
+    k.move('22-derivar-modo', 'con', tDer + 0.9, 0.6).move('22-derivar-modo', 'sin', tDer + 2.0, 0.6);
     k.hl('22-derivar-modo', 'unaVez', S(1, 2) + 0.05, tSin, 3);
     k.tip('Solo podés derivar una vez', 'Atención', S(1, 2) + 0.15, S(2, 0) + 0.5, { icon: IC.once, warn: true, pos: 'br' });
     k.click('22-derivar-modo', 'sin', tSin, 0.6);
@@ -549,13 +556,15 @@
     const k = kit(root, ctx);
     const S = T.S, E = T.E;
     const btnResp = box([2888, 558, 3120, 632]);
-    const tR = S(0, 0) + 1.5, t2 = S(1, 1) - 0.15, t3 = S(2, 0) - 0.2, t4 = S(2, 1) + 0.4, t5 = S(2, 1) + 1.9, tSend = E(2) + 0.35;
+    const tR = S(0, 0) + 1.5, t2 = S(1, 1) + 0.1, t3 = S(2, 0) - 0.2, t4 = S(2, 1) + 0.4, t5 = S(2, 1) + 1.9, tSend = E(2) + 0.35;
     k.shot('26-arbol').shot('27-responder-p1', tR + 0.15).shot('28-responder-p2', t2 + 0.15).shot('29-responder-p3', t3 + 0.15)
       .shot('30-responder-p4', t4 + 0.15).shot('31-responder-enviar', t5, 0.45).shot('32-respondida', tSend + 0.15);
     k.click('26-arbol', btnResp, tR, 1.0).lens('26-arbol', btnResp, tR - 0.6, tR + 0.4, { dx: -240, dy: 150 });
     k.spot('27-responder-p1', 'destino', S(0, 1) + 0.05, S(1, 0) - 0.1, 4);
     k.tip('Llega a quien te lo envió', 'Respuesta', S(0, 1) + 0.3, S(1, 0) - 0.1, { icon: IC.reply, pos: 'br' });
-    k.hl('27-responder-p1', 'interno', S(1, 0) + 0.1, S(1, 0) + 1.0, 3).click('27-responder-p1', 'normal', S(1, 0) + 1.2, 0.8);
+    k.click('27-responder-p1', 'externo', S(1, 0) + 1.3, 0.8).hl('27-responder-p1', 'externo', S(1, 0) + 1.3, t2, 3)
+      .click('27-responder-p1', 'normal', S(1, 0) + 2.3, 0.7);
+    k.tip('Vuelve a otra unidad: Externo', 'Respuesta', S(1, 0) + 0.3, t2, { icon: IC.send, pos: 'br' });
     k.click('27-responder-p1', 'siguiente', t2, 0.8);
     const f = union(R('28-responder-p2', 'numero'), R('28-responder-p2', 'hojas'), R('28-responder-p2', 'pdf'));
     k.zoom(f, 1.25, t2 + 0.5, 0.7);

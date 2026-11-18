@@ -141,28 +141,28 @@
   },
   {
    "file": "h03_u1.mp3",
-   "dur": 10.512,
+   "dur": 13.488,
    "segments": [
     {
-     "text": "Primero elegí el origen: Interno, si va a otra unidad de la Policía,",
+     "text": "Primero elegí el tipo: Interno, si va a las dependencias de tu propia unidad;",
      "start": 0.0,
-     "end": 3.798
+     "end": 4.049
     },
     {
-     "text": "o Externo, si va a otra institución.",
-     "start": 4.049,
-     "end": 6.202
+     "text": "Externo, si va a otra unidad de la Policía.",
+     "start": 4.268,
+     "end": 6.748
     },
     {
-     "text": "Y marcá la clasificación; por ejemplo, Normal.",
-     "start": 6.949,
-     "end": 9.725
+     "text": "Este oficio va a otras unidades: marcá Externo y la clasificación; por ejemplo, Normal.",
+     "start": 7.507,
+     "end": 12.708
     }
    ]
   },
   {
    "file": "h03_u2.mp3",
-   "dur": 7.32,
+   "dur": 7.824,
    "segments": [
     {
      "text": "En el paso dos cargá el número de documento, la fecha, el tipo y las hojas.",
@@ -170,9 +170,9 @@
      "end": 4.071
     },
     {
-     "text": "La hoja de ruta se sugiere sola.",
+     "text": "Al ser externo, no lleva hoja de ruta.",
      "start": 4.83,
-     "end": 6.545
+     "end": 7.048
     }
    ]
   },
@@ -392,38 +392,38 @@
  "8": [
   {
    "file": "h08_u0.mp3",
-   "dur": 7.92,
+   "dur": 7.032,
    "segments": [
     {
      "text": "Con Abrir completo ves el documento y todas sus acciones:",
      "start": 0.0,
-     "end": 2.672
+     "end": 2.738
     },
     {
-     "text": "el PDF, la hoja de ruta, derivar, responder o marcar como atendido.",
-     "start": 2.935,
-     "end": 7.152
+     "text": "el PDF, derivar, responder o marcarlo como atendido.",
+     "start": 2.978,
+     "end": 6.278
     }
    ]
   },
   {
    "file": "h08_u1.mp3",
-   "dur": 9.408,
+   "dur": 11.136,
    "segments": [
     {
-     "text": "Para pasarlo a una dependencia de tu unidad, hacé clic en Derivar",
+     "text": "Derivar es interno: lo pasa a una dependencia de tu unidad.",
      "start": 0.0,
-     "end": 3.109
+     "end": 3.219
     },
     {
-     "text": "y elegí si va con un documento nuevo o sin documento.",
-     "start": 3.12,
-     "end": 5.743
+     "text": "Hacé clic en Derivar y elegí si va con un documento nuevo o sin documento.",
+     "start": 3.977,
+     "end": 7.463
     },
     {
      "text": "Ojo: solo podés derivar una vez.",
-     "start": 6.501,
-     "end": 8.632
+     "start": 8.228,
+     "end": 10.358
     }
    ]
   },
@@ -503,17 +503,17 @@
   },
   {
    "file": "h10_u1.mp3",
-   "dur": 5.952,
+   "dur": 7.272,
    "segments": [
     {
-     "text": "Elegí el origen y la clasificación;",
+     "text": "Como vuelve a otra unidad, elegí Externo y la clasificación;",
      "start": 0.0,
-     "end": 1.853
+     "end": 3.219
     },
     {
      "text": "cargá los datos de tu oficio de respuesta y adjuntá su PDF.",
-     "start": 2.05,
-     "end": 5.175
+     "start": 3.394,
+     "end": 6.497
     }
    ]
   },

@@ -108,16 +108,40 @@ seccion('configuracion', async () => {
   await btn(/Guardar Cambios/i).click(); await espera(900)
 })
 
+/* Regla de la institucion: INTERNO = hacia las dependencias de la propia unidad;
+ * EXTERNO = hacia otra unidad de la Policia. Las tarjetas de SISCOP dicen otra cosa hoy,
+ * asi que SOLO en la captura del video se reemplaza su descripcion (la app no se toca). */
+const corregirTarjetas = (textos) => page.evaluate((t) => {
+  document.querySelectorAll('.option-card').forEach((c) => {
+    const titulo = c.querySelector('.text-subtitle-1')?.textContent.trim()
+    const desc = c.querySelector('.text-caption')
+    if (desc && t[titulo]) desc.textContent = t[titulo]
+  })
+}, textos)
+const TARJETAS = { Interno: 'Hacia las dependencias de su unidad', Externo: 'Hacia otra unidad de la Policía Boliviana' }
+
 seccion('nueva', async () => {
   await nav('Nueva correspondencia').click(); await espera(1000)
   const pasos = css('.nueva-corr-card .v-row > div').first()
   const chip = (t) => css('.clasificacion-chip').filter({ hasText: t })
+  await corregirTarjetas({ ...TARJETAS, Externo: TARJETAS.Externo + ' (sin hoja de ruta)' })
+  await page.mouse.move(1500, 860); await espera(200)
+  await cap('06a-nueva-p1-inicial', {
+    interno: css('.option-card').nth(0),
+    externo: css('.option-card').nth(1),
+    clasificaciones: css('.clasificacion-chip').first().locator('xpath=..'),
+  })
+  await css('.option-card').nth(1).click(); await espera(300)
   await chip('NORMAL').click(); await espera(300)
+  await corregirTarjetas({ ...TARJETAS, Externo: TARJETAS.Externo + ' (sin hoja de ruta)' })
+  await page.mouse.move(1500, 860); await espera(200)
   await cap('06-nueva-p1', {
     menu: nav('Nueva correspondencia'),
     pasos,
     interno: css('.option-card').nth(0),
     externo: css('.option-card').nth(1),
+    internoTxt: css('.option-card').nth(0).locator('.text-caption'),
+    externoTxt: css('.option-card').nth(1).locator('.text-caption'),
     clasificaciones: css('.clasificacion-chip').first().locator('xpath=..'),
     normal: chip('NORMAL'),
     siguiente: btn(/Siguiente/),
@@ -127,22 +151,18 @@ seccion('nueva', async () => {
     numero: campo('Número de documento *'),
     fecha: campo('Fecha del documento *'),
     tipo: campo('Tipo de documento *'),
-    hojaRuta: campo('Nº de hoja de ruta *'),
     hojas: campo('Número de hojas *'),
     pdf: css('.dropzone').first(),
   })
   await page.getByLabel('Número de documento *', { exact: true }).fill('CITE DNTT N° 221/2026')
   await page.getByLabel('Tipo de documento *', { exact: true }).click(); await espera(400)
   await page.getByRole('option', { name: 'CITE', exact: true }).click(); await espera(300)
-  const hr = page.getByLabel('Nº de hoja de ruta *', { exact: true })
-  if (!(await hr.inputValue())) await hr.fill('DNTT-420')
   await page.getByLabel('Número de hojas *', { exact: true }).fill('2')
   await css('input[type=file][accept="application/pdf"]').setInputFiles(PDF); await espera(500)
   await css('h4').first().click()
   await cap('08-nueva-p2-llena', {
     numero: campo('Número de documento *'),
     tipo: campo('Tipo de documento *'),
-    hojaRuta: campo('Nº de hoja de ruta *'),
     hojas: campo('Número de hojas *'),
     pdf: css('.v-card').filter({ hasText: 'CITE-DNTT-221-2026.pdf' }).last(),
     siguiente: btn(/Siguiente/),
@@ -180,7 +200,6 @@ seccion('nueva', async () => {
     estado: css('.v-chip').filter({ hasText: 'Pendiente' }).first(),
     editar: btn(/Editar/),
     enviar: btn(/Enviar a unidades/i),
-    hojaRuta: btn(/Hoja de Ruta/i),
     pestanas: css('.app-step-header'),
   })
 })
@@ -270,10 +289,9 @@ seccion('entrada', async () => {
   await panel2.getByRole('button', { name: /Abrir completo/i }).click(); await espera(1500)
   const acciones = css('.v-card-actions').filter({ hasText: 'Responder' }).first()
   await cap('21-detalle', {
-    codigo: txt('2404112600002IN').first(),
+    codigo: css('.text-h5, .text-h4').filter({ hasText: /^\d+[IE][A-Z]$/ }).first(),
     estado: css('.v-chip').filter({ hasText: /^RECEPCIONADO$/ }).first(),
     pdf: btn(/Ver PDF original/i),
-    hojaRuta: acciones.getByRole('button', { name: /Hoja de Ruta/i }),
     derivar: acciones.getByRole('button', { name: /^Derivar$/i }),
     responder: acciones.getByRole('button', { name: /^Responder$/i }),
     atendido: btn(/Marcar como atendido/i),
@@ -324,11 +342,15 @@ seccion('entrada', async () => {
     soporte: css('text=DEPARTAMENTO NACIONAL SOPORTE TECNICO >> visible=true').locator('xpath=ancestor::div[1]'),
   })
   await btn(/^Responder$/).click(); await espera(1500)
+  await css('.option-card').nth(1).click(); await espera(300)
   await css('.clasificacion-chip').filter({ hasText: 'NORMAL' }).click(); await espera(300)
+  await corregirTarjetas(TARJETAS)
+  await page.mouse.move(1500, 860); await espera(200)
   await cap('27-responder-p1', {
     destino: txt(/la respuesta llega a la bandeja de/, false).first(),
     pasos: css('.app-step-header').first(),
     interno: css('.option-card').nth(0),
+    externo: css('.option-card').nth(1),
     normal: css('.clasificacion-chip').filter({ hasText: 'NORMAL' }),
     siguiente: btn(/Siguiente/),
   })
@@ -393,7 +415,7 @@ seccion('salida', async () => {
   await fila(CRONO).click(); await espera(1500)
   await pestana('Seguimiento').click(); await espera(1200)
   await cap('34-salida-seguimiento', {
-    codigo: css('.text-h5, .text-h4').filter({ hasText: /IN$/ }).first(),
+    codigo: css('.text-h5, .text-h4').filter({ hasText: /^\d+[IE][A-Z]$/ }).first(),
     para: txt(/Para: 2 unidades/, false).first(),
     avance: txt('Avance del documento').locator('xpath=ancestor::div[contains(@class,"v-card")][1]'),
     pendientes: txt('Pendientes', true).locator('xpath=ancestor::div[contains(@class,"v-sheet") or contains(@class,"rounded")][1]').first(),

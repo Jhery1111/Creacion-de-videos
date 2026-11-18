@@ -50,11 +50,11 @@ SCRIPT = {
     # 3 · nueva correspondencia (pasos 1 y 2)
     3: [[s("Para registrar un documento, hacé clic en Nueva correspondencia."),
          s("El registro tiene cinco pasos.")],
-        [s("Primero elegí el origen: Interno, si va a otra unidad de la Policía,"),
-         s("o Externo, si va a otra institución."),
-         s("Y marcá la clasificación; por ejemplo, Normal.")],
+        [s("Primero elegí el tipo: Interno, si va a las dependencias de tu propia unidad;"),
+         s("Externo, si va a otra unidad de la Policía."),
+         s("Este oficio va a otras unidades: marcá Externo y la clasificación; por ejemplo, Normal.")],
         [s("En el paso dos cargá el número de documento, la fecha, el tipo y las hojas."),
-         s("La hoja de ruta se sugiere sola.")],
+         s("Al ser externo, no lleva hoja de ruta.")],
         [s("Y adjuntá el PDF escaneado del documento firmado.")]],
     # 4 · nueva correspondencia (pasos 3 a 5)
     4: [[s("En el paso tres, el remitente ya viene de la configuración."),
@@ -85,9 +85,9 @@ SCRIPT = {
         [s("Recepcioná lo antes posible: el panel mide el tiempo de atención.")]],
     # 8 · derivar
     8: [[s("Con Abrir completo ves el documento y todas sus acciones:"),
-         s("el PDF, la hoja de ruta, derivar, responder o marcar como atendido.")],
-        [s("Para pasarlo a una dependencia de tu unidad, hacé clic en Derivar"),
-         s("y elegí si va con un documento nuevo o sin documento."),
+         s("el PDF, derivar, responder o marcarlo como atendido.")],
+        [s("Derivar es interno: lo pasa a una dependencia de tu unidad."),
+         s("Hacé clic en Derivar y elegí si va con un documento nuevo o sin documento."),
          s("Ojo: solo podés derivar una vez.")],
         [s("Marcá la dependencia de destino, revisá la hoja de ruta"),
          s("y confirmá con Derivar.")],
@@ -99,7 +99,7 @@ SCRIPT = {
     # 10 · responder
     10: [[s("Para contestar, hacé clic en Responder."),
           s("La respuesta llega a la bandeja de quien te envió el documento.")],
-         [s("Elegí el origen y la clasificación;"),
+         [s("Como vuelve a otra unidad, elegí Externo y la clasificación;"),
           s("cargá los datos de tu oficio de respuesta y adjuntá su PDF.")],
          [s("El remitente se completa solo: escribí la referencia,"),
           s("agregá anexos si hace falta y hacé clic en Enviar respuesta.")],
