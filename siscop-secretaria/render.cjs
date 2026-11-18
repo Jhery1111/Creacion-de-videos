@@ -64,7 +64,9 @@ async function principal() {
   console.log(`video sin audio en ${Math.round((Date.now() - t0) / 1000)}s`)
   const dir = path.join(RAIZ, 'renders'); fs.mkdirSync(dir, { recursive: true })
   const final = path.join(dir, 'siscop-secretaria.mp4')
-  execFileSync('ffmpeg', ['-v', 'error', '-y', '-i', video, '-i', path.join(BUILD, 'mix_h.wav'), '-c:v', 'copy',
+  // El final se vuelve a comprimir a CRF 20: a CRF 18 un video de 9 min pasa los 100 MB que admite GitHub.
+  execFileSync('ffmpeg', ['-v', 'error', '-y', '-i', video, '-i', path.join(BUILD, 'mix_h.wav'),
+    '-c:v', 'libx264', '-preset', 'slow', '-crf', '20', '-pix_fmt', 'yuv420p',
     '-af', 'loudnorm=I=-16:TP=-1.5:LRA=11', '-ar', '48000', '-c:a', 'aac', '-b:a', '192k', '-shortest', '-movflags', '+faststart', final])
   const srt = tl.cues.map((c, i) => `${i + 1}\n${srtT(c.start)} --> ${srtT(c.end)}\n${c.text}\n`).join('\n')
   fs.writeFileSync(final.replace(/\.mp4$/, '.srt'), srt)
