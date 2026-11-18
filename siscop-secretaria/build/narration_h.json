@@ -564,28 +564,17 @@
   },
   {
    "file": "h11_u1.mp3",
-   "dur": 3.96,
+   "dur": 6.288,
    "segments": [
     {
-     "text": "Al abrir uno, en Seguimiento ves el estado de cada unidad.",
+     "text": "Al abrir uno, en Seguimiento ves el estado de cada unidad:",
      "start": 0.0,
-     "end": 3.208
-    }
-   ]
-  },
-  {
-   "file": "h11_u2.mp3",
-   "dur": 7.392,
-   "segments": [
-    {
-     "text": "Cuando el trámite concluyó, hacé clic en Archivar y confirmá.",
-     "start": 0.0,
-     "end": 3.088
+     "end": 3.109
     },
     {
-     "text": "Un documento archivado ya no se puede modificar ni reenviar.",
-     "start": 3.846,
-     "end": 6.622
+     "text": "quién lo tiene pendiente y quién ya lo recepcionó.",
+     "start": 3.383,
+     "end": 5.524
     }
    ]
   }
@@ -783,22 +772,22 @@
  "16": [
   {
    "file": "h16_u0.mp3",
-   "dur": 7.872,
+   "dur": 8.184,
    "segments": [
     {
      "text": "Recordá: configurá tu unidad, recepcioná a tiempo,",
      "start": 0.0,
-     "end": 2.989
+     "end": 3.011
     },
     {
      "text": "revisá antes de enviar, derivá una sola vez",
-     "start": 3.284,
-     "end": 5.633
+     "start": 3.306,
+     "end": 5.601
     },
     {
-     "text": "y archivá solo lo concluido.",
-     "start": 5.644,
-     "end": 7.098
+     "text": "y elegí bien entre Interno y Externo.",
+     "start": 5.612,
+     "end": 7.425
     }
    ]
   },

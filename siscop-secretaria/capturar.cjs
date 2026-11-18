@@ -420,21 +420,7 @@ seccion('salida', async () => {
     avance: txt('Avance del documento').locator('xpath=ancestor::div[contains(@class,"v-card")][1]'),
     pendientes: txt('Pendientes', true).locator('xpath=ancestor::div[contains(@class,"v-sheet") or contains(@class,"rounded")][1]').first(),
     unidades: txt('Estado por unidad'),
-    archivar: btn(/^Archivar$/),
   })
-  await btn(/^Archivar$/).click(); await espera(800)
-  const da = css('.v-overlay--active .v-card').filter({ hasText: '¿Archivar esta correspondencia?' }).last()
-  await cap('35-archivar', {
-    dialogo: da,
-    confirmar: da.getByRole('button', { name: /Si, archivar/ }),
-    cancelar: da.getByRole('button', { name: /Cancelar/ }),
-  })
-  await da.getByRole('button', { name: /Si, archivar/ }).click(); await espera(1600)
-  await cap('36-archivada', {
-    aviso: css('.app-toast .v-snackbar__wrapper'),
-    estado: css('.v-chip').filter({ hasText: /^Archivado$/ }).first(),
-  })
-  await cerrarAviso()
 })
 
 seccion('terceros', async () => {

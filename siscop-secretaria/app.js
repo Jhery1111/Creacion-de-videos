@@ -261,7 +261,7 @@
     1: ['INICIO', 'Panel de correspondencia'], 2: ['CONFIGURACIÓN', 'Remitente y hoja de ruta'],
     3: ['NUEVA', 'Tipo y documento'], 4: ['NUEVA', 'Referencia e instrucciones'], 5: ['ENVIAR', 'A unidades de nivel 1'],
     6: ['BANDEJA DE ENTRADA', 'Lo que llega'], 7: ['RECEPCIONAR', 'Recibir o rechazar'], 8: ['DERIVAR', 'A una dependencia'],
-    9: ['SEGUIMIENTO', 'Ruta y árbol'], 10: ['RESPONDER', 'Respuesta al remitente'], 11: ['SALIDA Y ARCHIVO', 'Lo que enviaste'],
+    9: ['SEGUIMIENTO', 'Ruta y árbol'], 10: ['RESPONDER', 'Respuesta al remitente'], 11: ['BANDEJA DE SALIDA', 'Lo que enviaste'],
     12: ['TERCEROS', 'Ventanilla'], 13: ['ADSCRIPCIONES', 'Personal de la unidad'], 14: ['ORGANIGRAMA', 'Dependencias'],
     15: ['AVISOS', 'Notificaciones y perfil'],
   };
@@ -583,23 +583,22 @@
     return k.done();
   });
 
-  // ===== 11: BANDEJA DE SALIDA Y ARCHIVO =====
+  // ===== 11: BANDEJA DE SALIDA =====
   scene(11, function (root, T, ctx) {
     const k = kit(root, ctx);
     const S = T.S;
-    const tRow = S(1, 0) + 0.4, tArc = S(2, 0) + 1.5, tOk = S(2, 0) + 3.0;
-    k.shot('33-salida').shot('34-salida-seguimiento', tRow + 0.15).shot('35-archivar', tArc + 0.15).shot('36-archivada', tOk + 0.15);
+    const C = '34-salida-seguimiento';
+    const tRow = S(1, 0) + 0.4;
+    k.shot('33-salida').shot(C, tRow + 0.15);
     k.click('33-salida', 'menu', S(0, 0) + 0.9, 1.0).spot('33-salida', 'carpetas', S(0, 0) + 1.5, S(0, 1) - 0.05, 2);
     k.zoom(R('33-salida', 'fila'), 1.3, S(0, 1) + 0.2, 0.8);
     k.hl('33-salida', 'avance', S(0, 1) + 0.3, tRow, 4).at(mid(R('33-salida', 'avance')), S(0, 1) + 0.8, 0.8);
     k.tip('1 de 2 unidades lo procesó', 'Avance', S(0, 1) + 0.9, tRow - 0.1, { icon: IC.route, pos: 'br' });
     k.click('33-salida', 'fila', tRow, 0.7).home(tRow + 0.1, 0.6);
-    k.spot('34-salida-seguimiento', union(R('34-salida-seguimiento', 'avance'), R('34-salida-seguimiento', 'unidades')), tRow + 0.6, tArc - 0.4, 4);
-    k.click('34-salida-seguimiento', 'archivar', tArc, 1.0).lens('34-salida-seguimiento', 'archivar', tArc - 0.6, tArc + 0.4, { dx: -230, dy: 150 });
-    k.zoom(R('35-archivar', 'dialogo'), 1.6, tArc + 0.5, 0.6);
-    k.click('35-archivar', 'confirmar', tOk, 0.8).home(tOk + 0.2, 0.6);
-    k.spot('36-archivada', 'estado', tOk + 0.4, T.dur - 0.2, 6).spot('36-archivada', 'aviso', tOk + 0.4, T.dur - 0.2, 4).sfx(tOk + 0.3, 'chime');
-    k.tip('Archivá solo lo concluido', 'Buena práctica', S(2, 1) + 0.2, T.dur - 0.2, { icon: IC.archive, pos: 'br' });
+    k.spot(C, 'avance', tRow + 0.6, S(1, 1) - 0.05, 4);
+    k.zoom(R(C, 'avance'), 1.25, S(1, 1) - 0.3, 0.8);
+    k.hl(C, 'pendientes', S(1, 1) + 0.2, T.dur - 0.2, 3).at(mid(R(C, 'pendientes')), S(1, 1) + 0.6, 0.7);
+    k.spot(C, 'avance', S(1, 1) + 0.05, T.dur - 0.2, 4);
     return k.done();
   });
 
@@ -702,7 +701,7 @@
     const S = T.S;
     const card = el('check-card', '<h3>BUENAS PRÁCTICAS</h3>', root);
     place(card, W / 2 - 430, 150, 860);
-    const rows = ['Configurá tu unidad', 'Recepcioná a tiempo', 'Revisá antes de enviar', 'Derivá una sola vez', 'Archivá solo lo concluido']
+    const rows = ['Configurá tu unidad', 'Recepcioná a tiempo', 'Revisá antes de enviar', 'Derivá una sola vez', 'Elegí bien Interno o Externo']
       .map((txt) => el('check-row', `<div class="ic">${IC.check}</div>${txt}`, card));
     const at = [S(0, 0) + 0.8, S(0, 0) + 2.1, S(0, 1) + 0.2, S(0, 1) + 1.3, S(0, 2) + 0.2];
     at.forEach((x) => ev(ctx, x, 'pop'));

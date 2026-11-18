@@ -104,12 +104,11 @@ SCRIPT = {
          [s("El remitente se completa solo: escribí la referencia,"),
           s("agregá anexos si hace falta y hacé clic en Enviar respuesta.")],
          [s("El documento queda Atendido, con la respuesta en su expediente.")]],
-    # 11 · bandeja de salida y archivar
+    # 11 · bandeja de salida
     11: [[s("En la Bandeja de salida está lo que tu unidad registró y envió."),
           s("La barra muestra cuántos destinos ya lo procesaron.")],
-         [s("Al abrir uno, en Seguimiento ves el estado de cada unidad.")],
-         [s("Cuando el trámite concluyó, hacé clic en Archivar y confirmá."),
-          s("Un documento archivado ya no se puede modificar ni reenviar.")]],
+         [s("Al abrir uno, en Seguimiento ves el estado de cada unidad:"),
+          s("quién lo tiene pendiente y quién ya lo recepcionó.")]],
     # 12 · recepcion de terceros
     12: [[s("Cuando una persona civil entrega documentación en ventanilla,"),
           s("usá Recepción de terceros.")],
@@ -139,7 +138,7 @@ SCRIPT = {
     # 16 · cierre y buenas practicas
     16: [[s("Recordá: configurá tu unidad, recepcioná a tiempo,"),
           s("revisá antes de enviar, derivá una sola vez"),
-          s("y archivá solo lo concluido.")],
+          s("y elegí bien entre Interno y Externo.")],
          [s("SISCOP: la correspondencia de tu unidad, en orden y a tiempo.")]],
 }
 

@@ -2,8 +2,8 @@
 
 Video tutorial (1920x1080, ~6 min 26 s, voz es-BO, subtítulos) con todo lo que hace la
 secretaria de una unidad en SISCOP v2: configuración, nueva correspondencia, envío,
-bandeja de entrada, recepción, derivación, seguimiento, respuesta, bandeja de salida y
-archivo, recepción de terceros, adscripciones, organigrama, notificaciones y perfil.
+bandeja de entrada, recepción, derivación, seguimiento, respuesta, bandeja de salida,
+recepción de terceros, adscripciones, organigrama, notificaciones y perfil.
 
 Resultado: `renders/siscop-secretaria.mp4` y `renders/siscop-secretaria.srt`.
 
